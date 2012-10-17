@@ -11,10 +11,8 @@
 /**
  * define error reporting/level 
  */
-//error_reporting(E_ALL);
-//ini_set('display_errors', 1);
-ini_set( 'display_errors', 1 );
-error_reporting( -1 );
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
 
 /**
@@ -34,7 +32,6 @@ define('ROOT',			dirname(DOC_ROOT).'/');
 //per quanto riguarda i moduli e i widget viene fatto uno scandir e vengono aggiunti i path (se esistono cartelle)
 
 
-
 define('APP_PATH',       ROOT.'application/');
 define('MODULES_PATH',   ROOT.'modules/');
 define('WIDGETS_PATH',   ROOT.'widgets/');
@@ -42,12 +39,10 @@ define('BASE_PATH',		 ROOT.'base/');
 define('CORE_PATH',      ROOT.'core/');
 
 
-
 /**
  * then change to the current working directory.
  */
 chdir(dirname(__FILE__));
-
 
 
 /**
@@ -66,28 +61,15 @@ set_error_handler(          array('rpd_error_library', 'error_handler'));
 set_exception_handler(      array('rpd_error_library', 'exception_handler'));
 register_shutdown_function( array('rpd', 'shutdown_handler'));
 
-//set_error_handler( array( 'rpd_error_library', 'captureNormal' ) );
-//set_exception_handler( array( 'rpd_error_library', 'captureException' ) );
-//register_shutdown_function( array( 'rpd_error_library', 'captureShutdown' ) );
-
-
 
 /**
  * configuration file
  */
-//include_once(APP_PATH.'config.php');
-
-
-/**
- * configuration file
- */
-include_once(ROOT.'application/config.php');
+include_once(APP_PATH.'config.php');
 
 
 /**
  * bootstrap
  */
-
 rpd::init($config);
-//rpd::connect();
 rpd::run();
