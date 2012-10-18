@@ -1,0 +1,31 @@
+/* main styles in rapyd */
+
+.alert{
+	padding:20px;
+	color: #A52A2A;
+}
+.message{
+	padding:20px;
+	color: Gray;
+}
+
+.mainheader { clear:both;  border-bottom: 1px solid #ECECEC; height:22px; padding:4px; color: #153D51; font-family: Lucida Grande, Verdana, Geneva, Sans-serif;	font-size: 1em;	font-weight: bold;}
+.mainfooter { clear:both;  border-color: #92B8CB;  border-top:1px solid #ECECEC; height:22px; padding:4px; color: #153D51; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;	font-size: 0.9em;	font-weight: bold;}
+.littletablerow {		color: #153D51;	border-bottom: 1px solid #ECECEC;	 font-family: Lucida Grande, Verdana, Geneva, Sans-serif;	font-size: 1em;}
+.littletableheader { background: #f9f9f9; 	border-bottom: 1px solid #ECECEC;	color: #999999;	font-family: Lucida Grande, Verdana, Geneva, Sans-serif; font-size: 1em;	padding-left:5px;}
+.tableheader { background: #f9f9f9; 	border-bottom: 1px solid #cccccc;	color: #999999;	font-family: Lucida Grande, Verdana, Geneva, Sans-serif; font-size: 1em;}
+.tableheader_clean { background: #f9f9f9; color: #999999;	font-family: Lucida Grande, Verdana, Geneva, Sans-serif; font-size: 1em;}
+.tablerow {	border-bottom: 1px solid #D0D0D0;	color: #153D51;	font-family: Verdana, Arial, Helvetica;	font-size: 0.9em;	font-weight: normal;}
+tr.odd {background-color:inherit;}
+tr.even {background-color:#FCFCFC;}
+
+/*
+form { margin: 0; padding: 0; }
+.input, .select, .password, .textarea  { font-family: Lucida Grande, Verdana, Geneva, Sans-serif;	font-size: 1em; margin: 0; padding: 2px; border: 1px solid #92B8CB; border-left:2px solid #92B8CB;}
+.littlebutton {	background-color: #BED6E0;	border: 1px solid #92B8CB;	color: #153D51;	font-family: Lucida Grande, Verdana, Geneva, Sans-serif;	font-size: 12px;	text-decoration: none;}
+*/
+body.mceContentBody {
+background: #000;
+color: #fff;
+}
+body.mceContentBody { background: #000; color: #fff; }
