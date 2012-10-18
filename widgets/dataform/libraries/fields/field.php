@@ -1,7 +1,7 @@
 <?php if (!defined('CORE_PATH')) exit('No direct script access allowed');
 
 
-class field_field extends component_library {
+class field_field extends widget_library {
 
 	//main properties
 	public $type = "field";

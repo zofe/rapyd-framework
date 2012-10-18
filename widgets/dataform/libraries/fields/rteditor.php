@@ -66,7 +66,7 @@ class rteditor_field extends field_field {
 				var inst_".$this->name."
                                 $(document).ready(function() {
                                         inst_".$this->name." = $('textarea#".$this->name."').rte({
-                                            	css: ['".RAPYDASSETS."jqueryrte/rte.css'],
+                                            	css: ['".rpd::config('core_assets_uri')."jquery/rte.css'],
                                                 controls_rte: rte_toolbar,
                                                 controls_html: html_toolbar
                                         });

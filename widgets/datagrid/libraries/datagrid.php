@@ -241,7 +241,7 @@ class datagrid_library extends dataset_library
  * @copyright  (c) 2011 Rapyd Team
  * @license    http://www.rapyd.com/license
  */
-class datagrid_column extends component_library
+class datagrid_column extends widget_library
 {
 
 	public $url = "";
