@@ -65,7 +65,7 @@ $config['routes'] = array(
 
 $config['db']['hostname'] = "127.0.0.1";
 $config['db']['username'] = "root";
-$config['db']['password'] = "zippo";
+$config['db']['password'] = "";
 $config['db']['database'] = "rapyd2";
 $config['db']['dbdriver'] = "mysql";
 $config['db']['dbprefix'] = "";
