@@ -1,14 +1,16 @@
-<?=rpd::view('demo/header')?>
+<?=rpd::run('demo/header')?>
 
+	<link rel="stylesheet" type="text/css" href="<?=rpd::config('core_assets_uri')?>prettify/prettify.css" media="screen" />
+	<script type="text/javascript" language="javascript" src="<?=rpd::config('core_assets_uri')?>prettify/prettify.js"></script>
 
 
   <div id="right">
 
     <div class="content">
 
-     <?php if(isset($title)):?><h2><?php echo $title;?></h2><?php endif;?>
+     <?if(isset($title)):?><h2><?=$title;?></h2><?endif;?>
 
-     <?php echo $content?>
+     <?=$content?>
 
 			<div class="line"></div>
     </div>
@@ -17,14 +19,16 @@
 
   <div class="line"></div>
 
-<?php if ($code!=''): ?>
-  <div class="code">
-CONTROLLER <br />
-    <?php echo $code?>
-  </div>
+<?if ($code!=''): ?>
+<pre class="prettyprint linenums php-css">
+<?=htmlspecialchars($code)?>
+</pre>
+<script type="text/javascript">
+	prettyPrint();
+</script>
   <div class="line"></div>
-<?php endif;?>
+<?endif;?>
 
 
-<?=rpd::view('demo/footer')?>
+<?=rpd::run('demo/footer')?>
 

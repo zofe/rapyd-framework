@@ -45,10 +45,10 @@ class form_controller extends demo_controller {
 		$data['head']	= $this->head();
 		$data['title']	= 'DataForm';
 		$data['content']= $form.'<br />';
-		$data['code']	= highlight_string(file_get_contents(__FILE__), TRUE);
+		$data['code']	= file_get_contents(__FILE__);
 
 		//output
-		echo $this->view('demo', $data);
+		echo rpd::view('demo', $data);
 	}
 	
 	function customcheck($value)

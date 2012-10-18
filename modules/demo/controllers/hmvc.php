@@ -18,12 +18,12 @@ class hmvc_controller extends demo_controller {
 		$data['title']	= 'HMVC';
 		$data['content']= $this->view('hmvc',array('articles'=>$articles));
 
-		$data['code']	= highlight_string(file_get_contents(__FILE__), TRUE)
-	."<br>MODEL<br>".highlight_string(file_get_contents(dirname(__FILE__).'/../models/article.php'), TRUE)
-	."<br>VIEW<br>".highlight_string(file_get_contents(dirname(__FILE__).'/../views/hmvc.php'), TRUE);
+		$data['code']	= file_get_contents(__FILE__)
+		."\n\nMODEL\n\n".file_get_contents(dirname(__FILE__).'/../models/article.php')
+		."\n\nVIEW\n\n".file_get_contents(dirname(__FILE__).'/../views/hmvc.php');
 
 		//call main view
-		echo $this->view('demo', $data);
+		echo rpd::view('demo', $data);
 	}
 	
 
@@ -31,13 +31,13 @@ class hmvc_controller extends demo_controller {
 	{
 		//do db stuffs then call a view
 		$count = $this->article->count_articles();
-		return $this->view('mvc_header', array('count'=>$count));
+		return rpd::view('mvc_header', array('count'=>$count));
 	}
 	
 	function footer()
 	{
 		//do db stuffs then call a view
-		return $this->view('mvc_footer');
+		return rpd::view('mvc_footer');
 	}
 
 }

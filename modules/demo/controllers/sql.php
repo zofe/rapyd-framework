@@ -28,10 +28,10 @@ class sql_controller extends demo_controller {
 		$data['title']	= 'Query Builder';
 		$data['content']= 'first article title is: '.$article_one->title;
 
-		$data['code']	= highlight_string(file_get_contents(__FILE__), TRUE);
+		$data['code']	= file_get_contents(__FILE__);
 
 		//output
-		echo $this->view('demo', $data);
+		echo rpd::view('demo', $data);
 	}
 }
 

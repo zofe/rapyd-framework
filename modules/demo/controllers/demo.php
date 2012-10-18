@@ -1,14 +1,14 @@
 <?php
 
 
-class demo_controller extends controller_controller {
+class demo_controller extends app_controller {
 
 
 	function index()
 	{
 		//$data['head']		= $this->head();
 		$data['title'] 		= 'Repyd Demos';
-		$data['content']	= nl2br(rpd::view('meme'));
+		$data['content']	= nl2br(rpd::view('home'));
 		$data['code'] 		= '';
 
 		//output
@@ -19,4 +19,6 @@ class demo_controller extends controller_controller {
 	{
 		return rpd::view("demo_menu");
 	}
+	
+	
 }

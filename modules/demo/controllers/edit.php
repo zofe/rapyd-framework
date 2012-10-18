@@ -9,7 +9,7 @@ class edit_controller extends demo_controller {
 		//edit
 		$edit = new dataedit_library();
 		$edit->label = 'Manage Article';
-		$edit->back_url = $this->url('filtered_grid/index');
+		$edit->back_url = rpd::url('filtered_grid/index');
 
 		$edit->source('demo_articles');
 		$edit->field('input','title','Title')->rule('trim|required');
@@ -23,13 +23,13 @@ class edit_controller extends demo_controller {
 
 		$edit->build();
 
-		$data['head']	= $this->head();
+		//$data['head']	= $this->head();
 		$data['title'] 	= 'DataEdit';
 		$data['content']= $edit.'<br />';
-		$data['code'] 	= highlight_string(file_get_contents(__FILE__), TRUE);
+		$data['code'] 	= file_get_contents(__FILE__);
 
 		//output
-		echo $this->view('demo', $data);
+		echo rpd::view('demo', $data);
 	}
 
 

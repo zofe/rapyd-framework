@@ -7,10 +7,10 @@ class basic_controller extends demo_controller {
 	{
 		//fill an array with some data..
 		$data['content']= 'Hello World! <br />';
-		$data['code']	= highlight_string(file_get_contents(__FILE__), TRUE);
+		$data['code']	= file_get_contents(__FILE__);
 
 		//then echo/print a view
-		echo $this->view('demo', $data);
+		echo rpd::view('demo', $data);
 
 	}
 

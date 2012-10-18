@@ -26,10 +26,10 @@ class edit_grid_controller extends demo_controller {
 		$data['head']	= $this->head();
 		$data['title']	= 'DataEdit + DataGrid + Dataedit (Master-Detail)';
 		$data['content']= '<em>full crud in 70 lines of code</em><br />'.$edit->output;
-		$data['code']	= highlight_string(file_get_contents(__FILE__), TRUE);
+		$data['code']	= file_get_contents(__FILE__);
 
 		//output
-		echo $this->view('demo', $data);
+		echo rpd::view('demo', $data);
 	}
 
 	public function comments()
