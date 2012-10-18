@@ -11,12 +11,12 @@
 		padding-top: 60px;
 	}
 	</style>
-	<link rel="stylesheet" type="text/css" href="<?=rpd::config('app_assets_uri')?>themes/white/css/style.css" media="screen" />
+
 	<script type="text/javascript" language="javascript" src="<?=rpd::config('core_assets_uri')?>jquery/jquery.js"></script>
 	<script type="text/javascript" language="javascript" src="<?=rpd::config('core_assets_uri')?>jquery/jquery.cookie.js"></script>
-	
+	<script type="text/javascript" language="javascript" src="<?=rpd::config('core_assets_uri')?>bootstrap/js/bootstrap.js"></script>
 
-    <!--rpd run="frontend/head"-->
+    <rpd run="app/head">
 
 </head>
 
@@ -32,7 +32,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</a>
-				<a class="brand" href="<?=rpd::url('');?>"><?=rpd::lang('cms.site_name')?></a>
+				<a class="brand" href="<?=rpd::url('');?>"><?=rpd::lang('app.sitename')?></a>
 				<div class="nav-collapse">
 					<ul class="nav">
 						<li<?=rpd::current_page('page',' class="active"');?>><a href="<?=rpd::url('');?>">home</a></li>
@@ -96,5 +96,5 @@
 
 
 			<ul class="nav nav-tabs">
-				<?//=rpd::run('{controller}/menu')?>
+				<?=rpd::run('{controller}/menu')?>
 			</ul>
