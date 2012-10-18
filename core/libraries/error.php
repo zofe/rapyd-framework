@@ -30,7 +30,7 @@ class rpd_error_library {
 		} else {
 			$e = new Exception();
 			$trace_array = $e->getTrace();
-			$trace = preg_replace("@#0 (.*)#1@si", '#1', $e->getTraceAsString());
+			$trace = preg_replace("@#0 (.*)#1@Usi", '#1', $e->getTraceAsString());
 			$file = $trace_array[1]['file'];
 			$line = $trace_array[1]['line'];
 			$source = static::highlight_source($file, $line, 20);

@@ -181,14 +181,12 @@
 			return $assets_cache['paths'][$search].$qs;
 
 		$file_found = FALSE;
-
-		/*
 		if (strpos($search, "widgets/")!==false)
 		{
 			$search_into = substr($search, strpos($search, "widgets/")+8);
 			if (file_exists(WIDGETS_PATH . $search))
 			{
-				$assets_uri = self::config('widgets_assets_uri');
+				$assets_uri = rpd::config('widgets_assets_uri');
 				$file_found = preg_replace("#({widget}.*)$#",$search_into, $assets_uri);
 			}
 		} elseif (strpos($search, "modules/")!==false) {
@@ -198,7 +196,7 @@
 			{
                 //echo  $search." | ";
                 $module_name = array_shift(explode("/",$search_into));
-				$assets_uri = self::config('modules.'.$module_name.'.assets_path');
+				$assets_uri = rpd::config('modules.'.$module_name.'.assets_path');
 				$file_found = $assets_uri.substr($search, strpos($search, "assets/")+7);
                 //echo $assets_uri."<br/>\n";
 			}
@@ -206,14 +204,12 @@
 			
 			if (file_exists(APP_PATH .'assets/'. $search))
 			{
-				$file_found = self::config('app_assets_uri') . $search;
+				$file_found = rpd::config('app_assets_uri') . $search;
 			} elseif(file_exists(CORE_PATH .'assets/'. $search)) {
-				$file_found = self::config('core_assets_uri') . $search;
+				$file_found = rpd::config('core_assets_uri') . $search;
 			}
 
 		}
-		*/
-
 		$assets_cache['paths'][$search] = $file_found;
 		return $file_found.$qs;
 		

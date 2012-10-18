@@ -34,7 +34,6 @@
 	public static function init($config)
 	{		
 		//var_dump($config);
-		//die();
 		//ob_start();
 		self::$config = $config;
 
@@ -236,9 +235,11 @@
 		$output = str_replace('{memory}', self::benchmarks('memory'), $output);
 		$output = str_replace('{included_files}', count(get_included_files()), $output);
 		$output = str_replace('{cached_files}', self::$cached_files, $output);
-		if (isset(self::$db))
+		if (isset(self::$db)){
 			$output = str_replace('{queries}', count(self::$db->queries), $output);
-
+		} else {
+			$output = str_replace('{queries}', '0', $output);
+		}
 		while (preg_match_all("/<rpd run=\"([^\"]+)\">/i", $output, $matches))
 		{
 

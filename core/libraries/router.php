@@ -59,9 +59,10 @@ class rpd_router_library
 					break;
 				}
 			}
-			//if controller is still false, i must stop here with empty result, because the resource was not found
+			//if controller is still false, i must stop here with an application error
 			if ($controller === false){
                 return false;
+				//rpd::error(500, $path);
             }
 		}
 
