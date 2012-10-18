@@ -1,6 +1,6 @@
 <?php
 
-class welcome_controller extends controller_controller
+class welcome_controller extends app_controller
 {
 	public function index()
 	{
@@ -12,9 +12,9 @@ class welcome_controller extends controller_controller
 	}
 	
 	
-	public function mo()
+	function menu()
 	{
-		echo 'mo!';
+		return;
 	}
 }
 
