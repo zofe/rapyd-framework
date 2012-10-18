@@ -5,6 +5,10 @@ class rpd extends rpd_rpd_library {
 
 	
 	
+	public static function find_asset($search)
+	{
+			return loader_library::find_asset($search);
+	}	
 	
 
 	public static function lang($key = null, $args = array())
@@ -16,7 +20,6 @@ class rpd extends rpd_rpd_library {
 	{
 		return lang_helper::get_lang($value);
 	}	
-	
 	
 	
 	/**
