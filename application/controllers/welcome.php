@@ -7,6 +7,7 @@ class welcome_controller extends controller_controller
 		$data = array('heading'=>'rapyd framework',
 					  'message'=>'welcome on rapyd!');
 
+		
 		echo rpd::view('welcome', $data);
 	}
 	
