@@ -4,19 +4,19 @@
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
 	<meta name="author" content="Rapyd Team" />
-	<link rel="stylesheet" type="text/css" href="<?=rpd::config('core_assets_uri')?>bootstrap/css/bootstrap.css" media="screen" />
-	<link rel="stylesheet" type="text/css" href="<?=rpd::config('core_assets_uri')?>bootstrap/css/bootstrap-responsive.css" media="screen" />
 	<style>
 	body {
 		padding-top: 60px;
 	}
 	</style>
-
+	<link rel="stylesheet" type="text/css" href="<?=rpd::config('core_assets_uri')?>bootstrap/css/bootstrap.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="<?=rpd::config('core_assets_uri')?>bootstrap/css/bootstrap-responsive.css" media="screen" />
 	<script type="text/javascript" language="javascript" src="<?=rpd::config('core_assets_uri')?>jquery/jquery.js"></script>
 	<script type="text/javascript" language="javascript" src="<?=rpd::config('core_assets_uri')?>jquery/jquery.cookie.js"></script>
 	<script type="text/javascript" language="javascript" src="<?=rpd::config('core_assets_uri')?>bootstrap/js/bootstrap.js"></script>
 
     <rpd run="app/head">
+
 
 </head>
 
