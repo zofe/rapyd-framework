@@ -15,7 +15,7 @@
 	<script type="text/javascript" language="javascript" src="<?=rpd::config('core_assets_uri')?>jquery/jquery.cookie.js"></script>
 	<script type="text/javascript" language="javascript" src="<?=rpd::config('core_assets_uri')?>bootstrap/js/bootstrap.js"></script>
 
-    <rpd run="app/head">
+	<rpd run="app/head">
 
 
 </head>
@@ -69,10 +69,10 @@
 						</ul>
 					</div>
 				<?endif;?>
-                
 
 
-                
+
+
 
 			</div>
 		</div>
@@ -82,7 +82,7 @@
 <div class="container">
 
 	
-    <rpd run="users/logged_info">
+	<rpd run="users/logged_info">
 
 	<div class="row-fluid">
 		<div class="span12">
