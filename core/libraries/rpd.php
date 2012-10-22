@@ -32,9 +32,8 @@
 	 * @param array $config 
 	 */
 	public static function init($config)
-	{		
-		//var_dump($config);
-		//ob_start();
+	{
+		ob_start();
 		self::$config = $config;
 
 		//self::$qs = new url_helper(); //keep compatibility
@@ -64,10 +63,9 @@
 			{
 				$module = array();
 				require_once $path . '/config.php';
-                                
-                                if (isset($module['name'])) {
-                                    self::$config['modules'][$module['name']] = $module;
-                                }
+				if (isset($module['name'])) {
+					self::$config['modules'][$module['name']] = $module;
+				}
 				//self::$config = array_merge_recursive(self::$config, $config);
 			}
 		}
@@ -213,6 +211,10 @@
 
 
 	
+	public static function clear_buffer()
+	{
+		 return "";
+	}
 
 	/**
 	 * shutdown handling
@@ -235,11 +237,7 @@
 		$output = str_replace('{memory}', self::benchmarks('memory'), $output);
 		$output = str_replace('{included_files}', count(get_included_files()), $output);
 		$output = str_replace('{cached_files}', self::$cached_files, $output);
-		if (isset(self::$db)){
-			$output = str_replace('{queries}', count(self::$db->queries), $output);
-		} else {
-			$output = str_replace('{queries}', '0', $output);
-		}
+		
 		while (preg_match_all("/<rpd run=\"([^\"]+)\">/i", $output, $matches))
 		{
 
@@ -249,7 +247,12 @@
 				$output = str_replace($matches[0][$id], $uncached, $output);
 			}
 		}
- 
+
+		if (isset(self::$db)){
+			$output = str_replace('{queries}', count(self::$db->queries), $output);
+		} else {
+			$output = str_replace('{queries}', '0', $output);
+		}
         
 		//$output = preg_replace_callback('/{run::([^}]+)}/', 'self::gino', $output);
 		//call_user_func_array(array($controller, $method), $params);
@@ -294,7 +297,9 @@
 				header('Content-Length: '.strlen($output));
 			}
 		}
+
 		echo $output;
+
 	}
 		
 	/**
