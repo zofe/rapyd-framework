@@ -1,5 +1,5 @@
 
-<li><a href="<?=rpd::url('demo');?>">index</a></li>
+<li><a href="<?=rpd::url('demo');?>">Index</a></li>
 
 <li class="dropdown">
 	<a class="dropdown-toggle" data-toggle="dropdown" href="#">Basic <b class="caret"></b></a>
@@ -13,7 +13,7 @@
 </li>
 
 <li class="dropdown">
-	<a class="dropdown-toggle" data-toggle="dropdown" href="#">CRUD Widgets <b class="caret"></b></a>
+	<a class="dropdown-toggle" data-toggle="dropdown" href="#">Widgets <b class="caret"></b></a>
 	<ul class="dropdown-menu">
 		<li><a href="<?=rpd::url('grid/index')?>">DataGrid</a></li>
 		<li><a href="<?=rpd::url('filtered_grid/index')?>">DataGrid + DataFilter</a></li>
