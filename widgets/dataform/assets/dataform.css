@@ -8,8 +8,8 @@
 
 div.serie {border-bottom: 1px solid #ccc; vertical-align:middle;}
 div.serie div.field {margin: .3em 0 .3em 1em; padding: 0;	display: block;}
-.form label {margin: .3em 0 .3em 0; float: left; width: 110px; text-align: right; color: #555;}
-.field { float: left;}
+/* .form label {margin: .3em 0 .3em 0; float: left; width: 110px; text-align: right; color: #555;} */
+/*.field { float: left;}*/
 
 
 /*

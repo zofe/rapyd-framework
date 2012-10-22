@@ -1,7 +1,7 @@
 
 
 <!-- dataform begin //-->
-<div class="dataform">
+<div class="dataform form-horizontal">
 <?php echo $form_begin?>
 
 <?php if($label!=""):?>
@@ -105,7 +105,7 @@
  <?php echo $field["field"]?>
 <?php endforeach;?>
 <?php else://not hidden?>
-<div class="serie">
+<div class="serie control-group">
 <?php if(isset($field_series["fields"])): ?>
 <?php $first_field=true?>
 <?php foreach ($field_series["fields"] as $field)://fields?>
@@ -113,11 +113,11 @@
 <?php $first_field=false?>
 <?php if (($field["type"] == "container")||($field["type"] == "iframe")):?>
 <a name="anchor_<?php echo $field["id"];?>"></a>
-<div class="field" id="<?php echo $field["id"];?>">
+<div class="field controls" id="<?php echo $field["id"];?>">
 <?php echo $field["field"]?>
 <?php else:?>
-<label for="<?php echo $field["id"];?>"><?php echo $field["label"].$field["star"]?></label>
-<div class="field" id="div_<?php echo preg_replace('/[^A-Za-z0-9_]*/', '', $field["id"]);?>">
+<label class="control-label" for="<?php echo $field["id"];?>"><?php echo $field["label"].$field["star"]?></label>
+<div class="field controls" id="div_<?php echo preg_replace('/[^A-Za-z0-9_]*/', '', $field["id"]);?>">
 <?php echo $field["field"]?>
 <?php endif;?>
 <?php else:?>
