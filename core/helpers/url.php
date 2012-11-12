@@ -470,14 +470,13 @@ class rpd_url_helper {
         
 	public static function array_to_url_title($array)
 	{
-                unset($array["btn_submit"]);
-                $str = urldecode(http_build_query($array));
-                //die($str);
-		$find    = array('&','=','?','/','-','.');
+		unset($array["btn_submit"]);
+		$str = urldecode(http_build_query($array));
+		//die($str);
+		$find    = array('&','=','?','/','-','.',);
 		$replace = array(';',':',' ',' ',' ',' ');
-                $str = str_replace($find, $replace, $str);
-                $str = utf8_romanize($str);
-                $str = trim(self::url_title($str),'-');
+		$str = str_replace($find, $replace, $str);
+		$str = trim(self::url_title($str),'-');
 
 		return $str;
 	}
