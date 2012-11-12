@@ -11,8 +11,8 @@ class sql_controller extends demo_controller {
 		$data['title']	= 'Simple SQL';
 		$data['content']= $this->view('article_list',array('articles'=>$articles));
 
-		$data['code']	= highlight_string(file_get_contents(__FILE__), TRUE)."\n VIEW\n".
-			highlight_string(file_get_contents(dirname(__FILE__).'/../views/article_list.php'), TRUE);
+		$data['code']	= file_get_contents(__FILE__)."\n VIEW\n".
+						  file_get_contents(dirname(__FILE__).'/../views/article_list.php');
 
 		//output
 		echo $this->view('demo', $data);
