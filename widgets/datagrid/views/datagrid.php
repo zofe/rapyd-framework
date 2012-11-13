@@ -3,7 +3,7 @@
 <div class="datagrid">
 <?php echo $form_begin?>
 <div class="row-fluid dg_header">
-    <div class="pull-left"><?php if($label!='') echo $label.'&nbsp;('.$total_rows.')'?></div>
+    <div class="pull-left"><h4><?php if($label!='') echo $label.'&nbsp;('.(int)$total_rows.')'?></h4></div>
     <div class="pull-right"><?php echo $container["TR"]?></div>
 </div>
 

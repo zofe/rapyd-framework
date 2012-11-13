@@ -6,8 +6,8 @@
 
 <?php if($label!=""):?>
   <div class="df_header">
-    <div class="df_label"><?php echo $label?></div>
-    <div class="df_buttons_tr"><?php echo $container["TR"]?></div>
+	  <div class="pull-left"><h4><?php echo $label?></h4></div>
+    <div class="pull-right"><?php echo $container["TR"]?></div>
     <div style="clear:both"></div>
   </div>
 <?php endif;?>
@@ -113,7 +113,7 @@
 <?php $first_field=false?>
 <?php if (($field["type"] == "container")||($field["type"] == "iframe")):?>
 <a name="anchor_<?php echo $field["id"];?>"></a>
-<div class="field controls" id="<?php echo $field["id"];?>">
+<div class="field controls field-container" id="<?php echo $field["id"];?>">
 <?php echo $field["field"]?>
 <?php else:?>
 <label class="control-label" for="<?php echo $field["id"];?>"><?php echo $field["label"].$field["star"]?></label>
@@ -140,8 +140,8 @@
 
 <?php echo $form_scripts?>
 <div class="df_footer">
-<div class="df_buttons_bl"><?php echo $container["BL"]?></div>
-<div class="df_buttons_br"><?php echo $container["BR"]?></div>
+<div class="pull-left"><?php echo $container["BL"]?></div>
+<div class="pull-right"><?php echo $container["BR"]?></div>
 <div style="clear:both"></div>
 </div>
 

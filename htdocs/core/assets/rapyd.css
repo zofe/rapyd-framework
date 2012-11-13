@@ -1,5 +1,6 @@
 /* main styles in rapyd */
 
+/*
 .alert{
 	padding:20px;
 	color: #A52A2A;
@@ -19,13 +20,16 @@
 tr.odd {background-color:inherit;}
 tr.even {background-color:#FCFCFC;}
 
-/*
-form { margin: 0; padding: 0; }
-.input, .select, .password, .textarea  { font-family: Lucida Grande, Verdana, Geneva, Sans-serif;	font-size: 1em; margin: 0; padding: 2px; border: 1px solid #92B8CB; border-left:2px solid #92B8CB;}
-.littlebutton {	background-color: #BED6E0;	border: 1px solid #92B8CB;	color: #153D51;	font-family: Lucida Grande, Verdana, Geneva, Sans-serif;	font-size: 12px;	text-decoration: none;}
-*/
+
 body.mceContentBody {
 background: #000;
 color: #fff;
 }
 body.mceContentBody { background: #000; color: #fff; }
+*/
+.field {
+    float: left;
+}
+div.serie {border-bottom: 1px solid #ccc; vertical-align:middle;}
+div.serie div.field {margin: .3em 1em .3em 1em; padding: 0;	display: block;}
+.field-container {width: 95%;}
