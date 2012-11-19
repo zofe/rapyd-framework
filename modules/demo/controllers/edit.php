@@ -17,7 +17,7 @@ class edit_controller extends demo_controller {
 		$edit->field('dropdown','author_id','Author')->options('SELECT author_id, firstname FROM demo_authors')
 			 ->rule('required');
 		$edit->field('date','date','Date')->attributes(array('style'=>'width: 100px'));
-		$edit->field('rteditor','body','Description')->rule('required');
+		$edit->field('editor','body','Description')->attributes(array('style'=>'width: 300px'))->rule('required');
 
 		$edit->buttons('modify','save','undo','back');
 

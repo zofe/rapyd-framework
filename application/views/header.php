@@ -9,9 +9,10 @@
 		padding-top: 60px;
 	}
 	</style>
+	<link rel="stylesheet" type="text/css" href="<?=rpd::config('core_assets_uri')?>rapyd.css" media="screen" />
 	<link rel="stylesheet" type="text/css" href="<?=rpd::config('core_assets_uri')?>bootstrap/css/bootstrap.css" media="screen" />
 	<link rel="stylesheet" type="text/css" href="<?=rpd::config('core_assets_uri')?>bootstrap/css/bootstrap-responsive.css" media="screen" />
-	<script type="text/javascript" language="javascript" src="<?=rpd::config('core_assets_uri')?>jquery/jquery.js"></script>
+	<script type="text/javascript" language="javascript" src="<?=rpd::config('core_assets_uri')?>jquery/jquery-1.8.3.min.js"></script>
 	<script type="text/javascript" language="javascript" src="<?=rpd::config('core_assets_uri')?>jquery/jquery.cookie.js"></script>
 	<script type="text/javascript" language="javascript" src="<?=rpd::config('core_assets_uri')?>bootstrap/js/bootstrap.js"></script>
 

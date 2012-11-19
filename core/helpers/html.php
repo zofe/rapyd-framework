@@ -44,6 +44,9 @@ class rpd_html_helper {
     }
     else
         if(!in_array($js, self::$js)) self::$js[] = $js;
+        if(!in_array($js, self::$js)) 
+			if (rpd::find_asset($js))
+				self::$js[] = rpd::find_asset($js);
   }
 
 	// --------------------------------------------------------------------
@@ -55,8 +58,10 @@ class rpd_html_helper {
          if(!in_array($css, self::$external_css)) self::$external_css[] = $css;
      }
      else
-        if(!in_array($css, self::$css)) self::$css[] = $css;
-
+        if(!in_array($css, self::$css)) 
+			if (rpd::find_asset($css))
+				self::$css[] = rpd::find_asset($css);
+	//echo $css."\n";
   }
 
 	// --------------------------------------------------------------------

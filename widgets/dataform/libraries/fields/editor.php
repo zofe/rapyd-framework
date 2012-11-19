@@ -1,7 +1,7 @@
 <?php if (!defined('CORE_PATH')) exit('No direct script access allowed');
 
 
-class rteditor_field extends field_field {
+class editor_field extends field_field {
 
   public $type = "rteditor";
   public $css_class = "rteditor";
@@ -19,15 +19,14 @@ class rteditor_field extends field_field {
   function build()
   {
     $output = "";
-    html_helper::js('assets/jquery/jquery.min.js');
-    html_helper::js('assets/jqueryrte/jquery.rte.js');
-    html_helper::js('assets/jqueryrte/jquery.rte.tb2.js');
-    html_helper::css('assets/jqueryrte/jquery.rte.css');
+    html_helper::js('assets/bootstrap/js/wysihtml5-0.3.0.min.js');
+    html_helper::js('assets/bootstrap/js/bootstrap-wysihtml5.min.js');
+    html_helper::css('assets/bootstrap/css/bootstrap-wysihtml5.css');
 
 
     if(!isset($this->cols))
     {
-      $this->cols = 45;
+      $this->cols = 80;
     }
     if(!isset($this->rows)){
       $this->rows = 15;
@@ -60,18 +59,11 @@ class rteditor_field extends field_field {
 
 
         $output  = form_helper::textarea($this->attributes, $this->value);
-	$output .= $this->extra_output."\n";
+		$output .= $this->extra_output."\n";
         $output .= html_helper::script("
-
-				var inst_".$this->name."
                                 $(document).ready(function() {
-                                        inst_".$this->name." = $('textarea#".$this->name."').rte({
-                                            	css: ['".rpd::config('core_assets_uri')."jquery/rte.css'],
-                                                controls_rte: rte_toolbar,
-                                                controls_html: html_toolbar
-                                        });
+										$('#".$this->name."').wysihtml5();
                                 });");
-
         break;
 
       case "hidden":

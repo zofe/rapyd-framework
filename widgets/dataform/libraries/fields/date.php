@@ -24,11 +24,11 @@ class date_field extends field_field {
   function build()
   {
 		$output = "";
-    html_helper::css('jquery/smoothness.datepick.css');
-    html_helper::js('jquery/jquery.min.js');
-    html_helper::js('jquery/jquery.datepick.pack.js');
-	if (!in_array(rpd::get_lang('locale'),array('en_US','en_GB')))
-		html_helper::js('jquery/jquery.datepick.'.rpd::get_lang('locale').'.js');
+		html_helper::css('assets/bootstrap/css/datepicker.css');
+		html_helper::js('assets/bootstrap/js/bootstrap-datepicker.js');
+		/*html_helper::js('jquery/jquery.datepick.pack.js');
+		if (!in_array(rpd::get_lang('locale'),array('en_US','en_GB')))
+			html_helper::js('jquery/jquery.datepick.'.rpd::get_lang('locale').'.js');*/
 
     if(!isset($this->size))
     {
@@ -64,10 +64,14 @@ class date_field extends field_field {
            }
         }
         $this->attributes['type'] = 'input';
-        $output  = form_helper::input($this->attributes, $value);
-        $output .= html_helper::script('
+        $output  = '<div class="input-append date" data-date="12-02-2012" data-date-format="dd-mm-yyyy">'.
+					form_helper::input($this->attributes, $value).
+					'<span class="add-on"><i class="icon-th"></i></span>'.
+					'</div>';
+            $output .= html_helper::script('
 			$(function() {
-				$("#'.$this->name.'").datepick();
+				$("#'.$this->name.'").datepicker();
+					
 			});');
 
         break;
