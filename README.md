@@ -1,17 +1,13 @@
 rapyd-framework
 ===============
 
-Minimalistic, Open Source, PHP Framework
+Minimalistic, Open Source, Widget based
 
+Rapyd is a PHP5 framework made to build applications/cms/backends using CRUD pattern.
+It was developed since 2001 and rebuilt 2012 to support H-MVC and other nice stuffs.
 
-Rapyd is a PHP5 minimalistic framework made to build applications based on MVC and CRUD patterns
+Not it's time to learn a bit more (composer, symfony, etc..).
+I'll try to rebuilt it once again, this time on top of the Symfony2 Components
+(like silex, laravel, and other cool php frameworks that I like)
 
-== Rapyd Features ==
-
-* No compiling, no command line needed, just download, check /application/config.php, it will work.
-* Cascade resource load (it means:  multi-application, extend core and modules support) 
-* Performances (cache driver, serve pages or partial pages from disk or memory)
-* Nice URLs (SEO oriented)
-* Tiny H-MVC (few files, easy to manage)
-* Bundled with Bootstrap & JQuery (css and js framework)
-* Open Source (MIT License)
+Felice Ostuni
