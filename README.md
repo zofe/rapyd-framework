@@ -1,23 +1,6 @@
 rapyd-framework
 ===============
 
-I'm following  Fabien Potencier  to rebuilt rapyd-framework using synfony2 componets:
-http://fabien.potencier.org/article/56/create-your-own-framework-on-top-of-the-symfony2-components-part-7
-
-
-current test route: 
-/front.php/is_leap_year/2004
-
-
-##  notes ##
-
-Probably at the end of tutorials I'll re-start rapyd from "Silex" and Not from scratch. 
-But follow tutorial is more instructive.  
-
-
-
-## old bullshits ##
-
 Minimalistic, Open Source, Widget based
 
 Rapyd is a PHP5 framework made to build applications/cms/backends using CRUD pattern.

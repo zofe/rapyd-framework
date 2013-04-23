@@ -1,0 +1,63 @@
+/* styles for dataform */
+.dataform {}
+.form {
+       color: #000; margin: 0; padding: 0;}
+.form fieldset {margin: 1em 0; border: none; border-top: 1px solid #ccc;}
+.form fieldset div select {padding: 1px;}
+.form legend {margin: 0.5em 0; padding: 0 .3em;	color: #036; background: transparent;	font-size: 1em;	font-style: italic;}
+
+div.serie {border-bottom: 1px solid #ccc; vertical-align:middle;}
+div.serie div.field {margin: .3em 0 .3em 1em; padding: 0;	display: block;}
+/* .form label {margin: .3em 0 .3em 0; float: left; width: 110px; text-align: right; color: #555;} */
+/*.field { float: left;}*/
+
+
+/*
+.input, .textarea, .select { margin:0; border-top: 1px solid #555; border-left: 1px solid #555; border-bottom: 1px solid #ccc; border-right: 1px solid #ccc; padding: 1px; color: #333; font-size:1.1em;}
+
+
+.input, .textarea, .select {
+  background-color:#FFFFFF;
+  border-bottom-color:#CED5DB;
+  border-bottom-left-radius:2px 2px;
+  border-bottom-right-radius:2px 2px;
+  border-bottom-style:solid;
+  border-bottom-width:1px;
+  border-left-color:#CED5DB;
+  border-left-style:solid;
+  border-left-width:1px;
+  border-right-color:#CED5DB;
+  border-right-style:solid;
+  border-right-width:1px;
+  border-top-color:#CED5DB;
+  border-top-left-radius:2px 2px;
+  border-top-right-radius:2px 2px;
+  border-top-style:solid;
+  border-top-width:1px;
+  box-shadow:#EEEEEE 2px 2px 2px inset;
+  line-height:1.1;
+  margin-bottom:0;
+  margin-left:0;
+  margin-right:0;
+  margin-top:0;
+  padding-bottom:4px;
+  padding-left:4px;
+  padding-right:4px;
+  padding-top:4px;
+}
+*/
+
+.textarea_disabled {font-size:9px; overflow: auto; padding:0}
+.textarea_html {font-size:9px;font: 11px courier new,tahoma; color: #111;}
+.textarea_html_disabled {font: 11px courier new,tahoma; color: #111; width: 100%; overflow: auto}
+
+.input:focus, .textarea:focus { background: #efefef; color: #000;}
+.checkbox {border:0; vertical-align:middle}
+
+.df_body {margin:0.5em; clear:both;}
+.df_header {padding: 2px;}
+.df_label {font-size:1.2em; color: #555; font-weight: bold; float:left; padding-left:5px;}
+.df_buttons_tr{float:right;}
+.df_buttons_bl{float:left;}
+.df_buttons_br{float:right;}
+.df_footer{height:1em; padding: 2px;}

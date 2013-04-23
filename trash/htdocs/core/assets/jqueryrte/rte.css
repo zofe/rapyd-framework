@@ -1,0 +1,22 @@
+body { 
+font-family: "Trebuchet MS", sans-serif; font-size:13px; background-color:#ffffff; border:none;
+
+  border-bottom-color:#CED5DB;
+  border-bottom-left-radius:2px 2px;
+  border-bottom-right-radius:2px 2px;
+  border-bottom-style:solid;
+  border-bottom-width:1px;
+  border-left-color:#CED5DB;
+  border-left-style:solid;
+  border-left-width:1px;
+  border-right-color:#CED5DB;
+  border-right-style:solid;
+  border-right-width:1px;
+  border-top-color:#CED5DB;
+  border-top-left-radius:2px 2px;
+  border-top-right-radius:2px 2px;
+  border-top-style:solid;
+  border-top-width:1px;
+  box-shadow:#EEEEEE 2px 2px 2px inset;
+
+}
