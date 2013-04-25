@@ -1,0 +1,2 @@
+
+Ciao <?php echo $name; ?>

@@ -1,12 +1,9 @@
 {
     "require": {
-        "symfony/class-loader": "2.1.*",
-		"symfony/http-foundation": "2.1.*",
-		"symfony/routing": "2.1.*",
-		"symfony/http-kernel": "2.1.*",
+		"slim/slim": "2.*",
 		"illuminate/database": "*"
     },
     "autoload": {
-        "psr-0": { "Rapyd": "src/", "Calendar": "src/", "Users":"src/" }
+        "psr-0": { "Rapyd": "src/", "App": "src/"}
     }
 }
