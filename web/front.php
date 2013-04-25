@@ -26,6 +26,17 @@ $context->fromRequest($request);
 $matcher = new Routing\Matcher\UrlMatcher($routes, $context);
 $resolver = new HttpKernel\Controller\ControllerResolver();
  
+
+// Bootstrap Eloquent ORM
+$connFactory = new \Illuminate\Database\Connectors\ConnectionFactory();
+$db = include __DIR__.'/../src/db.php';
+$connection  = $connFactory->make($db);
+$connResolver = new \Illuminate\Database\ConnectionResolver();
+$connResolver->addConnection('default', $connection);
+$connResolver->setDefaultConnection('default');
+\Illuminate\Database\Eloquent\Model::setConnectionResolver($connResolver);
+
+
 $framework = new Rapyd\Framework($matcher, $resolver);
 $response = $framework->handle($request);
  

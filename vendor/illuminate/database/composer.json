@@ -1,0 +1,27 @@
+{
+    "name": "illuminate/database",
+    "description": "An elegant database abstraction library.",
+    "keywords": ["laravel"],
+    "authors": [
+        {
+            "name": "Taylor Otwell",
+            "email": "taylorotwell@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "illuminate/events": ">=1.0.0",
+        "illuminate/support": ">=1.0.0"
+    },
+    "require-dev": {
+        "illuminate/console": ">=1.0.0",
+        "illuminate/filesystem": ">=1.0.0",
+        "illuminate/pagination": ">=1.0.0",
+        "illuminate/support": ">=1.0.0",
+        "mockery/mockery": "0.7.2"
+    },
+    "autoload": {
+        "psr-0": {"Illuminate\\Database": "src/"}
+    },
+    "minimum-stability": "dev"
+}

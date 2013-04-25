@@ -6,4 +6,6 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Illuminate\\BindingResolutionException' => $vendorDir . '/illuminate/container/src/Illuminate/Container.php',
+    'Illuminate\\Container' => $vendorDir . '/illuminate/container/src/Illuminate/Container.php',
 );

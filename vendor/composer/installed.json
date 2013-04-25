@@ -260,5 +260,165 @@
         ],
         "description": "Symfony HttpKernel Component",
         "homepage": "http://symfony.com"
+    },
+    {
+        "name": "illuminate/support",
+        "version": "v1.1.2",
+        "version_normalized": "1.1.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/illuminate/support.git",
+            "reference": "v1.1.2"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/illuminate/support/zipball/v1.1.2",
+            "reference": "v1.1.2",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0"
+        },
+        "time": "2012-12-07 17:38:25",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Illuminate\\Support": "src/"
+            },
+            "files": [
+                "src/helpers.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "authors": [
+            {
+                "name": "Taylor Otwell",
+                "email": "taylorotwell@gmail.com"
+            }
+        ],
+        "description": "Various utilities and support functions."
+    },
+    {
+        "name": "illuminate/container",
+        "version": "v1.1.0",
+        "version_normalized": "1.1.0.0",
+        "source": {
+            "type": "git",
+            "url": "http://github.com/illuminate/container",
+            "reference": "v1.1.0"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://github.com/illuminate/container/archive/v1.1.0.zip",
+            "reference": "v1.1.0",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0"
+        },
+        "time": "2012-12-04 02:40:10",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "src/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "authors": [
+            {
+                "name": "Taylor Otwell",
+                "email": "taylorotwell@gmail.com"
+            }
+        ],
+        "description": "A powerful IoC container for PHP."
+    },
+    {
+        "name": "illuminate/events",
+        "version": "v1.1.0",
+        "version_normalized": "1.1.0.0",
+        "source": {
+            "type": "git",
+            "url": "http://github.com/illuminate/events",
+            "reference": "v1.1.0"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://github.com/illuminate/events/archive/v1.1.0.zip",
+            "reference": "v1.1.0",
+            "shasum": ""
+        },
+        "require": {
+            "illuminate/container": ">=1.0.0",
+            "illuminate/support": ">=1.0.0",
+            "php": ">=5.3.0"
+        },
+        "require-dev": {
+            "mockery/mockery": "0.7.2"
+        },
+        "time": "2012-11-25 19:47:40",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Illuminate\\Events": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "authors": [
+            {
+                "name": "Taylor Otwell",
+                "email": "taylorotwell@gmail.com"
+            }
+        ],
+        "description": "A simple, powerful events system."
+    },
+    {
+        "name": "illuminate/database",
+        "version": "v1.1.1",
+        "version_normalized": "1.1.1.0",
+        "source": {
+            "type": "git",
+            "url": "http://github.com/illuminate/database",
+            "reference": "v1.1.1"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://github.com/illuminate/database/archive/v1.1.1.zip",
+            "reference": "v1.1.1",
+            "shasum": ""
+        },
+        "require": {
+            "illuminate/events": ">=1.0.0",
+            "illuminate/support": ">=1.0.0",
+            "php": ">=5.3.0"
+        },
+        "require-dev": {
+            "illuminate/console": ">=1.0.0",
+            "illuminate/filesystem": ">=1.0.0",
+            "illuminate/pagination": ">=1.0.0",
+            "illuminate/support": ">=1.0.0",
+            "mockery/mockery": "0.7.2"
+        },
+        "time": "2012-12-05 20:02:04",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Illuminate\\Database": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "authors": [
+            {
+                "name": "Taylor Otwell",
+                "email": "taylorotwell@gmail.com"
+            }
+        ],
+        "description": "An elegant database abstraction library.",
+        "keywords": [
+            "laravel"
+        ]
     }
 ]

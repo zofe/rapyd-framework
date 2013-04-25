@@ -3,9 +3,10 @@
         "symfony/class-loader": "2.1.*",
 		"symfony/http-foundation": "2.1.*",
 		"symfony/routing": "2.1.*",
-		"symfony/http-kernel": "2.1.*"
+		"symfony/http-kernel": "2.1.*",
+		"illuminate/database": "*"
     },
     "autoload": {
-        "psr-0": { "Rapyd": "src/", "Calendar": "src/" }
+        "psr-0": { "Rapyd": "src/", "Calendar": "src/", "Users":"src/" }
     }
 }

@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Users' => $baseDir . '/src',
     'Symfony\\Component\\Routing' => $vendorDir . '/symfony/routing',
     'Symfony\\Component\\HttpKernel' => $vendorDir . '/symfony/http-kernel',
     'Symfony\\Component\\HttpFoundation' => $vendorDir . '/symfony/http-foundation',
@@ -13,5 +14,8 @@ return array(
     'Symfony\\Component\\ClassLoader' => $vendorDir . '/symfony/class-loader',
     'SessionHandlerInterface' => $vendorDir . '/symfony/http-foundation/Symfony/Component/HttpFoundation/Resources/stubs',
     'Rapyd' => $baseDir . '/src',
+    'Illuminate\\Support' => $vendorDir . '/illuminate/support/src',
+    'Illuminate\\Events' => $vendorDir . '/illuminate/events/src',
+    'Illuminate\\Database' => $vendorDir . '/illuminate/database/src',
     'Calendar' => $baseDir . '/src',
 );
