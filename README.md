@@ -12,12 +12,19 @@ rapyd-framework
 learn twig for views 
 
 
-## old bullshits ##
+## old but "working" version source & documentation & demos ##
 
-Minimalistic, Open Source, Widget based
+http://test.rapyd.com/demo
+http://www.rapyd.com/page/documentation
+https://code.google.com/p/rapyd-framework/
 
-Rapyd is a PHP5 framework made to build applications/cms/backends using the CRUD pattern. It has been created in 2001 and rebuilt 2012 to support H-MVC and other nice stuff.
 
-Now it's time to learn a bit more (composer, symfony, etc..). I'll try to rebuild it once again, this time on top of the Symfony2 Components (just like silex, laravel, and other cool php frameworks that I like, do)
+
+Rapyd is a PHP5 framework made to build applications/cms/backends using the CRUD pattern. 
+It has been created in 2001 and rebuilt 2012 to support H-MVC and other nice stuff.
+
+Now it's time to learn a bit more (composer, symfony, etc..). 
+I'll try to rebuild it once again, using a better approach:
+namespaces, composer, some robust symfony2 component, some popular orm etc.
 
 Felice Ostuni
