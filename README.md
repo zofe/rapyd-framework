@@ -14,9 +14,9 @@ learn twig for views
 
 ## old but "working" version source & documentation & demos ##
 
-http://test.rapyd.com/demo
-http://www.rapyd.com/page/documentation
-https://code.google.com/p/rapyd-framework/
+- http://test.rapyd.com/demo
+- http://www.rapyd.com/page/documentation
+- https://code.google.com/p/rapyd-framework/
 
 
 
