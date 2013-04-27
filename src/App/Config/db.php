@@ -1,6 +1,6 @@
 <?php
 
-$db = array(
+$conf = array(
     'driver' => 'mysql',
     'host' => '127.0.0.1',
     'database' => 'camerapp.com',
@@ -10,4 +10,4 @@ $db = array(
     'prefix' => ''
 );
  
-return $db;
+return $conf;

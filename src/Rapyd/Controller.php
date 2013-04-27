@@ -19,7 +19,7 @@ abstract class Controller
     /**
      * @var \Slim\Slim
      */
-    protected $app;
+    public $app;
 
     /**
      * @var bool Whether cleanup params or not

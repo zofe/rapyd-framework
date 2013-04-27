@@ -6,6 +6,9 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Twig_Extensions_' => $vendorDir . '/slim/extras/Views/Extension',
+    'Twig_' => $vendorDir . '/twig/twig/lib',
+    'Slim\\Extras' => $vendorDir . '/slim/extras',
     'Slim' => $vendorDir . '/slim/slim',
     'Rapyd' => $baseDir . '/src',
     'Illuminate\\Support' => $vendorDir . '/illuminate/support/src',

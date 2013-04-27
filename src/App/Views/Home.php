@@ -1,2 +1,2 @@
 
-Ciao <?php echo $name; ?>
+Ciao ! <?php echo $name; ?>
