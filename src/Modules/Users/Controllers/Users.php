@@ -10,13 +10,18 @@ class Users extends \Rapyd\Controller
 
     public function indexAction()
     {
+		//this is eloquent
         $users = User::all();
-        echo $users->toJson();
-		//$this->render('Home', array('foo' => 'orotound', 'bar' => 'grandios'));
+		
+		//this is slim 
+		$res = $this->app->response();
+		$res['Content-Type'] = 'application/json';
+		$res->body($users->toJson());
 	}
 	
     public function countAction()
     {
-		echo $this->db->table('users')->count();
+		//this is fluent?  maybe..
+		echo $this->app->db->table('users')->count();
 	}
 }

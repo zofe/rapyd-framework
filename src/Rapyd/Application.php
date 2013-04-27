@@ -6,7 +6,11 @@ namespace Rapyd;
 
 class Application extends \Slim\Slim {
 
-	protected $semantic = array(
+	/**
+     * @var \Illuminate\Database\Connection  instance
+     */
+    public $db;
+	public $semantic = array(
 		'search', 'reset', 'checkbox',
 		'pag', 'orderby', 'show',
 		'create', 'modify', 'delete',

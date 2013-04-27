@@ -22,10 +22,6 @@ abstract class Controller
     public $app;
 
     /**
-     * @var \Illuminate\Database\Connection  instance
-     */
-    public $db;
-    /**
      * @var bool Whether cleanup params or not
      */
     private $paramCleanup = true;
