@@ -42,13 +42,22 @@ class Application extends \Slim\Slim {
 		if (empty($db))
 			$db = include __DIR__ . '/../App/Config/db.php';
 
-		// Bootstrap Eloquent ORM
+
 		$connFactory = new \Illuminate\Database\Connectors\ConnectionFactory();
 		$connection = $connFactory->make($db);
+		
+		
 		$connResolver = new \Illuminate\Database\ConnectionResolver();
 		$connResolver->addConnection('default', $connection);
 		$connResolver->setDefaultConnection('default');
+		
+		// setup db
+		$this->db = $connection;
+
+		// Bootstrap Eloquent ORM
 		\Illuminate\Database\Eloquent\Model::setConnectionResolver($connResolver);
+
+		
 	}
 
 	public function setupView(Array $twig = array()) {

@@ -14,4 +14,9 @@ class Users extends \Rapyd\Controller
         echo $users->toJson();
 		//$this->render('Home', array('foo' => 'orotound', 'bar' => 'grandios'));
 	}
+	
+    public function countAction()
+    {
+		echo $this->db->table('users')->count();
+	}
 }

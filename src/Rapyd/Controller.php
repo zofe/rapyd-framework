@@ -22,6 +22,10 @@ abstract class Controller
     public $app;
 
     /**
+     * @var \Illuminate\Database\Connection  instance
+     */
+    public $db;
+    /**
      * @var bool Whether cleanup params or not
      */
     private $paramCleanup = true;
@@ -59,6 +63,9 @@ abstract class Controller
     public function __construct(\Slim\Slim &$app)
     {
         $this->app = $app;
+		
+		$this->db  = $app->db;
+		
         if ($renderTemplateSuffix = $app->config('controller.template_suffix')) {
             $this->renderTemplateSuffix = $renderTemplateSuffix;
         }

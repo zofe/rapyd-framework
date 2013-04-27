@@ -4,6 +4,11 @@ namespace Rapyd\Helpers;
 
 class Url {
 
+	public static function get_url() {
+		$app = Rapyd\Application::getInstance();
+		return $app->request()->getUrl();
+	}
+
 	public static function qs_append($key, $value, $url = null) {
 		$qs_array = array();
 		$url = (isset($url)) ? $url : self::get_url();
@@ -67,8 +72,6 @@ class Url {
 		return ($url . $query_string);
 	}
 
-	// --------------------------------------------------------------------
-
 	public static function qs_value($key, $default = FALSE) {
 		if (strpos($key, '|')) {
 			$keys = explode('|', $key);
@@ -81,9 +84,18 @@ class Url {
 		}
 		if (strpos($key, '.')) {
 			list($namespace, $subkey) = explode('.', $key);
-			return (isset($_GET[$namespace][$subkey])) ? $_GET[$namespace][$subkey] : $default;
+			return self::param($subkey, $namespace, $default);
 		} else {
-			return (isset($_GET[$key])) ? $_GET[$key] : $default;
+			return self::param($key, null, $default);
+		}
+
+		$app = Rapyd\Application::getInstance();
+		$param = $app->request()->get($key);
+		if (strpos($key, '.')) {
+			list($namespace, $subkey) = explode('.', $key);
+			return (isset($param[$namespace][$key])) ? $param[$namespace][$key] : $default;
+		} else {
+			return (isset($param[$key])) ? $param[$key] : $default;
 		}
 	}
 
