@@ -14,4 +14,10 @@ class Home extends \Rapyd\Controller
 	{
 		 $this->render('Home', array('name' => $name));
 	}
+	
+	public function qsAction()
+	{		
+        $this->app->response()->write($this->app->qs->url().'<br />');
+        $this->app->response()->write($this->app->qs->replace('key','newkey'));
+	}
 }
