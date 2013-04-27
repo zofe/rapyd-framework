@@ -1,9 +1,9 @@
 <?php
 
 
-namespace App\Controllers;
+namespace Modules\Users\Controllers;
 
-use App\Models\User;
+use Modules\Users\Models\User;
 
 class Users extends \Rapyd\Controller
 {

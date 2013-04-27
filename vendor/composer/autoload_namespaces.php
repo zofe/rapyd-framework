@@ -11,6 +11,7 @@ return array(
     'Slim\\Extras' => $vendorDir . '/slim/extras',
     'Slim' => $vendorDir . '/slim/slim',
     'Rapyd' => $baseDir . '/src',
+    'Modules' => $baseDir . '/src',
     'Illuminate\\Support' => $vendorDir . '/illuminate/support/src',
     'Illuminate\\Events' => $vendorDir . '/illuminate/events/src',
     'Illuminate\\Database' => $vendorDir . '/illuminate/database/src',

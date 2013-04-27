@@ -6,6 +6,6 @@
 		"illuminate/database": "*"
     },
     "autoload": {
-        "psr-0": { "Rapyd": "src/", "App": "src/"}
+        "psr-0": { "Rapyd": "src/", "Modules": "src/" ,"App": "src/"}
     }
 }

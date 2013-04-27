@@ -40,11 +40,7 @@ class Url {
 		return ($url . $query_string);
 	}
 
-	public static function qs_remove_all($cid = null, $url = null) {
-		$semantic = array('search', 'reset', 'checkbox',
-			'pag', 'orderby', 'show',
-			'create', 'modify', 'delete',
-			'insert', 'update', 'do_delete');
+	public static function qs_remove_all($toremove, $cid = null, $url = null) {
 
 		if (isset($cid)) {
 			foreach ($semantic as $key) {

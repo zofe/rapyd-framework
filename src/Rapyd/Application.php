@@ -6,40 +6,42 @@ namespace Rapyd;
 
 class Application extends \Slim\Slim {
 
+	protected $semantic = array(
+		'search', 'reset', 'checkbox',
+		'pag', 'orderby', 'show',
+		'create', 'modify', 'delete',
+		'insert', 'update', 'do_delete');
+
 	public function __construct($config = array()) {
-		
+
 		//init slim, by default with /app/Config/* arrays
-		if (empty($config))
-		{
+		if (empty($config)) {
 			$config = include __DIR__ . '/../App/Config/config.php';
 			parent::__construct($config);
-			
+
 			$this->setupDatabase();
 			$this->setupView();
 			$this->setupRoute();
 
-		//custom call, nothing to setup
+			//custom call, nothing to setup
 		} else {
-			
+
 			parent::__construct($config);
 		}
-		
-
-		
 	}
 
-	public function setupRoute($routes = array()){
+	public function setupRoute($routes = array()) {
 		//add default routes
 		if (empty($routes))
 			$routes = include __DIR__ . '/../App/Config/routes.php';
-		$this->addRoutes($routes);	
+		$this->addRoutes($routes);
 	}
 
-	public function setupDatabase($db = array()){
+	public function setupDatabase($db = array()) {
 		//add default routes
 		if (empty($db))
 			$db = include __DIR__ . '/../App/Config/db.php';
-		
+
 		// Bootstrap Eloquent ORM
 		$connFactory = new \Illuminate\Database\Connectors\ConnectionFactory();
 		$connection = $connFactory->make($db);
@@ -48,9 +50,8 @@ class Application extends \Slim\Slim {
 		$connResolver->setDefaultConnection('default');
 		\Illuminate\Database\Eloquent\Model::setConnectionResolver($connResolver);
 	}
-	
-	
-	public function setupView(Array $twig = array()){
+
+	public function setupView(Array $twig = array()) {
 		//add default routes
 		if (empty($twig))
 			$twig = include __DIR__ . '/../App/Config/twig.php';
@@ -59,9 +60,6 @@ class Application extends \Slim\Slim {
 		$this->view(new \Slim\Extras\Views\Twig());
 	}
 
-	
-	
-	
 	public function addRoutes(array $routings, $condition = null) {
 		foreach ($routings as $path => $args) {
 			$httpMethod = 'any';

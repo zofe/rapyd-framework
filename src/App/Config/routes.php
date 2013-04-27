@@ -3,7 +3,7 @@
 $conf = array(
     '/'            => 'Home:index',
     '/hello/:name' => 'Home:hello',
-	'/users'	   => 'Users:index',
+	'/users'	   => '\\Modules\\Users\\Controllers\\Users:index',
 );
 
 return $conf;

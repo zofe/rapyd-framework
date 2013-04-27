@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace Modules\Users\Models;
 
 class User extends \Rapyd\Model
 {
