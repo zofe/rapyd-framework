@@ -6,13 +6,9 @@ rapyd-framework
 - Slim  http://www.slimframework.com/
 - SlimController  https://github.com/fortrabbit/slimcontroller
 - Eloquent  https://github.com/illuminate/database
- 
-##  todo ##
+- Twig http://twig.sensiolabs.org/
 
-learn twig for views 
-
-
-## old but "working" version source & documentation & demos ##
+## old but "working" version demos, documentation & source ##
 
 - http://test.rapyd.com/demo
 - http://www.rapyd.com/page/documentation
@@ -25,6 +21,6 @@ It has been created in 2001 and rebuilt 2012 to support H-MVC and other nice stu
 
 Now it's time to learn a bit more (composer, symfony, etc..). 
 I'll try to rebuild it once again, using a better approach:
-namespaces, composer, some robust symfony2 component, some popular orm etc.
+namespaces, composer, some robust symfony2 component, a popular orm, twig etc.
 
 Felice Ostuni
