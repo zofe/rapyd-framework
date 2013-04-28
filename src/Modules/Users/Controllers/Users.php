@@ -22,6 +22,9 @@ class Users extends \Rapyd\Controller
     public function countAction()
     {
 		//this is fluent?  maybe..
-		echo $this->app->db->table('users')->count();
+		$count = $this->app->db->table('users')->count();
+        
+        
+        $this->render('Count', array('count' => $count));
 	}
 }

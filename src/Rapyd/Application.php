@@ -13,7 +13,7 @@ class Application extends \Slim\Slim {
 
     /**
      *
-     * @var \Rapyd\Helpers\Url; 
+     * @var \Rapyd\Helpers\Qs; 
      */
     public $qs;
 
@@ -37,8 +37,6 @@ class Application extends \Slim\Slim {
 
             $this->setupDatabase();
             $this->setupView();
-            $this->setupRoute();
-
             //custom call, nothing to setup
         } else {
 

@@ -54,9 +54,9 @@ abstract class Controller
     /**
      * Constructor for TodoQueue\Controller\Login
      *
-     * @param \Slim\Slim $app Ref to slim app
+     * @param \Rapyd\Application $app Ref to slim app
      */
-    public function __construct(\Slim\Slim &$app)
+    public function __construct(\Rapyd\Application &$app)
     {
         $this->app = $app;
 		
@@ -79,6 +79,10 @@ abstract class Controller
      */
     protected function render($template, $args = null)
     {
+        
+        //check if controller is in a module, in this case..
+        //$this->app->view()->setTemplatesDirectory('');
+        
         if (!is_null($args)) {
             $this->app->view()->appendData($args);
         }
