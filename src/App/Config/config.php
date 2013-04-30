@@ -1,7 +1,7 @@
 <?php
 
 $conf = array(
-    'debug' => false,
+    //'debug' => false,
     'templates.path'             =>  __DIR__.'/../Views',
     'controller.class_prefix'    => '\\App\\Controllers',
     'controller.method_suffix'   => 'Action',
