@@ -1,12 +1,25 @@
 rapyd-framework
 ===============
 
- Restarting with a simple mvc + orm using:
+$ composer install 
+
+and you'll get:
+
+A simple mvc, a powerful query builder / orm:
 
 - Slim  http://www.slimframework.com/
 - SlimController  https://github.com/fortrabbit/slimcontroller
 - Eloquent  https://github.com/illuminate/database
 - Twig http://twig.sensiolabs.org/
+
+TODO
+
+- reimplement rapyd widgets:
+. datagrid
+. dataform
+. datafilter
+. dataedit
+
 
 ## old but "working" version demos, documentation & source ##
 
