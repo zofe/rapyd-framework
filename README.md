@@ -11,6 +11,18 @@ a simple mvc, a powerful query builder & orm, a great template engine:
 - Eloquent  https://github.com/illuminate/database
 - Twig http://twig.sensiolabs.org/
 
+
+-- /web -- 
+is the document root folder
+
+-- /src/App --  
+is where to develop your application (using MVC)
+for example using  eloquent-orm for you model, twig for your views, and controllers that extends \Rapyd\Controller  
+
+-- /src/Modules --
+just if you need to split application in modules 
+
+
 TODO
 
 - reimplement rapyd CRUD widgets:
