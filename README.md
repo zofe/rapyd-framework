@@ -4,8 +4,7 @@ rapyd-framework
 $ composer install 
 
 and you'll get:
-
-A simple mvc, a powerful query builder / orm:
+a simple mvc, a powerful query builder / orm:
 
 - Slim  http://www.slimframework.com/
 - SlimController  https://github.com/fortrabbit/slimcontroller
