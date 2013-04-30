@@ -1,10 +1,10 @@
-rapyd-framework
+rapyd-framework 
 ===============
 
 $ composer install 
 
 and you'll get:
-a simple mvc, a powerful query builder / orm:
+a simple mvc, a powerful query builder & orm, a great template engine:
 
 - Slim  http://www.slimframework.com/
 - SlimController  https://github.com/fortrabbit/slimcontroller
@@ -13,7 +13,7 @@ a simple mvc, a powerful query builder / orm:
 
 TODO
 
-- reimplement rapyd widgets:
+- reimplement rapyd CRUD widgets:
 . datagrid
 . dataform
 . datafilter
