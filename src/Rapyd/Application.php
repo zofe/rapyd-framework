@@ -2,7 +2,6 @@
 
 namespace Rapyd;
 
-#use \App;
 
 class Application extends \Slim\Slim {
 

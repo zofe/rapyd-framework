@@ -17,7 +17,7 @@ abstract class Controller
     const VERSION = '0.0.1';
 
     /**
-     * @var \Slim\Slim
+     * @var \Rapyd\Application
      */
     public $app;
 
