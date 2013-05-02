@@ -17,21 +17,38 @@ class Home extends \Rapyd\Controller
 	
 	public function qsAction()
 	{		
-        $this->app->response()->write($this->app->qs->url().'<br />');
-        $this->app->response()->write($this->app->qs->replace('key','newkey'));
-	}
+        $this->app->response()->write($this->app->url->append('gino',2)->append('dino',2)->get()."<br />");
+        $this->app->response()->write($this->app->url->replace('key','newkey')->get()."<br />");
+        $this->app->response()->write($this->app->url->value('key')."<br />");
+        
+    }
     
 	public function datasetAction()
 	{	
-        echo "mo ";
-        //$this->app->db->setPaginator(new \Rapyd\Widgets\Paginator('', array('uno','due'), 2, 1));
-        $users = $this->app->db->table('users')->paginate(15);
-        //$pg = new \Rapyd\Widgets\Paginator('', $users, count($users), 15);
-        //die('conto'.$pg->count());
-                 //$this->app->db->table('users')->count();
-        /*$ds = new \Rapyd\Widgets\DataSet("SELECT * FROM users");
-        $ds->db->table("users")->paginate(10);
-        $ds->build();*/
-        $this->render('dataset', array('users' => $users));
+        $ds = new \Rapyd\Widgets\DataSet();
+        $ds->source("users");
+        $ds->build();   
+        $this->render('dataset', array('ds' => $ds));
+	}
+    
+	public function schemaAction()
+	{	
+        $schema = $this->app->db->getSchemaBuilder();
+        
+
+        $schema->dropIfExists("capocchie");
+        $schema->table("capocchie", function ($table) {;
+            $table->create();
+            $table->increments('id');
+            $table->integer('category_id')->unsigned();
+            $table->string('capocchie_name');
+            $table->string('capocchie_lastname');
+            $table->text('abstract');
+            $table->timestamps();
+        });
+ 
+        
+        
+
 	}
 }

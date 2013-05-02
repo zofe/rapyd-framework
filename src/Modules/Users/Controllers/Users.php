@@ -23,8 +23,15 @@ class Users extends \Rapyd\Controller
     {
 		//this is fluent?  maybe..
 		$count = $this->app->db->table('users')->count();
+        var_dump($count);
         
-        
+        var_dump($this->app->db->select("select * from users"));
+        die;
         $this->render('Count', array('count' => $count));
 	}
+    
+    public function capocchieAction()
+    {
+        echo 'meme';
+    }
 }

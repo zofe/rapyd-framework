@@ -80,9 +80,7 @@ abstract class Controller
     protected function render($template, $args = null)
     {
         
-        //check if controller is in a module, in this case..
-        //$this->app->view()->setTemplatesDirectory('');
-        
+        //check if controller is in a module, in this case..      
         if (!is_null($args)) {
             $this->app->view()->appendData($args);
         }
@@ -91,7 +89,7 @@ abstract class Controller
         ) {
             $template .= '.'. $this->renderTemplateSuffix;
         }
-        print $this->app->view()->render($template);
+        echo $this->app->view()->render($template);
     }
 
     /**

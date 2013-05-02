@@ -23,7 +23,12 @@ for example using  eloquent-orm for you model, twig for your views, and controll
 just if you need to split application in modules 
 
 
-TODO
+## requirements ##
+
+- composer http://getcomposer.org/
+- PHP 5.3+  
+
+## TO-DO ##
 
 - reimplement rapyd CRUD widgets:
 . datagrid

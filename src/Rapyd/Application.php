@@ -12,9 +12,9 @@ class Application extends \Slim\Slim {
 
     /**
      *
-     * @var \Rapyd\Helpers\Qs; 
+     * @var \Rapyd\Helpers\Url; 
      */
-    public $qs;
+    public $url;
 
     /**
      *
@@ -41,8 +41,8 @@ class Application extends \Slim\Slim {
 
             parent::__construct($config);
         }
-        
-        $this->qs = new \Rapyd\Helpers\Qs;
+
+        $this->url = new \Rapyd\Helpers\Url;
     }
 
     public function setupRoute($routes = array()) {
