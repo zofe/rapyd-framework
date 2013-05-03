@@ -11,10 +11,10 @@
      <br />
      <br />
      <div>
-     {{ ds.links|raw }}
+     {{ ds.links()|raw }}
      </div>
      
      <br />
      Order by <br />
-     <a href="{{ ds.orderby_links.asc.user_name|raw }}">user_name</a><br />
-     <a href="{{ ds.orderby_links.asc.email|raw }}">email</a><br />
+     <a href="{{ ds.orderby_link('user_name','asc')|raw }}">user_name</a><br />
+     <a href="{{ ds.orderby_link('email','asc')|raw }}">email</a><br />

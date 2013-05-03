@@ -2,12 +2,8 @@
 
 namespace Rapyd\Widgets;
 
-use Countable;
-use ArrayAccess;
-use ArrayIterator;
-use IteratorAggregate;
 
-class DataSet extends Widget implements ArrayAccess, Countable
+class DataSet extends Widget 
 {
 
     public $cid;
@@ -81,10 +77,13 @@ class DataSet extends Widget implements ArrayAccess, Countable
 
     // --------------------------------------------------------------------
 
-    public function orderby_link($field, $direction = "asc")
+
+
+    public function orderby_link($field, $dir="asc")
     {
-        $direction = "orderby_uri_" . $direction;
-        return str_replace('-field-', $field, $this->$direction);
+        $url = ($dir == "asc") ? $this->orderby_uri_asc : $this->orderby_uri_desc ;
+        return str_replace('-field-', $field, $url);
+
     }
 
     // --------------------------------------------------------------------
@@ -187,53 +186,6 @@ class DataSet extends Widget implements ArrayAccess, Countable
         }
         return $this;
     }
-
- 	/**
-	 * Determine if an item exists at an offset.
-	 *
-	 * @param  mixed  $key
-	 * @return bool
-	 */
-	public function offsetExists($key)
-	{
-		return array_key_exists($key, $this->data);
-	}
-
-	/**
-	 * Get an item at a given offset.
-	 *
-	 * @param  mixed  $key
-	 * @return mixed
-	 */
-	public function offsetGet($key)
-	{
-		return $this->data[$key];
-	}
-
-	/**
-	 * Set the item at a given offset.
-	 *
-	 * @param  mixed  $key
-	 * @param  mixed  $value
-	 * @return void
-	 */
-	public function offsetSet($key, $value)
-	{
-		$this->data[$key] = $value;
-	}
-
-	/**
-	 * Unset the item at a given offset.
-	 *
-	 * @param  string  $key
-	 * @return void
-	 */
-	public function offsetUnset($key)
-	{
-		unset($this->data[$key]);
-	}
-
-    
     
     public function get()
     {

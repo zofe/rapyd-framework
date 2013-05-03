@@ -28,7 +28,7 @@ class Home extends \Rapyd\Controller
         $ds = new \Rapyd\Widgets\DataSet();
         $ds->source("users");
         $ds->build();   
-        $this->render('dataset', array('ds' => $ds));
+        $this->render('Dataset', array('ds' => $ds));
 	}
     
 	public function schemaAction()
