@@ -1,5 +1,8 @@
 <?php
 
+namespace Rapyd\Widgets;
+
+
 class DataSet extends Widget
 {
 
@@ -69,25 +72,6 @@ class DataSet extends Widget
 
     // --------------------------------------------------------------------
 
-    protected function build_orderby_links()
-    {
-
-        //current uri
-        $url = ($this->url != '') ? $this->url : url_helper::get_url();
-
-        //unset current pagination
-        $url = url_helper::remove('pag' . $this->cid, $url);
-
-        //cleanup datafilter reset if any
-        $url = url_helper::remove('reset' . $this->cid, $url);
-
-        //build orderby urls
-        $this->orderby_uri_asc = url_helper::append('orderby' . $this->cid, array("{field}", "asc"), $url) . $this->hash;
-        $this->orderby_uri_desc = url_helper::append('orderby' . $this->cid, array("{field}", "desc"), $url) . $this->hash;
-    }
-
-    // --------------------------------------------------------------------
-
     public function orderby_link($field, $direction = "asc")
     {
         $direction = "orderby_uri_" . $direction;
@@ -141,11 +125,13 @@ class DataSet extends Widget
 
         $this->limit($this->per_page, $offset);
 
-        //prepare orderby links
-        $this->build_orderby_links();
-
+        //build orderby urls
+        $this->orderby_uri_asc = $this->app->url->remove('pag' . $this->cid)->remove('reset' . $this->cid)->append('orderby' . $this->cid, array("-field-", "asc")) . $this->hash;
+        $this->orderby_uri_desc = $this->app->url->remove('pag' . $this->cid)->remove('reset' . $this->cid)->append('orderby' . $this->cid, array("-field-", "desc")) . $this->hash;
+        
+        
         //detect orderby
-        $orderby = url_helper::value("orderby" . $this->cid);
+        $orderby = $this->app->url->value("orderby" . $this->cid);
         if ($orderby) {
             $this->orderby_field = $orderby[0];
             $this->orderby_direction = $orderby[1];
@@ -169,7 +155,6 @@ class DataSet extends Widget
                     }
                 }
 
-
                 //limit-offset
                 if (isset($this->limit)) {
                     $this->source = array_slice($this->source, $this->limit[1], $this->limit[0]);
@@ -177,53 +162,17 @@ class DataSet extends Widget
                 $data = $this->source;
                 break;
 
-
-            case "table":
-
-                //orderby
-                if (isset($this->orderby)) {
-                    $this->db->ar_orderby = array(); //unset default orderby
-                    $this->db->orderby($this->orderby[0], $this->orderby[1]);
-                }
-
-                //limit-offset
-                if (isset($this->limit)) {
-                    $this->db->limit($this->limit[0], $this->limit[1]);
-                }
-                $this->db->select('*');
-                $this->db->from($this->source);
-                $this->db->get();
-                $data = $this->db->result_array();
-                break;
-
             case "query":
                 //orderby
-                $orderby_sql = '';
-                if (isset($this->orderby)) {
-                    $orderby_sql = ' ORDER BY `' . $this->orderby[0] . '` ' . $this->orderby[1];
-                }
-                //limit-offset
-                $offset_sql = '';
-                if (isset($this->limit)) {
-                    $offset_sql = $this->pagination->limit();
-                }
-                $this->db->query($this->source . $orderby_sql . $offset_sql);
-                $data = $this->db->result_array();
-                break;
-
-            case "sqlbuilder":
-                //orderby
 
                 if (isset($this->orderby)) {
-                    $this->db->ar_orderby = array(); //unset default orderby
-                    $this->db->orderby($this->orderby[0], $this->orderby[1]);
+                    $this->query->orderBy($this->orderby[0], $this->orderby[1]);
                 }
                 //limit-offset
                 if (isset($this->limit)) {
-                    $this->db->limit($this->per_page, $this->pagination->offset());
+                    $this->query->skip($this->pagination->offset())->take($this->per_page);
                 }
-                $this->db->get();
-                $data = $this->db->result_array();
+                $data = $this->query->get();
                 break;
         }
         if (!$data) {

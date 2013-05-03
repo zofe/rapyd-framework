@@ -1,5 +1,7 @@
 <?php
 
+namespace Rapyd\Widgets;
+
 class Widget
 {
 
@@ -17,19 +19,6 @@ class Widget
 
 	public function __construct($config = array())
 	{
-		if (is_string($config))
-		{
-			$ext = end(explode('.', $config));
-			switch ($ext)
-			{
-				case "php":
-					include($config);
-					break;
-
-				default:
-					$config = array();
-			}
-		}
 		if (count($config) > 0)
 		{
 			$this->initialize($config);
@@ -76,14 +65,6 @@ class Widget
 		}
 	}
 
-	/**
-	 * connect to the database and fill $widget->db with database "active record" reference
-	 */
-	public function connect()
-	{
-		rpd::connect();
-		$this->db = rpd::$db;
-	}
 
 	/**
 	 * reset each property to default values
@@ -140,7 +121,7 @@ class Widget
 	{
 		$prefix = strtolower(substr($method, 0, 4));
 		$property = strtolower(substr($method, 4));
-		if (method_exists($this, 'set_' . $method))
+		if (method_exists($this, 'set' . ucfirst($method)))
 		{
 			return call_user_func_array(array($this, 'set_' . $method), $arguments);
 		}
@@ -291,12 +272,10 @@ class Widget
 	 */
 	public function replace_functions($content, $functions='ALL')
 	{
-		$formatting_functions = array("rpd[^>]+",
-			"htmlspecialchars", "htmlentities", "utf8_encode",
-			"strtolower", "strtoupper","str_replace",
-			"substr", "strpos", "nl2br", "number_format",
-			"dropdown", "radiogroup", "date", "strtotime"
-		);
+		$formatting_functions = array("htmlspecialchars", "htmlentities", "utf8_encode",
+                                    "strtolower", "strtoupper","str_replace",
+                                    "substr", "strpos", "nl2br", "number_format",
+                                    "dropdown", "radiogroup", "date", "strtotime");
 
 		if (is_string($functions) AND $functions == 'ALL')
 		{
@@ -348,43 +327,6 @@ class Widget
 			}
 		}
 		return $content;
-	}
-
-	/**
-	 * old stuff, however.. untested on new versions.. 
-	 * basically let you use a dropdown instance as pattern for datagrid columns
-	 * may be useful in datafilter+datagrid context where you already buit a dropdown..
-	 * it can be uset directly as datagrid column (it work comparind all dropdown loaded options)
-	 * not very useful, it's is a lot more clean perform joins
-	 * 
-	 * <code>
-	 * $filter->field('dropdown','author_id','Author')->options('SELECT ....
-	 * ...
-	 * $grid->column($filter->fields['author_id'],"Name"); //if $dropdown is a  a column with first 30 chars of field "name"
-	 * </code>
-	 * 
-	 * @param object $field
-	 * @param string $id
-	 * @return string 
-	 */
-	public function dropdown($field, $id)
-	{
-		if (is_object($this->source))
-		{
-			return $this->source->fields[$field]->options[$id];
-		}
-	}
-
-	/**
-	 * same concept of dropdown, deprecaded too
-	 * 
-	 * @param object $field
-	 * @param string $id
-	 * @return string 
-	 */
-	public function radiogroup($field, $id)
-	{
-		return $this->dropdown($field, $id);
 	}
 
 	/**
