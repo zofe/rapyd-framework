@@ -2,17 +2,17 @@
 
 namespace Rapyd\Widgets;
 
+use Countable;
+use ArrayAccess;
+use ArrayIterator;
+use IteratorAggregate;
 
-class DataSet extends Widget
+class DataSet extends Widget implements ArrayAccess, Countable
 {
 
     public $cid;
 
-    /**
-     *
-     * @var \Rapyd\Application
-     */
-    protected $app;
+
     public $source;
 
     /**
@@ -22,7 +22,7 @@ class DataSet extends Widget
     public $query;
     public $per_page = 10;
     public $num_links = 8;
-    public $data;
+    public $data = array();
     public $hash = '';
     public $url;
     public $current_page;
@@ -60,14 +60,23 @@ class DataSet extends Widget
 
     // --------------------------------------------------------------------
 
+    public function count()
+    {
+            return count($this->data);
+    }
+    
+    
+    
     public function setSource($source)
     {
         $this->source = $source;
+        return $this;
     }
 
     public function table($table)
     {
         $this->query = $this->app->db->table($table);
+        return $this->query;
     }
 
     // --------------------------------------------------------------------
@@ -100,6 +109,7 @@ class DataSet extends Widget
         {
             //tablename
             $this->type = "query";
+            $this->query = $this->table($this->source);
             $this->total_rows = $this->query->count();
         }
         //array
@@ -126,8 +136,8 @@ class DataSet extends Widget
         $this->limit($this->per_page, $offset);
 
         //build orderby urls
-        $this->orderby_uri_asc = $this->app->url->remove('pag' . $this->cid)->remove('reset' . $this->cid)->append('orderby' . $this->cid, array("-field-", "asc")) . $this->hash;
-        $this->orderby_uri_desc = $this->app->url->remove('pag' . $this->cid)->remove('reset' . $this->cid)->append('orderby' . $this->cid, array("-field-", "desc")) . $this->hash;
+        $this->orderby_uri_asc = $this->app->url->remove('pag' . $this->cid)->remove('reset' . $this->cid)->append('orderby' . $this->cid, array("-field-", "asc"))->get() . $this->hash;
+        $this->orderby_uri_desc = $this->app->url->remove('pag' . $this->cid)->remove('reset' . $this->cid)->append('orderby' . $this->cid, array("-field-", "desc"))->get() . $this->hash;
         
         
         //detect orderby
@@ -159,7 +169,7 @@ class DataSet extends Widget
                 if (isset($this->limit)) {
                     $this->source = array_slice($this->source, $this->limit[1], $this->limit[0]);
                 }
-                $data = $this->source;
+                $this->data = $this->source;
                 break;
 
             case "query":
@@ -172,16 +182,69 @@ class DataSet extends Widget
                 if (isset($this->limit)) {
                     $this->query->skip($this->pagination->offset())->take($this->per_page);
                 }
-                $data = $this->query->get();
+                $this->data = $this->query->get();
                 break;
         }
-        if (!$data) {
-            $data = array();
-        }
-        $this->data = $data;
-        return $this->data;
+        return $this;
     }
 
+ 	/**
+	 * Determine if an item exists at an offset.
+	 *
+	 * @param  mixed  $key
+	 * @return bool
+	 */
+	public function offsetExists($key)
+	{
+		return array_key_exists($key, $this->data);
+	}
+
+	/**
+	 * Get an item at a given offset.
+	 *
+	 * @param  mixed  $key
+	 * @return mixed
+	 */
+	public function offsetGet($key)
+	{
+		return $this->data[$key];
+	}
+
+	/**
+	 * Set the item at a given offset.
+	 *
+	 * @param  mixed  $key
+	 * @param  mixed  $value
+	 * @return void
+	 */
+	public function offsetSet($key, $value)
+	{
+		$this->data[$key] = $value;
+	}
+
+	/**
+	 * Unset the item at a given offset.
+	 *
+	 * @param  string  $key
+	 * @return void
+	 */
+	public function offsetUnset($key)
+	{
+		unset($this->data[$key]);
+	}
+
+    
+    
+    public function get()
+    {
+        return $this->data;
+    }
+    public function links()
+    {
+        return $this->pagination->links();
+    }
+    
+    
 }
 
 // End Dataset Class

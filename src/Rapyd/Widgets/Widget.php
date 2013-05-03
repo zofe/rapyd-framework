@@ -6,7 +6,13 @@ class Widget
 {
 
 	public static $identifier = 0;
-	public $db;
+    
+    /**
+     *
+     * @var \Rapyd\Application
+     */
+    protected $app;
+
 	public $process_status = "idle";
 	public $status = "idle";
 	public $action = "idle";
@@ -119,11 +125,11 @@ class Widget
 	 */
 	public function __call($method, $arguments)
 	{
-		$prefix = strtolower(substr($method, 0, 4));
-		$property = strtolower(substr($method, 4));
+		$prefix = strtolower(substr($method, 0, 3));
+		$property = strtolower(substr($method, 3));
 		if (method_exists($this, 'set' . ucfirst($method)))
 		{
-			return call_user_func_array(array($this, 'set_' . $method), $arguments);
+			return call_user_func_array(array($this, 'set' . ucfirst($method)), $arguments);
 		}
 
 		if (empty($prefix) || empty($property))
@@ -131,12 +137,12 @@ class Widget
 			return;
 		}
 
-		if ($prefix == "get_" && isset($this->$property))
+		if ($prefix == "get" && isset($this->$property))
 		{
 			return $this->$property;
 		}
 
-		if ($prefix == "set_")
+		if ($prefix == "set")
 		{
 			if
 			(
