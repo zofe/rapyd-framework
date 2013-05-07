@@ -1,6 +1,8 @@
 rapyd-framework 
 ===============
 
+Project URL: [https://github.com/zofe/rapyd-framework/](https://github.com/zofe/rapyd-framework/)
+
 $ composer install 
 
 and you'll get:
