@@ -4,7 +4,14 @@
 namespace Rapyd\Helpers;
 
 
-
+/**
+ * Url Class 
+ * 
+ * @package    Rapyd
+ * @author     Felice Ostuni
+ * @copyright  (c) 2013 Rapyd Team
+ * @license    http://www.rapyd.com/license
+ */
 class Url
 {
     public $url;

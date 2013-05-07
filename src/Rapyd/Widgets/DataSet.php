@@ -17,7 +17,7 @@ class DataSet extends Widget
      */
     public $query;
     public $per_page = 10;
-    public $num_links = 8;
+    public $num_links = 3;
     public $data = array();
     public $hash = '';
     public $url;
@@ -124,7 +124,7 @@ class DataSet extends Widget
             'cid' => $this->cid,
             'total_items' => $this->total_rows, // use db count query here of course
             'items_per_page' => $this->per_page, // it may be handy to set defaults for stuff like this in config/pagination.php
-            'num_links' => $this->num_links,
+            'num_links' => round($this->num_links/2),
             'hash' => $this->hash,
             'url' => $this->url,
             'current_page' => $this->current_page,

@@ -91,6 +91,19 @@ abstract class Controller
         }
         echo $this->app->view()->render($template);
     }
+    
+    protected function fetch($template, $args = null)
+    {
+        if (!is_null($args)) {
+            $this->app->view()->appendData($args);
+        }
+        if (!is_null($this->renderTemplateSuffix)
+            && !preg_match('/\.'. $this->renderTemplateSuffix. '$/', $template)
+        ) {
+            $template .= '.'. $this->renderTemplateSuffix;
+        }
+        return $this->app->view()->fetch($template);
+    }
 
     /**
      * Performs redirect

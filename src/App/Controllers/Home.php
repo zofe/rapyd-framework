@@ -27,6 +27,8 @@ class Home extends \Rapyd\Controller
 	{	
         $ds = new \Rapyd\Widgets\DataSet();
         $ds->source("users");
+        $ds->per_page = 10;
+        $ds->num_links= 5;
         $ds->build();   
         $this->render('Dataset', array('ds' => $ds));
 	}

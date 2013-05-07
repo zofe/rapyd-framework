@@ -74,28 +74,32 @@ class Application extends \Slim\Slim {
             $db = include __DIR__ . '/../App/Config/db.php';
 
 
-        $connFactory = new \Illuminate\Database\Connectors\ConnectionFactory();
-        $connection = $connFactory->make($db);
-
-
-        $connResolver = new \Illuminate\Database\ConnectionResolver();
-        $connResolver->addConnection('default', $connection);
-        $connResolver->setDefaultConnection('default');
+        $capsule = new \Illuminate\Database\Capsule($db);
+        $capsule->bootEloquent();
 
         // setup db
-        $this->db = $connection;
-
-        // Bootstrap Eloquent ORM
-        \Illuminate\Database\Eloquent\Model::setConnectionResolver($connResolver);
+        $this->db = $capsule->connection();  
     }
 
     public function setupView(Array $twig = array()) {
         //add default routes
         if (empty($twig))
             $twig = include __DIR__ . '/../App/Config/twig.php';
+        
         // Prepare view to use twig
         \Slim\Extras\Views\Twig::$twigOptions = $twig;
         $this->view(new \Slim\Extras\Views\Twig());
+   
+        //markdown
+        //todo : move "twig extensions" on some config file.
+        $markdown = new \dflydev\markdown\MarkdownParser();
+        $markdown_extension = new \Aptoma\Twig\Extension\MarkdownExtension($markdown);
+        \Slim\Extras\Views\Twig::$twigExtensions = array(
+            'Twig_Extensions_Slim',
+             $markdown_extension,    
+        );
+
+
     }
 
     public function addRoutes(array $routings, $condition = null) {

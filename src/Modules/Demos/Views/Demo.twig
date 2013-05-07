@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Welcome to Rapyd 2.0 Alpha</title>
+    <title>404 Page Not Found</title>
     <style>
         body {
             margin: 0;
@@ -30,12 +30,38 @@
         }
         small {background-color: #ececec; padding: 5px;}
     </style>
-
 </head>
 <body>
-    <h1>Welcome to rapyd-framework 2.0 Alpha</h1>
-    <p>Congradulations! Rapyd is setup and working correclty.</p>
-	<p>See some <a href="/demo">Demo</a></p>
-
+    <h1>{{ title }}</h1>
+    
+{% if content %}
+    <p>
+     {% markdown %}
+     {{ content }}
+     {% endmarkdown %}
+    </p>
+{% endif %}
+  
+    
+{% if code %}
+    <div class="code">
+      {{ code|raw }}
+    </div>
+    <div class="line"></div>
+{% endif %}
+    
+  
+    <p>
+        <a href="/">Visit the Home Page</a>
+    </p>
 </body>
 </html>
+
+
+
+
+
+
+
+  
+
