@@ -1,41 +1,20 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>Welcome to Rapyd 2.0 Alpha</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 20px;
-            font-family: "Lucida Grande", Verdana, Geneva, Sans-serif;
-            font-size: 14px;
-            color: #4F5155;
-            background-color: #fff;
-        }
-        a {
-            color: #003399;
-            background-color: transparent;
-            text-decoration: none;
-            font-weight: normal;
-        }
-        a:visited {
-            color: #003399;
-            background-color: transparent;
-            text-decoration: none;
-        }
-        a:hover {
-            color: #000;
-            text-decoration: underline;
-            background-color: transparent;
-        }
-        small {background-color: #ececec; padding: 5px;}
-    </style>
+{% include 'header.twig' %}
 
-</head>
-<body>
-    <h1>Welcome to rapyd-framework 2.0 Alpha</h1>
-    <p>Congradulations! Rapyd is setup and working correclty.</p>
-	<p>See some <a href="/demo">Demo</a></p>
+      <div class="masthead">
+        <ul class="nav nav-pills pull-right">
+          <li class="active"><a href="/">Home</a></li>
+          <li><a href="/demo">Demos</a></li>
+          <li><a href="http://rapyd.com">rapyd.com <i class="icon-share-alt"></i></a></li>
+        </ul>
+        <h3 class="muted">Rapyd-framework 2.0 Alpha</h3>
+      </div>
 
-</body>
-</html>
+      <hr>
+
+    <div class="jumbotron">
+        <p>Congradulations! Rapyd is setup and working correclty.</p>
+        
+        <a class="btn btn-large btn-success" href="/demo">Getting started</a>
+    </div>
+
+{% include 'footer.twig' %}
