@@ -6,6 +6,7 @@ $demos = '\\Modules\\Demos\\Controllers\\';
 $app->addRoutes(array(
     '/demo' => $demos . 'Demo:index',
     '/basic/hello' => $demos . 'Basic:index',
+    '/test/twig'   => $demos . 'Tests:twig',
         ), function() use ($app) {
             $app->view()->setTemplatesDirectory(realpath(__DIR__ . '/../Views'));
 });

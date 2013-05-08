@@ -12,7 +12,8 @@ class Widget
      * @var \Rapyd\Application
      */
     protected $app;
-
+    
+    public $parser;
 	public $process_status = "idle";
 	public $status = "idle";
 	public $action = "idle";
@@ -29,6 +30,7 @@ class Widget
 		{
 			$this->initialize($config);
 		}
+        $this->parser = new \Rapyd\Helpers\Parser;
 	}
 
 	/**

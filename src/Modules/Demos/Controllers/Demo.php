@@ -12,7 +12,6 @@ class Demo extends \Rapyd\Controller
 		$data['title'] 		= 'Repyd Demos';
 		$data['content'] 	=  $this->fetch('Home');
         $this->render('Demo', $data);
-       
 	}
 
 }
