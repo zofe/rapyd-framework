@@ -59,12 +59,9 @@
 
       
         <ul class="nav nav-tabs">
-         <li {% if active == 'index' %}class="active"{% endif %}>
-           <a href="/demo">Index</a>
-         </li>
-         <li {% if active == 'basic' %}class="active"{% endif %}>
-           <a href="/basic/hello">Basic</a>
-         </li>
+         <li {% if active == 'index' %}class="active"{% endif %}><a href="/demo">Index</a></li>
+         <li {% if active == 'basic' %}class="active"{% endif %}><a href="/demo/hello">Basic</a></li>
+         <li {% if active == 'schema' %}class="active"{% endif %}><a href="/demo/schema">Schema Builder</a></li>
         </ul>  
 
 

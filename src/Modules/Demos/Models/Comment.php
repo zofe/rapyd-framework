@@ -1,8 +1,15 @@
 <?php
 
-namespace Modules\Users\Models;
+namespace Modules\Demos\Models;
 
-class User extends \Rapyd\Model
+class Comment extends \Rapyd\Model
 {
-	protected $table = 'users';
+	protected $table = 'demo_comments';
+    public $primaryKey = 'comment_id';
+    
+	public function article(){
+		return $this->belongsTo('Article', 'article_id');
+	}
+    
+    
 }

@@ -1,0 +1,75 @@
+<?php
+
+namespace Modules\Demos\Controllers;
+
+class Schema extends \Rapyd\Controller
+{
+
+    public function indexAction()
+    {
+        //illuminate/dtabase schema builder
+        $schema = $this->app->db->getSchemaBuilder();
+
+
+        //dropp all tables
+        $schema->dropIfExists("demo_users");
+        $schema->dropIfExists("demo_articles");
+        $schema->dropIfExists("demo_comments");
+        
+        //create all tables
+        $schema->table("demo_users", function ($table) {
+                    $table->create();
+                    $table->increments('user_id');
+                    $table->string('firstname', 100);
+                    $table->string('lastname', 100);
+                    $table->timestamps();
+        });
+        $schema->table("demo_articles", function ($table) {
+                    $table->create();
+                    $table->increments('article_id');
+                    $table->integer('author_id')->unsigned();
+                    $table->string('title', 200);
+                    $table->text('body');
+                    $table->boolean('public');
+                    $table->timestamps();
+        });
+        $schema->table("demo_comments", function ($table) {
+                    $table->create();
+                    $table->increments('comment_id');
+                    $table->integer('user_id')->unsigned();
+                    $table->integer('article_id')->unsigned();
+                    $table->text('comment');
+                    $table->timestamps();
+        });
+
+        //populate all tables
+        $users = $this->app->db->table('demo_users');
+        $users->insert(array('firstname' => 'Jhon',
+                                'lastname' => 'Doe'), 
+                       array('firstname' => 'Jane',
+                                'lastname' => 'Doe')
+        );
+        $articles = $this->app->db->table('demo_articles');
+        $articles->insert(array('title' => 'Article 1',
+                                'body' => 'Body of article 1',
+                                'public' => true,), 
+                          array('title' => 'Article 2',
+                                'body' => 'Body of article 2',
+                                'public' => true)
+        );
+        $comments = $this->app->db->table('demo_comments');
+        $comments->insert(array('user_id' => 1,
+                                'article_id' => 2,
+                                'comment' => 'Comment for Article 2')
+        );
+
+        //send output
+        $data['title'] = 'Schema Builder';
+        $data['active'] = 'schema';
+        $data['content_raw'] = $this->fetch('Schema');
+        $data['code'] = highlight_string(file_get_contents(__FILE__), TRUE);
+
+        $this->render('Demo', $data);
+    }
+
+}
