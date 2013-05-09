@@ -7,15 +7,26 @@ class Schema extends \Rapyd\Controller
 
     public function indexAction()
     {
+        $this->fillDB();
+
+        //send output
+        $data['title'] = 'Schema Builder';
+        $data['active'] = 'schema';
+        $data['content_raw'] = $this->fetch('Schema');
+        $data['code'] = highlight_string(file_get_contents(__FILE__), TRUE);
+
+        $this->render('Demo', $data);
+    }
+    
+    
+    protected function fillDB()
+    {
         //illuminate/dtabase schema builder
         $schema = $this->app->db->getSchemaBuilder();
 
-
-        //dropp all tables
-        $schema->dropIfExists("demo_users");
-        $schema->dropIfExists("demo_articles");
-        $schema->dropIfExists("demo_comments");
-        
+        //tables are already there
+        if ($schema->hasTable("demo_users")) return;
+ 
         //create all tables
         $schema->table("demo_users", function ($table) {
                     $table->create();
@@ -68,6 +79,13 @@ class Schema extends \Rapyd\Controller
         $data['code'] = highlight_string(file_get_contents(__FILE__), TRUE);
 
         $this->render('Demo', $data);
+    }
+    
+    protected function drop()
+    {
+        $schema->dropIfExists("demo_users");
+        $schema->dropIfExists("demo_articles");
+        $schema->dropIfExists("demo_comments");
     }
 
 }
