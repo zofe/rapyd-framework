@@ -1,0 +1,21 @@
+
+<table class="table table-striped">
+    <tr>
+         <th><a href="{{ ds.orderby_link('article_id','asc')|raw }}">article_id</a></th> 
+         <th><a href="{{ ds.orderby_link('title','asc')|raw }}">title</a></th> 
+         <th><a href="{{ ds.orderby_link('body','asc')|raw }}">body</a></th> 
+    </tr>
+    {% for article in ds.data  %}
+        <tr>
+            <td>{{ article.title }}</td> 
+            <td>{{ article.title }}</td> 
+            <td>{{ article.body }}</td>
+        </tr>
+    {% endfor %}
+</table>
+
+
+<div class="pagination">
+{{ ds.links()|raw }}
+</div>
+

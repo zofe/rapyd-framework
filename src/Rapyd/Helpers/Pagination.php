@@ -99,7 +99,7 @@ class Pagination
         if ($view=="")
         {
             $view = 'Pagination.twig';
-            $current_template = $this->app->config('templates.path');
+            $current_template = $this->app->view()->getTemplatesDirectory();//$this->app->config('templates.path');
             $this->app->config('templates.path', __DIR__ . '/../Views');
             $this->app->setupView();
             $this->app->view()->appendData(get_object_vars($this));

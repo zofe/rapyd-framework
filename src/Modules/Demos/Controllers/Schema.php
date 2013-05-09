@@ -44,19 +44,17 @@ class Schema extends \Rapyd\Controller
 
         //populate all tables
         $users = $this->app->db->table('demo_users');
-        $users->insert(array('firstname' => 'Jhon',
-                                'lastname' => 'Doe'), 
-                       array('firstname' => 'Jane',
-                                'lastname' => 'Doe')
-        );
+        $users->insert(array('firstname' => 'Jhon', 'lastname' => 'Doe'));
+        $users->insert(array('firstname' => 'Jane', 'lastname' => 'Doe'));
+        
         $articles = $this->app->db->table('demo_articles');
-        $articles->insert(array('title' => 'Article 1',
-                                'body' => 'Body of article 1',
-                                'public' => true,), 
-                          array('title' => 'Article 2',
-                                'body' => 'Body of article 2',
-                                'public' => true)
-        );
+        for ($i=1; $i<=20; $i++){
+            $articles->insert(array('title' => 'Article '.$i,
+                                    'body' => 'Body of article '.$i,
+                                    'public' => true,)
+            );
+        }
+
         $comments = $this->app->db->table('demo_comments');
         $comments->insert(array('user_id' => 1,
                                 'article_id' => 2,

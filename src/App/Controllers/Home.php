@@ -26,7 +26,7 @@ class Home extends \Rapyd\Controller
 	public function datasetAction()
 	{	
         $ds = new \Rapyd\Widgets\DataSet();
-        $ds->source("users");
+        $ds->source("demo_users");
         $ds->per_page = 10;
         $ds->num_links= 5;
         $ds->build();   
