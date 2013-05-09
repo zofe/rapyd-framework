@@ -1,12 +1,18 @@
 {
-    "name": "vendor/rapyd-framework",
+    "name": "zofe/rapyd-framework",
     "description": "Description of project rapyd-framework.",
     "authors": [
         {
             "name": "felice",
-            "email": "your@email.here"
+            "email": "felice.ostuni@gmail.com"
         }
     ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "http://github.com/zofe/rapyd-framework"
+        }
+    ],    
     "require": {
 		"slim/slim": "2.*",
 		"slim/extras": "2.*",
