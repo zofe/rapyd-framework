@@ -11,7 +11,7 @@ class Demo extends \Rapyd\Controller
     {
 		$data['title'] 	   = 'Rapyd-Framework Demos';
         $data['active']    = 'index';
-		$data['content']   =  $this->fetch('Home');
+		$data['content_markdown']   =  $this->fetch('Home');
         $this->render('Demo', $data);
 	}
 

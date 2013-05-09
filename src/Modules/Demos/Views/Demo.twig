@@ -70,13 +70,21 @@
 
       <div class="jumbotron">
 
-            
-        {% if content %}
+         
+        
+          
+          
+        {% if content_markdown %}
         <p class="lead">
         {% markdown %}
-        {{ content }}
+        {{ content_markdown }}
         {% endmarkdown %}
         </p>
+        
+        {% elseif content_raw %}
+        
+        {{ content_raw|raw }}
+        
         {% endif %}
   
         
