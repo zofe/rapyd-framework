@@ -1,16 +1,14 @@
 <?php
 
-
 namespace Rapyd\Helpers;
-
 
 class Parser
 {
-	protected $env;
-        
-    
-	public function __construct($config = array())
-	{
+
+    protected $env;
+
+    public function __construct($config = array())
+    {
         $this->env = new \Twig_Environment(new \Twig_Loader_String(), array('cache' => false, 'autoescape' => false, 'optimizations' => 0));
 
         //aggiungere una estensione o filtri custom per abilitare callback da controller/querybuilder/model/viste??
@@ -21,7 +19,8 @@ class Parser
 
     ////es: $dg->column('{{ name }}, {{ lastname }}',"NAME")   
     public function parse($pattern, $array)
-    {    
+    {
         return $env->loadTemplate($pattern)->render($array);
     }
+
 }

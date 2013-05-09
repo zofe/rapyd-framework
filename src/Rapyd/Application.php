@@ -2,8 +2,8 @@
 
 namespace Rapyd;
 
-
-class Application extends \Slim\Slim {
+class Application extends \Slim\Slim
+{
 
     /**
      * @var \Illuminate\Database\Connection  instance
@@ -26,7 +26,8 @@ class Application extends \Slim\Slim {
         'create', 'modify', 'delete',
         'insert', 'update', 'do_delete');
 
-    public function __construct($config = array()) {
+    public function __construct($config = array())
+    {
 
 
         //init slim, by default with /app/Config/* arrays
@@ -45,30 +46,28 @@ class Application extends \Slim\Slim {
         $this->url = new \Rapyd\Helpers\Url;
     }
 
-    public function setupRoute($routes = array()) {
+    public function setupRoute($routes = array())
+    {
         //add default routes
         if (empty($routes)) {
             $routes = include __DIR__ . '/../App/Config/routes.php';
-            
+
             $module_dir = __DIR__ . '/../Modules/';
-            if (file_exists($module_dir))
-            {
+            if (file_exists($module_dir)) {
                 $modules = array_diff(scandir($module_dir), array('..', '.'));
-                foreach ($modules as $module)
-                {
-                    if (file_exists($module_dir.$module.'/Config/routes.php'))
-                    {
-                        $module_routes = include $module_dir.$module.'/Config/routes.php';
+                foreach ($modules as $module) {
+                    if (file_exists($module_dir . $module . '/Config/routes.php')) {
+                        $module_routes = include $module_dir . $module . '/Config/routes.php';
                         $this->addRoutes($module_routes);
                     }
                 }
             }
-
         }
         $this->addRoutes($routes);
     }
 
-    public function setupDatabase($db = array()) {
+    public function setupDatabase($db = array())
+    {
         //add default routes
         if (empty($db))
             $db = include __DIR__ . '/../App/Config/db.php';
@@ -78,31 +77,31 @@ class Application extends \Slim\Slim {
         $capsule->bootEloquent();
 
         // setup db
-        $this->db = $capsule->connection();  
+        $this->db = $capsule->connection();
     }
 
-    public function setupView(Array $twig = array()) {
+    public function setupView(Array $twig = array())
+    {
         //add default routes
         if (empty($twig))
             $twig = include __DIR__ . '/../App/Config/twig.php';
-        
+
         // Prepare view to use twig
         \Slim\Extras\Views\Twig::$twigOptions = $twig;
         $this->view(new \Slim\Extras\Views\Twig());
-   
+
         //markdown
         //todo : move "twig extensions" on some config file.
         $markdown = new \dflydev\markdown\MarkdownParser();
         $markdown_extension = new \Aptoma\Twig\Extension\MarkdownExtension($markdown);
         \Slim\Extras\Views\Twig::$twigExtensions = array(
             'Twig_Extensions_Slim',
-             $markdown_extension,    
+            $markdown_extension,
         );
-
-
     }
 
-    public function addRoutes(array $routings, $condition = null) {
+    public function addRoutes(array $routings, $condition = null)
+    {
         foreach ($routings as $path => $args) {
             $httpMethod = 'any';
 
@@ -133,7 +132,8 @@ class Application extends \Slim\Slim {
         return $this;
     }
 
-    protected function extractControllerFromRoute(array &$args, $condition = null) {
+    protected function extractControllerFromRoute(array &$args, $condition = null)
+    {
         // tmp remove path
         $path = array_shift($args);
 

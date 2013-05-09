@@ -7,39 +7,38 @@ class Home extends \Rapyd\Controller
 
     public function indexAction()
     {
-		 $this->render('Home', array('name' => 'Bello!'));
+        $this->render('Home', array('name' => 'Bello!'));
     }
-	
-	public function helloAction($name)
-	{
-		 $this->render('Home', array('name' => $name));
-	}
-	
-	public function qsAction()
-	{		
-        $this->app->response()->write($this->app->url->append('gino',2)->append('dino',2)->get()."<br />");
-        $this->app->response()->write($this->app->url->replace('key','newkey')->get()."<br />");
-        $this->app->response()->write($this->app->url->value('key')."<br />");
-        
+
+    public function helloAction($name)
+    {
+        $this->render('Home', array('name' => $name));
     }
-    
-	public function datasetAction()
-	{	
+
+    public function qsAction()
+    {
+        $this->app->response()->write($this->app->url->append('gino', 2)->append('dino', 2)->get() . "<br />");
+        $this->app->response()->write($this->app->url->replace('key', 'newkey')->get() . "<br />");
+        $this->app->response()->write($this->app->url->value('key') . "<br />");
+    }
+
+    public function datasetAction()
+    {
         $ds = new \Rapyd\Widgets\DataSet();
         $ds->source("demo_users");
         $ds->per_page = 10;
-        $ds->num_links= 5;
-        $ds->build();   
+        $ds->num_links = 5;
+        $ds->build();
         $this->render('Dataset', array('ds' => $ds));
-	}
-    
-	public function schemaAction()
-	{	
+    }
+
+    public function schemaAction()
+    {
         $schema = $this->app->db->getSchemaBuilder();
-        
+
 
         $schema->dropIfExists("capocchie");
-        $schema->table("capocchie", function ($table) {;
+        $schema->table("capocchie", function ($table) {
             $table->create();
             $table->increments('id');
             $table->integer('category_id')->unsigned();
@@ -48,9 +47,6 @@ class Home extends \Rapyd\Controller
             $table->text('abstract');
             $table->timestamps();
         });
- 
-        
-        
+    }
 
-	}
 }

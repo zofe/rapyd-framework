@@ -11,7 +11,6 @@ class Pagination
     protected static $identifier = 0;
     public $url;
     public $current_page;
-    
     public $total_pages;
     public $current_first_item;
     public $current_last_item;
@@ -20,7 +19,7 @@ class Pagination
     public $previous_page;
     public $next_page;
     public $num_links;
-    
+
     /**
      *
      * @var \Rapyd\Application
@@ -53,13 +52,13 @@ class Pagination
         }
 
         if (!isset($this->app))
-            $this->app =  \Rapyd\Application::getInstance();
+            $this->app = \Rapyd\Application::getInstance();
 
 
         //unset current pagination
-        $this->url = $this->app->url->remove('reset'. $this->cid)
-                                    ->append('pag'.   $this->cid, "-pag-")
-                                    ->get().$this->hash;
+        $this->url = $this->app->url->remove('reset' . $this->cid)
+                        ->append('pag' . $this->cid, "-pag-")
+                        ->get() . $this->hash;
 
 
         // Core pagination values
@@ -75,7 +74,7 @@ class Pagination
         // If there is no first/last/previous/next page, relative to the
         // current page, value is set to FALSE. Valid page number otherwise.
         $this->first_page = ($this->current_page == 1) ? FALSE : 1;
-        
+
         $this->last_page = ($this->current_page >= $this->total_pages) ? FALSE : $this->total_pages;
         $this->previous_page = ($this->current_page > 1) ? $this->current_page - 1 : FALSE;
         $this->next_page = ($this->current_page < $this->total_pages) ? $this->current_page + 1 : FALSE;
@@ -93,13 +92,12 @@ class Pagination
     {
         if ($this->total_pages < 2)
             return '';
-        
-        
+
+
         //switch to Rapyd/Views path 
-        if ($view=="")
-        {
+        if ($view == "") {
             $view = 'Pagination.twig';
-            $current_template = $this->app->view()->getTemplatesDirectory();//$this->app->config('templates.path');
+            $current_template = $this->app->view()->getTemplatesDirectory(); //$this->app->config('templates.path');
             $this->app->config('templates.path', __DIR__ . '/../Views');
             $this->app->setupView();
             $this->app->view()->appendData(get_object_vars($this));

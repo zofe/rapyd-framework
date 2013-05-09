@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Rapyd\Helpers;
-
 
 /**
  * Url Class 
@@ -14,26 +12,28 @@ namespace Rapyd\Helpers;
  */
 class Url
 {
+
     public $url;
-    protected $from ='qs';
-    protected $semantic = array('search', 'reset',   'checkbox',
-				'pag',    'orderby', 'show',
-				'create', 'modify',  'delete',
-				'insert', 'update',  'do_delete');
-    
+    protected $from = 'qs';
+    protected $semantic = array('search', 'reset', 'checkbox',
+        'pag', 'orderby', 'show',
+        'create', 'modify', 'delete',
+        'insert', 'update', 'do_delete');
+
     public function __construct()
     {
         return $this;
     }
+
     public function set($url)
     {
         $this->url = $url;
         return $this;
     }
-    
+
     public function get()
     {
-        if ($this->url=='') {
+        if ($this->url == '') {
             return $this->current();
         } else {
             $url = $this->url;
@@ -41,7 +41,7 @@ class Url
             return $url;
         }
     }
-    
+
     public function current()
     {
         if (isset($_SERVER['HTTP_X_ORIGINAL_URL']))
@@ -50,29 +50,31 @@ class Url
         return $url;
     }
 
-    
-	public function append($key, $value) {
-		return ($this->from =='uri') ? $this->appendUri($key, $value) : $this->appendQS($key, $value); 
-	}
+    public function append($key, $value)
+    {
+        return ($this->from == 'uri') ? $this->appendUri($key, $value) : $this->appendQS($key, $value);
+    }
 
-	public function remove($key, $params=1) {
-		return ($this->from =='uri') ? $this->removeUri($key, $params) :  $this->removeQS($key);
-	}
+    public function remove($key, $params = 1)
+    {
+        return ($this->from == 'uri') ? $this->removeUri($key, $params) : $this->removeQS($key);
+    }
 
-	public function removeAll($key) {
-		return ($this->from =='uri') ? $this->removeAllUri($key) :  $this->removeAllQS($key);
-	}
-    
-	public function replace($key, $newkey) {
-		return ($this->from =='uri') ? $this->replaceUri($key, $newkey) :  $this->replaceQS($key, $newkey);
-	}
+    public function removeAll($key)
+    {
+        return ($this->from == 'uri') ? $this->removeAllUri($key) : $this->removeAllQS($key);
+    }
 
-	public function value($key, $default=FALSE) {
-		return ($this->from =='uri') ? $this->valueUri($key, $default) :  $this->valueQS($key, $default);
-	}
+    public function replace($key, $newkey)
+    {
+        return ($this->from == 'uri') ? $this->replaceUri($key, $newkey) : $this->replaceQS($key, $newkey);
+    }
 
+    public function value($key, $default = FALSE)
+    {
+        return ($this->from == 'uri') ? $this->valueUri($key, $default) : $this->valueQS($key, $default);
+    }
 
-    
     public function appendQS($key, $value)
     {
         $url = $this->get();
@@ -102,7 +104,7 @@ class Url
 
         if (!is_array($keys)) {
             if ($keys == 'ALL') {
-                $this->url =  $url;
+                $this->url = $url;
                 return $this;
             }
             $keys = array($keys);
@@ -120,7 +122,7 @@ class Url
     {
         $semantic = $this->semantic;
         if (isset($cid)) {
-            
+
             foreach ($semantic as $key) {
                 $keys[] = $key . $cid;
             }
@@ -158,7 +160,7 @@ class Url
             }
             return $default;
         }
-        
+
         parse_str(parse_url($this->current(), PHP_URL_QUERY), $params);
         if (strpos($key, '.')) {
             list($namespace, $subkey) = explode('.', $key);
