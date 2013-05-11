@@ -15,10 +15,10 @@ class Dataset extends \Rapyd\Controller
         $ds->build();   
 
         $data['title'] = 'DataSet Widget';
-        $data['active'] = 'dataset';
-        $data['content_raw'] = $this->fetch('Dataset', array('ds' => $ds));
+        $data['active'] = 'set';
+        $data['content_raw'] = $this->fetch('Set', array('ds' => $ds));
         $data['code']  = highlight_string(file_get_contents(__FILE__), TRUE);
-        $data['code'] .= htmlentities(file_get_contents(__DIR__.'/../Views/Dataset.twig'));
+        $data['code'] .= htmlentities(file_get_contents(__DIR__.'/../Views/Set.twig'));
         $this->render('Demo', $data);
     }
 

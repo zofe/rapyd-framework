@@ -1,0 +1,27 @@
+
+{# DataGrid.twig #}
+
+
+
+<table class="table table-striped">
+ 
+    <tr>
+     {% for column in dg.columns  %}
+     <th>{{ column.label }} </th> 
+     {% endfor %}
+    </tr>
+     
+    {% for row in dg.rows  %}
+        <tr>
+            {% for cell in row  %}
+            <td>{{ cell.value }}</td>
+            {% endfor %}
+        </tr>
+    {% endfor %}
+</table>
+
+
+<div class="pagination">
+{{ dg.links()|raw }}
+</div>
+

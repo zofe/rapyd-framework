@@ -13,7 +13,12 @@ class Widget
      */
     protected $app;
     
+    /**
+     *
+     * @var \Rapyd\Helpers\Parser 
+     */
     public $parser;
+    
 	public $process_status = "idle";
 	public $status = "idle";
 	public $action = "idle";
@@ -57,7 +62,7 @@ class Widget
 	 * 		),
 	 * 	'buttons'  => array('modify','save','undo','back'),
 	 * );
-	 * $edit = new dataedit_library($config);
+	 * $edit = new \Rapyd\Widget\DataEdit($config);
 	 * $edit->build();
 	   * </code>
 	 * 
@@ -68,11 +73,15 @@ class Widget
 		$this->clear();
 		foreach ($config as $key => $val)
 		{
-			$method = 'set_' . $key;
-			$this->$method($val);
+            if (method_exists($this,'set' . ucfirst($key)))
+            {
+                call_user_func_array(array($this, 'set' . ucfirst($key)), (array)$val); 
+            }
 		}
 	}
 
+    
+    
 
 	/**
 	 * reset each property to default values
@@ -104,7 +113,7 @@ class Widget
 	 *  
 	 * @return string identifier 
 	 */
-	protected function get_identifier()
+	protected function getIdentifier()
 	{
 		if (self::$identifier < 1)
 		{
@@ -263,79 +272,6 @@ class Widget
 		return $output;
 	}
 
-	/**
-	 * important stuff, widgets support function patterns like
-	 * <function_name>param|param|{placeholder}</function_name>
-	 * so if "function_name" is a valid "formatting_function" the widget will execute
-	 * a callback splitting parameters using | (pipe)
-	 * it's used for example to let you format datagrid columns in really easy way:
-	 * 
-	 * <code>
-	 * $grid->column('<substr>0|30|{name}</substr>',"Name"); //will output a column with first 30 chars of field "name"
-	 * </code>
-	 * 
-	 * @param string $content
-	 * @param type $functions
-	 * @return string 
-	 */
-	public function replace_functions($content, $functions='ALL')
-	{
-		$formatting_functions = array("htmlspecialchars", "htmlentities", "utf8_encode",
-                                    "strtolower", "strtoupper","str_replace",
-                                    "substr", "strpos", "nl2br", "number_format",
-                                    "dropdown", "radiogroup", "date", "strtotime");
-
-		if (is_string($functions) AND $functions == 'ALL')
-		{
-			$arr = get_defined_functions();
-			$functions = array_merge($formatting_functions, $arr["user"]);
-		} elseif (is_array($functions))
-		{
-			$functions = array_merge($formatting_functions, $functions);
-		} elseif (!isset($functions))
-		{
-			$functions = $formatting_functions;
-		}
-
-		$tags = join('|', $functions);
-		while (preg_match_all("/(<($tags)>(.*)<\/\\2>)/isU", $content, $matches, PREG_SET_ORDER))
-		{
-			foreach ($matches as $found)
-			{
-				$params = $found[3];
-				//check if a recustion is needed
-				if (preg_match("/<\/$tags>/is", $params))
-					$params = self::replace_functions($params, $functions);
-
-				$toreplace = $found[0];
-				$function = $found[2];
-				$arguments = explode("£|£", $params);
-
-				if (in_array($function, array('dropdown', 'radiogroup')))
-				{
-					$replace = call_user_func_array(array($this, $function), $arguments);
-				}
-				//static class/metdod
-				elseif (strpos($function, "::") !== FALSE)
-				{
-					list($static_class, $static_method) = explode("::", $function);
-					$replace = call_user_func_array(array($static_class, $static_method), $arguments);
-				}
-				//dynamic object/method
-				elseif (strpos($function, ".") !== FALSE)
-				{
-					list($class, $method) = explode(".", $function);
-					$replace = call_user_func_array(array($$class, $method), $arguments);
-				} else
-				{
-					$replace = @call_user_func_array($function, $arguments);
-				}
-
-				$content = str_replace($toreplace, $replace, $content);
-			}
-		}
-		return $content;
-	}
 
 	/**
 	 * basically it "flat" buttons array for each zone 

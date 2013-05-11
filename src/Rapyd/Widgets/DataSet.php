@@ -49,7 +49,7 @@ class DataSet extends Widget
         }
         //or generate new one
         else {
-            $this->cid = parent::get_identifier();
+            $this->cid = parent::getIdentifier();
         }
         $this->app = \Rapyd\Application::getInstance();
     }
