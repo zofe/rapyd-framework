@@ -33,20 +33,7 @@ class Column extends Widget
 	public function __construct($config = array())
 	{
 		parent::__construct($config);
-		//$this->checkPattern();
 	}
-
-
-	protected function checkPattern()
-	{
-        $this->field_name = $this->pattern;
-        if ($this->orderby === true)
-        {
-            $this->orderby = (isset($this->orderby_field)) ? $this->orderby_field : $this->field_name;
-        }
-	}
-    
-    
     
 	protected function resetPattern()
 	{
@@ -55,12 +42,24 @@ class Column extends Widget
 
 	protected function setPattern($pattern)
 	{
+        //$this->parser->render($this->pattern, $data_row);
 		$this->pattern = $pattern;
 	}
     
 	protected function setLabel($label)
 	{
 		$this->label = $label;
+	}
+    
+
+	public function setOrderby($orderby)
+	{
+        if ($orderby === true)
+        {
+            $this->orderby = (isset($this->orderby_field)) ? $this->orderby_field : $this->field_name;
+        }
+        return $this;
+
 	}
     
 	protected function setUrl($url, $img = '', $onclick='')
@@ -96,8 +95,11 @@ class Column extends Widget
 	public function setRow($data_row)
 	{
         $data_row = get_object_vars($data_row);
-        $this->rpattern = $this->parser->render($this->pattern, $data_row);
-        
+        if (isset($data_row[$this->pattern])) {
+            $this->rpattern = $data_row[$this->pattern];
+        } else {
+            $this->rpattern = $this->parser->render($this->pattern, $data_row);
+        }
 		if (isset($this->callback_object))
 		{
 			$this->rpattern = call_user_func(array($this->callback_object, $this->callback), $data_row);

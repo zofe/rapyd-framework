@@ -18,8 +18,8 @@ class DataGrid extends DataSet
     public function setColumn($name, $label = null, $orderby = null)
     {
         $config['pattern'] = $name;
-        $config['label'] = $label;
-        $config['orderby'] = $orderby;
+        $config['label'] =  ($label != "") ? $label : $name;
+        if ($orderby) $config['orderby'] = $orderby;
 
         $column = new Column($config);
         $this->columns[] = $column;

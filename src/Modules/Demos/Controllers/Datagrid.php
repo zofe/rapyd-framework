@@ -13,7 +13,7 @@ class Datagrid extends \Rapyd\Controller
         $dg->source("demo_articles");
         $dg->per_page = 10;
         $dg->num_links= 2;
-        $dg->setColumn('{{ article_id }}',"ID");
+        $dg->setColumn('article_id',"ID");
         $dg->setColumn('<em>{{ title|lower }}</em>',"title", true);
         $dg->build();   
 
