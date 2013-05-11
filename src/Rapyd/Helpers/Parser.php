@@ -18,9 +18,9 @@ class Parser
     }
 
     ////es: $dg->column('{{ name }}, {{ lastname }}',"NAME")   
-    public function parse($pattern, $array)
+    public function render($pattern, $array)
     {
-        return $this->env->loadTemplate($pattern)->render($array);
+        return $this->env->render($pattern,$array);
     }
 
 }

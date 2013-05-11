@@ -14,7 +14,7 @@ class Datagrid extends \Rapyd\Controller
         $dg->per_page = 10;
         $dg->num_links= 2;
         $dg->setColumn('{{ article_id }}',"ID");
-        $dg->setColumn('{{ title|upper }}',"title");
+        $dg->setColumn('<em>{{ title|lower }}</em>',"title", true);
         $dg->build();   
 
         $data['title'] = 'DataSet Widget';

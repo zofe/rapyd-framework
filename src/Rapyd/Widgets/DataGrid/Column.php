@@ -46,6 +46,8 @@ class Column extends Widget
         }
 	}
     
+    
+    
 	protected function resetPattern()
 	{
 		$this->rpattern = $this->pattern;
@@ -94,7 +96,7 @@ class Column extends Widget
 	public function setRow($data_row)
 	{
         $data_row = get_object_vars($data_row);
-        $this->rpattern = $this->parser->parse($this->pattern, $data_row);
+        $this->rpattern = $this->parser->render($this->pattern, $data_row);
         
 		if (isset($this->callback_object))
 		{
@@ -107,7 +109,7 @@ class Column extends Widget
 		{
 			if (!isset($this->attributes['style']))
 				$this->attributes['style'] = 'width: 70px; text-align:center; padding-right:5px';
-			$this->link = $this->parser->parse($this->url, $data_row);
+			$this->link = $this->parser->render($this->url, $data_row);
 		}
 
         //manage attributes

@@ -7,14 +7,14 @@
  
     <tr>
      {% for column in dg.columns  %}
-     <th>{{ column.label }} </th> 
+            <th>{% if column.orderby %}<a href="{{ ds.orderby_link('article_id','asc')|raw }}">{{ column.label }}</a>{% else %}{{ column.label }}{% endif %}</th> 
      {% endfor %}
     </tr>
      
     {% for row in dg.rows  %}
         <tr>
             {% for cell in row  %}
-            <td>{{ cell.value }}</td>
+            <td>{{ cell.value|raw }}</td>
             {% endfor %}
         </tr>
     {% endfor %}

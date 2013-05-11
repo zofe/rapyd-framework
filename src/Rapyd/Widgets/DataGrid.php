@@ -43,7 +43,6 @@ class DataGrid extends DataSet
 				$cell["value"] = $column->getValue();
 				$cell["type"] = $column->column_type;
 				$row[] = $cell;
-                //$row[] = $column;
             }
             $this->rows[] = $row;
         }
@@ -61,8 +60,6 @@ class DataGrid extends DataSet
             return $output;
         }
         return $this->app->view()->render($view);
-
-        return rpd::view('datagrid', $data);
     }
 
     // --------------------------------------------------------------------
