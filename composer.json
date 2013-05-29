@@ -12,7 +12,8 @@
 		"slim/extras": "2.*",
 		"twig/twig": "1.*",
         "aptoma/twig-markdown": "0.1.*",
-		"illuminate/database": "4.0.*@dev"
+		"illuminate/database": "4.1.*@dev",
+        "illuminate/html": "4.1.*@dev"
     },
     "autoload": {
         "psr-0": { "Rapyd": "src/", "Modules": "src/" ,"App": "src/"}

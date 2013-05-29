@@ -2,6 +2,8 @@
 
 namespace Rapyd;
 
+use \Illuminate\Database\Capsule\Manager as Capsule;
+
 class Application extends \Slim\Slim
 {
 
@@ -72,12 +74,12 @@ class Application extends \Slim\Slim
         if (empty($db))
             $db = include __DIR__ . '/../App/Config/db.php';
 
-
-        $capsule = new \Illuminate\Database\Capsule($db);
+        $capsule = new Capsule;
+        $capsule->addConnection($db, 'default');
         $capsule->bootEloquent();
 
         // setup db
-        $this->db = $capsule->connection();
+        $this->db = $capsule->getConnection('default');
     }
 
     public function setupView(Array $twig = array())
@@ -175,5 +177,12 @@ class Application extends \Slim\Slim
         array_unshift($args, $path);
         return;
     }
+    
+    
+    
+    public function urlFor( $name, $params = array() ) {
+        return sprintf('/%s%s', $this->view()->getLang(), parent::urlFor($name, $params));
+    }
+
 
 }
