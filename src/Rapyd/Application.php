@@ -73,9 +73,10 @@ class Application extends \Slim\Slim
         //add default routes
         if (empty($db))
             $db = include __DIR__ . '/../App/Config/db.php';
-
-        $capsule = new Capsule;
+        
+        $capsule = new Capsule();
         $capsule->addConnection($db, 'default');
+        $capsule->container['config']['database.fetch'] =  \PDO::FETCH_CLASS;
         $capsule->bootEloquent();
 
         // setup db
