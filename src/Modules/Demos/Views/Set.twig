@@ -3,9 +3,16 @@
 
 <table class="table table-striped">
     <tr>
-         <th><a href="{{ ds.orderby_link('article_id','asc')|raw }}">article_id</a></th> 
-         <th><a href="{{ ds.orderby_link('title','asc')|raw }}">title</a></th> 
-         <th><a href="{{ ds.orderby_link('body','asc')|raw }}">body</a></th> 
+         <th>
+             <a href="{{ ds.orderby_link('article_id','asc')|raw }}">
+                 <i class="icon-arrow-up"></i>
+             </a>
+             <a href="{{ ds.orderby_link('article_id','desc')|raw }}">
+                 <i class="icon-arrow-down"></i>
+             </a>
+         </th> 
+         <th>title</th> 
+         <th>body</th> 
     </tr>
     {% for article in ds.data  %}
         <tr>

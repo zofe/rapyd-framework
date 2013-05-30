@@ -48,5 +48,13 @@ class Home extends \Rapyd\Controller
             $table->timestamps();
         });
     }
+    
+    
+    public function formAction(){
+        
+        $form = new \Illuminate\Html\FormBuilder();
+        $form->open($options);
+    }
+    
 
 }

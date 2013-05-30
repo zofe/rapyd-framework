@@ -8,6 +8,7 @@ require_once __DIR__.'/../vendor/autoload.php';
 
 // init app 
 $app = new \Rapyd\Application();
+require  __DIR__.'/../src/App/Config/hooks.php';
 require  __DIR__.'/../src/App/Config/routes.php';
 require  __DIR__.'/../src/Modules/Demos/Config/routes.php';
 //... route for other modules ... 
