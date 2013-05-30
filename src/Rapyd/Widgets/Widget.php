@@ -94,6 +94,7 @@ class Widget
 		{
 			if (!in_array($property, array("cid", "built")))
 			{
+                if (!isset($this::$$property))
 				$this->$property = $value;
 			}
 		}
