@@ -1,20 +1,18 @@
-{% include 'header.twig' %}
+{% extends 'layout.twig' %}
+{% block content %}
+<div class="masthead">
+    <ul class="nav nav-pills pull-right">
+        <li class="active"><a href="/">Home</a></li>
+        <li><a href="/demo">Demos</a></li>
+        <li><a href="http://rapyd.com">rapyd.com <i class="icon-share-alt"></i></a></li>
+    </ul>
+    <h3 class="muted">Rapyd-framework 2.0 Alpha</h3>
+</div>
 
-      <div class="masthead">
-        <ul class="nav nav-pills pull-right">
-          <li class="active"><a href="/">Home</a></li>
-          <li><a href="/demo">Demos</a></li>
-          <li><a href="http://rapyd.com">rapyd.com <i class="icon-share-alt"></i></a></li>
-        </ul>
-        <h3 class="muted">Rapyd-framework 2.0 Alpha</h3>
-      </div>
+<hr>
+<div class="jumbotron">
+    <p>Congratulations! Rapyd is setup and working correclty.</p>
 
-      <hr>
-
-    <div class="jumbotron">
-        <p>Congratulations! Rapyd is setup and working correclty.</p>
-        
-        <a class="btn btn-large btn-success" href="/demo">Getting started</a>
-    </div>
-
-{% include 'footer.twig' %}
+    <a class="btn btn-large btn-success" href="/demo">Getting started</a>
+</div>
+{% endblock %}
