@@ -46,6 +46,14 @@
     </style>
 </head>
 <body>
-        
-  <div class="container-narrow">
-
+    <div class="{% block container_class %}container-narrow {% endblock %}">
+        {% block content %}{% endblock %}
+        <hr>
+        <div class="footer">
+            <p>&copy; Rapyd-Framework 2013</p>
+        </div>
+    </div>
+<script src="http://code.jquery.com/jquery.js"></script>
+<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>    
+</body>
+</html>
