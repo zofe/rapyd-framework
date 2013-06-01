@@ -4,13 +4,20 @@ rapyd-framework
 Project URL: [https://github.com/zofe/rapyd-framework/](https://github.com/zofe/rapyd-framework/)
 
 
+## take a look ##
+
 - sandbox : http://sandbox.rapyd.com/
 
 
 
+## install ##
+
 $ git clone https://github.com/zofe/rapyd-framework.git /your/www/path
+
 $ cd /your/www/path
+
 $ composer install 
+
 
 and you'll get:
 a simple mvc, a powerful query builder & orm, a great template engine:
