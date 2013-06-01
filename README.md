@@ -3,6 +3,16 @@ rapyd-framework
 
 Project URL: [https://github.com/zofe/rapyd-framework/](https://github.com/zofe/rapyd-framework/)
 
+Rapyd is a PHP5 framework made to build applications/cms/backends using the CRUD pattern. 
+It has been created in 2001 and rebuilt 2012 to support H-MVC and other nice stuff.
+
+Now it's time to learn a bit more (composer, symfony, etc..). 
+I'll try to rebuild it once again, using a better approach:
+namespaces, composer, some robust symfony2 component, a popular orm, twig etc.
+
+Felice Ostuni
+
+
 
 ## take a look ##
 
@@ -61,11 +71,3 @@ just if you need to split application in modules
 
 
 
-Rapyd is a PHP5 framework made to build applications/cms/backends using the CRUD pattern. 
-It has been created in 2001 and rebuilt 2012 to support H-MVC and other nice stuff.
-
-Now it's time to learn a bit more (composer, symfony, etc..). 
-I'll try to rebuild it once again, using a better approach:
-namespaces, composer, some robust symfony2 component, a popular orm, twig etc.
-
-Felice Ostuni
