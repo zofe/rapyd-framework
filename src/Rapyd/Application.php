@@ -90,16 +90,12 @@ class Application extends \Slim\Slim
             $twig = include __DIR__ . '/../App/Config/twig.php';
 
         // Prepare view to use twig
-        \Slim\Extras\Views\Twig::$twigOptions = $twig;
-        $this->view(new \Slim\Extras\Views\Twig());
-
-        //markdown
-        //todo : move "twig extensions" on some config file.
+        $this->view(new \Slim\Views\Twig());
+        $this->view->parserOptions = $twig;
+        
         $markdown = new \dflydev\markdown\MarkdownParser();
-        $markdown_extension = new \Aptoma\Twig\Extension\MarkdownExtension($markdown);
-        \Slim\Extras\Views\Twig::$twigExtensions = array(
-            'Twig_Extensions_Slim',
-            $markdown_extension,
+        $this->view->parserExtensions = array(
+           new \Aptoma\Twig\Extension\MarkdownExtension($markdown),
         );
     }
 
