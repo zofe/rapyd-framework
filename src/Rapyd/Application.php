@@ -2,7 +2,40 @@
 
 namespace Rapyd;
 
+//eloquent
 use \Illuminate\Database\Capsule\Manager as Capsule;
+
+//twig
+use \Twig_Loader_Filesystem;
+use \Twig_Environment;
+use \Twig_SimpleFilter;
+use \Twig_SimpleFunction;
+use \Twig_Extension_Debug;
+
+//symfony form & translations
+use Symfony\Component\Validator\Validation;
+use Symfony\Bridge\Twig\Form\TwigRendererEngine;
+use Symfony\Component\Form\Forms;
+use Symfony\Component\Form\Extension\Validator\ValidatorExtension;
+use Symfony\Component\Form\Extension\Csrf\CsrfExtension;
+use Symfony\Component\Form\Extension\Csrf\CsrfProvider\DefaultCsrfProvider;
+use Symfony\Component\Translation\Translator;
+use Symfony\Component\Translation\Loader\XliffFileLoader;
+use Symfony\Bridge\Twig\Extension\TranslationExtension;
+use Symfony\Bridge\Twig\Extension\FormExtension;
+use Symfony\Bridge\Twig\Form\TwigRenderer;
+
+
+// Overwrite this with your own secret
+define('CSRF_SECRET', 'c2ioeEU1n48QF2WsHGWd2HmiuUUT6dxr');
+define('DEFAULT_FORM_THEME', 'form_div_layout.html.twig');
+
+define('VENDOR_DIR', realpath(__DIR__ . '/../../vendor'));
+define('VENDOR_FORM_DIR', VENDOR_DIR . '/symfony/form/Symfony/Component/Form');
+define('VENDOR_VALIDATOR_DIR', VENDOR_DIR . '/symfony/validator/Symfony/Component/Validator');
+define('VENDOR_TWIG_BRIDGE_DIR', VENDOR_DIR . '/symfony/twig-bridge/Symfony/Bridge/Twig');
+define('VIEWS_DIR', realpath(__DIR__ . '/../App/Views'));
+
 
 class Application extends \Slim\Slim
 {
@@ -18,6 +51,12 @@ class Application extends \Slim\Slim
      */
     public $url;
 
+    /**
+     *
+     * @var \Slim\View;
+     */
+    protected $view;
+    
     /**
      *
      * @var array 
@@ -39,6 +78,7 @@ class Application extends \Slim\Slim
 
             $this->setupDatabase();
             $this->setupView();
+            $this->setupForms();
             //custom call, nothing to setup
         } else {
 
@@ -93,12 +133,66 @@ class Application extends \Slim\Slim
         $this->view(new \Slim\Views\Twig());
         $this->view->parserOptions = $twig;
         
+        $views_arr = array(VIEWS_DIR, VENDOR_TWIG_BRIDGE_DIR . '/Resources/views/Form');
+        
+        $module_dir = dirname(__DIR__) . '/Modules/';
+        if (file_exists($module_dir)) {
+            $modules = array_diff(scandir($module_dir), array('..', '.'));
+            foreach ($modules as $module) {
+                if (file_exists($module_dir . $module . '/Views')) {
+                    $views_arr[] = $module_dir . $module . '/Views';
+                }
+            }
+        }
+        $views_arr[] = __DIR__ . '/Views';
+        
+        //var_dump($views_arr);
+        $this->view->twigTemplateDirs = $views_arr;
         $markdown = new \dflydev\markdown\MarkdownParser();
         $this->view->parserExtensions = array(
            new \Aptoma\Twig\Extension\MarkdownExtension($markdown),
+           new Twig_Extension_Debug()
         );
     }
 
+    protected function setupForms()
+    {
+
+        // Set up the CSRF provider
+        $csrfProvider = new DefaultCsrfProvider(CSRF_SECRET);
+
+        // Set up the Translation component
+        $translator = new Translator('it');
+        $translator->setFallbackLocale(array('it', 'en'));
+
+        $translator->setLocale('it');
+        $translator->addLoader('xlf', new XliffFileLoader());
+        $translator->addResource('xlf', VENDOR_FORM_DIR . '/Resources/translations/validators.it.xlf', 'it', 'validators');
+        $translator->addResource('xlf', VENDOR_VALIDATOR_DIR . '/Resources/translations/validators.it.xlf', 'it', 'validators');
+
+        // Set up the Validator component
+        $validator = Validation::createValidatorBuilder()
+                ->setTranslator($translator)
+                ->setTranslationDomain('validators')
+                ->getValidator();
+
+
+        $formEngine = new TwigRendererEngine(array(DEFAULT_FORM_THEME));
+        
+        
+        $twig = $this->view->getInstance();
+        $formEngine->setEnvironment($twig);
+        $twig->addExtension(new TranslationExtension($translator));
+        $twig->addExtension(new FormExtension(new TwigRenderer($formEngine, $csrfProvider)));
+
+        // Set up the Form component
+        $this->form = Forms::createFormFactoryBuilder()
+                ->addExtension(new CsrfExtension($csrfProvider))
+                ->addExtension(new ValidatorExtension($validator))
+                ->getFormFactory();
+    }
+    
+    
     public function addRoutes(array $routings, $condition = null)
     {
         foreach ($routings as $path => $args) {

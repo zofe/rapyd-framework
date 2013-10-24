@@ -11,13 +11,4 @@ $app->addRoutes(array(
     '/demo/dataset'=> $demos . 'Dataset:index',
 
     '/test/twig'   => $demos . 'Tests:twig',
-        ), function() use ($app) {
-            $app->view()->setTemplatesDirectory(realpath(__DIR__ . '/../Views'));
-});
-
-/*
- //da utilizzare per le route dei moduli?
- $app->hook('slim.before.dispatch', function () use ($app) {
-    $app->view()->setTemplatesDirectory(realpath(__DIR__ . '/../Views'));
-});
- */
+));

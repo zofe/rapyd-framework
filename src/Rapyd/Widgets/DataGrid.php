@@ -31,6 +31,7 @@ class DataGrid extends DataSet
         $data = get_object_vars($this);
         $data['container'] = $this->button_containers();
 
+
         foreach ($this->data as $tablerow) {
             unset($row);
             foreach ($this->columns as $column) {
@@ -46,19 +47,9 @@ class DataGrid extends DataSet
             }
             $this->rows[] = $row;
         }
-
-        //switch to Rapyd/Views path 
-        if (true) {
-            $view = 'DataGrid.twig';
-            $current_template = $this->app->view()->getTemplatesDirectory();
-            $this->app->config('templates.path', __DIR__ . '/../Views');
-            $this->app->setupView();
-            $this->app->view()->appendData(array('dg' => $this));
-            $output = $this->app->view()->render($view);
-            $this->app->config('templates.path', $current_template);
-            $this->app->setupView();
-            return $output;
-        }
+        
+        $view = 'DataGrid.twig';
+        $this->app->view()->appendData(array('dg'=>$this));
         return $this->app->view()->render($view);
     }
 

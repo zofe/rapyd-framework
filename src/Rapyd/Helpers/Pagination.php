@@ -88,25 +88,15 @@ class Pagination
         }
     }
 
-    public function links($view = "")
+    public function links()
     {
         if ($this->total_pages < 2)
             return '';
 
-
-        //switch to Rapyd/Views path 
-        if ($view == "") {
-            $view = 'Pagination.twig';
-            $current_template = $this->app->view()->getTemplatesDirectory(); //$this->app->config('templates.path');
-            $this->app->config('templates.path', __DIR__ . '/../Views');
-            $this->app->setupView();
-            $this->app->view()->appendData(get_object_vars($this));
-            $output = $this->app->view()->render($view);
-            $this->app->config('templates.path', $current_template);
-            $this->app->setupView();
-            return $output;
-        }
-        return $this->app->view()->render($view);
+        $view = 'Pagination.twig';
+        $this->app->view()->appendData(get_object_vars($this));
+        $output = $this->app->view()->render($view);
+        return $output;
     }
 
     public function __toString()
