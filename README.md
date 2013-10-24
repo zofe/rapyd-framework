@@ -30,12 +30,12 @@ $ composer install
 
 
 and you'll get:
-a simple mvc, a powerful query builder & orm, a great template engine:
+a simple mvc, a powerful query builder & orm, a great template engine, powerful forms:
 
 - Slim  http://www.slimframework.com/
-- SlimController  https://github.com/fortrabbit/slimcontroller
 - Eloquent  https://github.com/illuminate/database
 - Twig http://twig.sensiolabs.org/
+- Symfony Forms  http://symfony.com/doc/master/book/forms.html
 
 
 -- /web -- 
@@ -57,7 +57,6 @@ just if you need to split application in modules
 ## TO-DO ##
 
 - reimplement rapyd CRUD widgets:
-. datagrid
 . dataform
 . datafilter
 . dataedit
