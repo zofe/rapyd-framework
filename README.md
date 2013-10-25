@@ -57,13 +57,13 @@ just if you need to split application in modules
 ## TO-DO ##
 
 - better twig usage in demos
-. use exends & blocks
-. move most variable assignation from controller to twig views 
+  * use exends & blocks
+  * move most variable assignation from controller to twig views 
 
 - reimplement rapyd CRUD widgets:
-. dataform
-. datafilter
-. dataedit
+  * dataform
+  * datafilter
+  * dataedit
 
 
 ## old but "working" version demos, documentation & source ##

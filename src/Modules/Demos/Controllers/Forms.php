@@ -47,8 +47,9 @@ class Forms extends \Rapyd\Controller
         $data['active'] = 'forms';
         $data['content_raw'] = $this->fetch('Form', array('form' => $form->createView()));
         $data['form'] = $form->createView();
+        
         $data['code'] = highlight_string(file_get_contents(__FILE__), TRUE);
-
+        $data['code'] .= htmlentities(file_get_contents(__DIR__.'/../Views/Form.twig'));
         $this->render('Demo', $data);
        
     }
