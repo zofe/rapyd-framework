@@ -53,10 +53,16 @@ class Application extends \Slim\Slim
 
     /**
      *
+     * @var \Symfony\Component\Form\FormFactory
+     */
+    public $form;
+
+    /**
+     *
      * @var \Slim\View;
      */
     protected $view;
-    
+        
     /**
      *
      * @var array 
@@ -162,13 +168,13 @@ class Application extends \Slim\Slim
         $csrfProvider = new DefaultCsrfProvider(CSRF_SECRET);
 
         // Set up the Translation component
-        $translator = new Translator('it');
-        $translator->setFallbackLocale(array('it', 'en'));
+        $translator = new Translator('en');
+        $translator->setFallbackLocale(array('en'));
 
-        $translator->setLocale('it');
+        $translator->setLocale('en');
         $translator->addLoader('xlf', new XliffFileLoader());
-        $translator->addResource('xlf', VENDOR_FORM_DIR . '/Resources/translations/validators.it.xlf', 'it', 'validators');
-        $translator->addResource('xlf', VENDOR_VALIDATOR_DIR . '/Resources/translations/validators.it.xlf', 'it', 'validators');
+        $translator->addResource('xlf', VENDOR_FORM_DIR . '/Resources/translations/validators.en.xlf', 'en', 'validators');
+        $translator->addResource('xlf', VENDOR_VALIDATOR_DIR . '/Resources/translations/validators.en.xlf', 'en', 'validators');
 
         // Set up the Validator component
         $validator = Validation::createValidatorBuilder()

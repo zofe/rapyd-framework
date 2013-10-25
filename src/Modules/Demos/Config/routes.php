@@ -10,5 +10,7 @@ $app->addRoutes(array(
     '/demo/datagrid'=> $demos .'Datagrid:index',
     '/demo/dataset'=> $demos . 'Dataset:index',
 
+    '/demo/forms'   => $demos . 'Forms:index',
+    
     '/test/twig'   => $demos . 'Tests:twig',
 ));

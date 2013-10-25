@@ -1,0 +1,14 @@
+
+{# Form.twig #}
+
+{{ form_start(form) }}
+    {{ form_errors(form) }}
+
+    {{ form_row(form.firstName) }}
+    {{ form_row(form.lastName) }}
+
+    {{ form_row(form.gender) }}
+    {{ form_row(form.newsletter) }}
+    <input type="submit" value="Submit me"/>
+
+{{ form_end(form) }} 
