@@ -1,14 +1,13 @@
 
 {# Form.twig #}
 
-{{ form_start(form) }}
-    {{ form_errors(form) }}
+{% form_theme testform "form.html.twig" %}
 
-    {{ form_row(form.firstName) }}
-    {{ form_row(form.lastName) }}
-
-    {{ form_row(form.gender) }}
-    {{ form_row(form.newsletter) }}
-    <input type="submit" value="Submit me"/>
-
-{{ form_end(form) }} 
+{{ form_start(testform, {'attr': {'class': 'form-horizontal', 'role': 'form'}} ) }}
+{{ form_widget(testform) }}
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+        <button type="submit" class="btn btn-default">Sign in</button>
+    </div>
+  </div>
+{{ form_end(testform) }} 

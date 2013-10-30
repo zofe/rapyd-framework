@@ -19,6 +19,7 @@ class Forms extends \Rapyd\Controller
                     new NotBlank(),
                     new Length(array('min'=>4)),
                 ),
+                'attr' => array('placeholder'=>'first name'),
             ))
             ->add('lastName', 'text', array(
                 'constraints' => array(
@@ -31,8 +32,7 @@ class Forms extends \Rapyd\Controller
             ))
             ->add('newsletter', 'checkbox', array(
                 'required' => false,
-            ))
-            ->getForm();
+            ))->getForm();
 
         if (isset($_POST[$form->getName()])) {
             $form->bind($_POST[$form->getName()]);
@@ -45,7 +45,7 @@ class Forms extends \Rapyd\Controller
 
         $data['title'] = 'Form Controller';
         $data['active'] = 'forms';
-        $data['content_raw'] = $this->fetch('Form', array('form' => $form->createView()));
+        $data['content_raw'] = $this->fetch('Form', array('testform' => $form->createView()));
         $data['form'] = $form->createView();
         
         $data['code'] = highlight_string(file_get_contents(__FILE__), TRUE);
