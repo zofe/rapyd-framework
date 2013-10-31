@@ -8,7 +8,7 @@ class Schema extends \Rapyd\Controller
     public function indexAction()
     {
         $this->fillDB();
-        $this->render('schema');
+        $this->render('Schema');
     }
     
     
