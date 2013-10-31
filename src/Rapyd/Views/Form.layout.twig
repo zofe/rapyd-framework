@@ -1,6 +1,26 @@
 {% extends 'form_div_layout.html.twig' %}
 
 
+{% block submit_widget %}
+{% spaceless %}
+      <div class="form-group">
+        <div class="col-lg-offset-2 col-lg-6">
+            {% set attr = attr|merge({'class': (attr.class|default('') ~ ' btn btn-default')|trim}) %}
+            {% set type = type|default('submit') %}
+            {{ block('button_widget') }}
+        </div>
+      </div>
+
+{% endspaceless %}
+{% endblock submit_widget %}
+
+
+{% block form_start %}
+{% set attr = attr|merge({'class': (attr.class|default('') ~ ' form-horizontal')|trim, 'role': 'form'}) %}
+{{ parent() }}
+{% endblock form_start %}
+
+
 {% block form_label %}
 {% spaceless %}
     {% if label is not sameas(false) %}
@@ -32,9 +52,9 @@
         
 {% block form_row %}
 {% spaceless %}
-    <div class="form-group">
+    <div class="form-group {% if form.vars.errors|length %}has-error{% endif %}">
         {{ form_label(form) }}
-        <div class="col-lg-10">
+        <div class="col-lg-6">
             {{ form_widget(form) }}
             {{ form_errors(form) }}
         </div>

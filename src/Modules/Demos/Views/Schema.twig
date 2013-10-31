@@ -1,4 +1,22 @@
 
 
-This Controller Install/Refill some db table
- 
+{% extends 'Demo.layout.twig' %}
+
+
+{% block title %}Schema Builder{% endblock %}
+
+
+{% block content %}
+
+    This Controller Install/Refill some db table
+
+{% endblock %}
+    
+    
+    
+{% block code %}
+       <hr>
+       {{ source_code('/../../Modules/Demos/Controllers/Schema.php') }}
+       {{ source_code('/../../Modules/Demos/Views/Schema.twig') }}
+{% endblock %} 
+        

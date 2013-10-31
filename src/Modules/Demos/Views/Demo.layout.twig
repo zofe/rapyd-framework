@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>{{ title }}</title>
+    <title>{% block title %} rapyd demo {% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">    
@@ -42,6 +42,10 @@
       .marketing p + h4 {
         margin-top: 28px;
       }
+      
+      pre {
+        line-height:15px;
+      }
     </style>
 </head>
 <body>
@@ -54,51 +58,38 @@
           <li class="active"><a href="/demos">Demos</a></li>
           <li><a href="http://rapyd.com">rapyd.com <i class="icon-share-alt"></i></a></li>
         </ul>
-        <h3 class="muted">{{ title }}</h3>
+        <h3 class="muted">{{ block('title') }}</h3>
       </div>
 
       
         <ul class="nav nav-tabs">
-         <li {% if active == 'index' %}class="active"{% endif %}><a href="/demo">Index</a></li>
-         <li {% if active == 'basic' %}class="active"{% endif %}><a href="/demo/hello">Basic</a></li>
-         <li {% if active == 'schema' %}class="active"{% endif %}><a href="/demo/schema">Schema Builder</a></li>
-         <li {% if active == 'set' %}class="active"{% endif %}><a href="/demo/dataset">DataSet Widget</a></li>
-         <li {% if active == 'grid' %}class="active"{% endif %}><a href="/demo/datagrid">DataGrid Widget</a></li>
-         <li {% if active == 'forms' %}class="active"{% endif %}><a href="/demo/forms">Forms</a></li>
+         <li{{ active_class('^/demo$') }}><a href="/demo">Index</a></li>
+         <li{{ active_class('^/demo/hello') }}><a href="/demo/hello">Basic</a></li>
+         <li{{ active_class('^/demo/schema') }}><a href="/demo/schema">Schema Builder</a></li>
+         <li{{ active_class('^/demo/dataset') }}><a href="/demo/dataset">DataSet Widget</a></li>
+         <li{{ active_class('^/demo/datagrid') }}><a href="/demo/datagrid">DataGrid Widget</a></li>
+         <li {{ active_class('^/demo/forms') }}><a href="/demo/forms">Forms</a></li>
         </ul>  
 
-
       <div>
-          <br />
-         
-        
           
+        <br />
+                 
+        {% block content %}{% endblock %}
+
+
           
-        {% if content_markdown %}
-        <p class="lead">
-        {% markdown %}
-        {{ content_markdown }}
-        {% endmarkdown %}
-        </p>
-        
-        {% elseif content_raw %}
-        
-        {{ content_raw|raw }}
-        
-        {% endif %}
-  
-        
-        
       </div>
 
 
-        {% if code %}
-            <hr>
-            <pre style="line-height:15px">
+      {% block code %}
+        {#<hr>
+        <pre style="line-height:15px">
               {{ code|raw }}
-            </pre>
-            <div class="line"></div>
-        {% endif %}
+        </pre>
+        <div class="line"></div>#}
+      {% endblock code %}
+        
 
       <hr>
 

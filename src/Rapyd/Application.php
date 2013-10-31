@@ -4,14 +4,12 @@ namespace Rapyd;
 
 //eloquent
 use \Illuminate\Database\Capsule\Manager as Capsule;
-
 //twig
 use \Twig_Loader_Filesystem;
 use \Twig_Environment;
 use \Twig_SimpleFilter;
 use \Twig_SimpleFunction;
 use \Twig_Extension_Debug;
-
 //symfony form & translations
 use Symfony\Component\Validator\Validation;
 use Symfony\Bridge\Twig\Form\TwigRendererEngine;
@@ -35,7 +33,7 @@ define('VENDOR_FORM_DIR', VENDOR_DIR . '/symfony/form/Symfony/Component/Form');
 define('VENDOR_VALIDATOR_DIR', VENDOR_DIR . '/symfony/validator/Symfony/Component/Validator');
 define('VENDOR_TWIG_BRIDGE_DIR', VENDOR_DIR . '/symfony/twig-bridge/Symfony/Bridge/Twig');
 define('VIEWS_DIR', realpath(__DIR__ . '/../App/Views'));
-
+define('MODULES_DIR', realpath(__DIR__ . '/../Modules'));
 
 class Application extends \Slim\Slim
 {
@@ -62,7 +60,7 @@ class Application extends \Slim\Slim
      * @var \Slim\View;
      */
     protected $view;
-        
+
     /**
      *
      * @var array 
@@ -119,10 +117,10 @@ class Application extends \Slim\Slim
         //add default routes
         if (empty($db))
             $db = include __DIR__ . '/../App/Config/db.php';
-        
+
         $capsule = new Capsule();
         $capsule->addConnection($db, 'default');
-        $capsule->container['config']['database.fetch'] =  \PDO::FETCH_CLASS;
+        $capsule->container['config']['database.fetch'] = \PDO::FETCH_CLASS;
         $capsule->bootEloquent();
 
         // setup db
@@ -138,9 +136,9 @@ class Application extends \Slim\Slim
         // Prepare view to use twig
         $this->view(new \Slim\Views\Twig());
         $this->view->parserOptions = $twig;
-        
+
         $views_arr = array(VIEWS_DIR, VENDOR_TWIG_BRIDGE_DIR . '/Resources/views/Form');
-        
+
         $module_dir = dirname(__DIR__) . '/Modules/';
         if (file_exists($module_dir)) {
             $modules = array_diff(scandir($module_dir), array('..', '.'));
@@ -151,14 +149,27 @@ class Application extends \Slim\Slim
             }
         }
         $views_arr[] = __DIR__ . '/Views';
-        
-        //var_dump($views_arr);
         $this->view->twigTemplateDirs = $views_arr;
-        $markdown = new \dflydev\markdown\MarkdownParser();
+
+
         $this->view->parserExtensions = array(
-           new \Aptoma\Twig\Extension\MarkdownExtension($markdown),
-           new Twig_Extension_Debug()
+            new Twig_Extension_Debug()
         );
+
+        //to move somewhere
+        $function = new Twig_SimpleFunction('active_class', function ($path, $class = " class=\"active\"") {
+                    return (preg_match("#{$path}#", $_SERVER["REQUEST_URI"])) ? $class : '';
+                }, array('is_safe' => array('html')));
+        $this->view->getInstance()->addFunction($function);
+
+        $function = new Twig_SimpleFunction('source_code', function ($filepath) {
+                    $code = file_get_contents(VIEWS_DIR . $filepath);
+                    $code = preg_replace("#{% block code %}.*{% endblock %}#Us", '', $code);
+                    $code = highlight_string($code, TRUE);
+
+                    return "<pre>\n" . $code . "\n</pre>";
+                }, array('is_safe' => array('html')));
+        $this->view->getInstance()->addFunction($function);
     }
 
     protected function setupForms()
@@ -184,8 +195,8 @@ class Application extends \Slim\Slim
 
 
         $formEngine = new TwigRendererEngine(array(DEFAULT_FORM_THEME));
-        
-        
+
+
         $twig = $this->view->getInstance();
         $formEngine->setEnvironment($twig);
         $twig->addExtension(new TranslationExtension($translator));
@@ -197,8 +208,7 @@ class Application extends \Slim\Slim
                 ->addExtension(new ValidatorExtension($validator))
                 ->getFormFactory();
     }
-    
-    
+
     public function addRoutes(array $routings, $condition = null)
     {
         foreach ($routings as $path => $args) {
@@ -274,12 +284,10 @@ class Application extends \Slim\Slim
         array_unshift($args, $path);
         return;
     }
-    
-    
-    
-    public function urlFor( $name, $params = array() ) {
+
+    public function urlFor($name, $params = array())
+    {
         return sprintf('/%s%s', $this->view()->getLang(), parent::urlFor($name, $params));
     }
-
 
 }

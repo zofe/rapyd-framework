@@ -1,29 +1,47 @@
 
 {# Set.twig #}
 
-<table class="table table-striped">
-    <tr>
-         <th>
-             <a href="{{ ds.orderby_link('article_id','asc')|raw }}">
-                 <i class="icon-arrow-up"></i>
-             </a>
-             <a href="{{ ds.orderby_link('article_id','desc')|raw }}">
-                 <i class="icon-arrow-down"></i>
-             </a>
-         </th> 
-         <th>title</th> 
-         <th>body</th> 
-    </tr>
-    {% for article in ds.data  %}
+{% extends 'Demo.layout.twig' %}
+
+
+{% block title %} DataSet {% endblock %}
+
+
+{% block content %}
+
+    <table class="table table-striped">
         <tr>
-            <td>{{ article.article_id }}</td> 
-            <td>{{ article.title }}</td> 
-            <td>{{ article.body }}</td>
+             <th>
+                 <a href="{{ ds.orderby_link('article_id','asc')|raw }}">
+                     <i class="icon-arrow-up"></i>
+                 </a>
+                 <a href="{{ ds.orderby_link('article_id','desc')|raw }}">
+                     <i class="icon-arrow-down"></i>
+                 </a>
+             </th> 
+             <th>title</th> 
+             <th>body</th> 
         </tr>
-    {% endfor %}
-</table>
+        {% for article in ds.data  %}
+            <tr>
+                <td>{{ article.article_id }}</td> 
+                <td>{{ article.title }}</td> 
+                <td>{{ article.body }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    {{ ds.links()|raw }}
+
+{% endblock %}
 
 
 
-{{ ds.links()|raw }}
+{% block code %}
+
+       <hr>
+       {{ source_code('/../../Modules/Demos/Controllers/Dataset.php') }}
+       {{ source_code('/../../Modules/Demos/Views/Set.twig') }}
+
+{% endblock %} 
 

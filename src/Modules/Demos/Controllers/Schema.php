@@ -8,14 +8,7 @@ class Schema extends \Rapyd\Controller
     public function indexAction()
     {
         $this->fillDB();
-
-        //send output
-        $data['title'] = 'Schema Builder';
-        $data['active'] = 'schema';
-        $data['content_raw'] = $this->fetch('Schema');
-        $data['code'] = highlight_string(file_get_contents(__FILE__), TRUE);
-
-        $this->render('Demo', $data);
+        $this->render('schema');
     }
     
     
@@ -72,13 +65,6 @@ class Schema extends \Rapyd\Controller
                                 'comment' => 'Comment for Article 2')
         );
 
-        //send output
-        $data['title'] = 'Schema Builder';
-        $data['active'] = 'schema';
-        $data['content_raw'] = $this->fetch('Schema');
-        $data['code'] = highlight_string(file_get_contents(__FILE__), TRUE);
-
-        $this->render('Demo', $data);
     }
     
     protected function drop()

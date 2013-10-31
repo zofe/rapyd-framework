@@ -17,14 +17,7 @@ class Datagrid extends \Rapyd\Controller
         $dg->setColumn('<em>{{ title|lower }}</em>',"title", true);
         $dg->build();   
 
- 
-        
-        $data['title'] = 'DataSet Widget';
-        $data['active'] = 'grid';
-        $data['content_raw'] = $this->fetch('Grid', array('dg' => $dg->output));
-        $data['code']  = highlight_string(file_get_contents(__FILE__), TRUE);
-        $data['code'] .= htmlentities(file_get_contents(__DIR__.'/../Views/Grid.twig'));
-        $this->render('Demo', $data);
+        $this->render('Grid', array('dg' => $dg->output));
     }
 
 }

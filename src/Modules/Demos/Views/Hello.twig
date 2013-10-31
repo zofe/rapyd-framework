@@ -1,0 +1,20 @@
+
+{# Form.twig #}
+
+{% extends 'Demo.layout.twig' %}
+
+
+{% block title %} Basic demo {% endblock %}
+
+
+{% block content %} 
+
+    <p>{{ somevar }}</p>
+
+ {% endblock %}
+
+{% block code %}
+       <hr>
+       {{ source_code('/../../Modules/Demos/Controllers/Hello.php') }}
+       {{ source_code('/../../Modules/Demos/Views/Hello.twig') }}
+{% endblock %} 

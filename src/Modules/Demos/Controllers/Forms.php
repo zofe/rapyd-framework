@@ -11,8 +11,6 @@ class Forms extends \Rapyd\Controller
 
     public function indexAction()
     {
-        
-        // Create our first form!
         $form = $this->form->createBuilder()
             ->add('firstName', 'text', array(
                 'constraints' => array(
@@ -32,7 +30,9 @@ class Forms extends \Rapyd\Controller
             ))
             ->add('newsletter', 'checkbox', array(
                 'required' => false,
-            ))->getForm();
+            ))
+            ->add('sign in', 'submit')
+            ->getForm();
 
         if (isset($_POST[$form->getName()])) {
             $form->bind($_POST[$form->getName()]);
@@ -43,14 +43,6 @@ class Forms extends \Rapyd\Controller
             }
         }
 
-        $data['title'] = 'Form Controller';
-        $data['active'] = 'forms';
-        $data['content_raw'] = $this->fetch('Form', array('testform' => $form->createView()));
-        $data['form'] = $form->createView();
-        
-        $data['code'] = highlight_string(file_get_contents(__FILE__), TRUE);
-        $data['code'] .= htmlentities(file_get_contents(__DIR__.'/../Views/Form.twig'));
-        $this->render('Demo', $data);
-       
+        $this->render('Form', array('testform' => $form->createView()));
     }
 }

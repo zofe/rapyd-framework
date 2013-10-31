@@ -1,7 +1,20 @@
 
 {# Grid.twig #}
 
+{% extends 'Demo.layout.twig' %}
+
+
+{% block title %} DataGrid {% endblock %}
+
+{% block content %}
 
 {{ dg|raw }}
 
+{% endblock %}
 
+
+{% block code %}
+    <hr>
+    {{ source_code('/../../Modules/Demos/Controllers/Datagrid.php') }}
+    {{ source_code('/../../Modules/Demos/Views/Grid.twig') }}
+{% endblock %} 
