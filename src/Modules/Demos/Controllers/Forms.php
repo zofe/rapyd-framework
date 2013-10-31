@@ -4,42 +4,46 @@ namespace Modules\Demos\Controllers;
 
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
-
+use \Modules\Demos\Models\Article;
 
 class Forms extends \Rapyd\Controller
 {
 
     public function indexAction()
     {
+        
+        $article = Article::find(1);
+
+        
         $form = $this->form->createBuilder()
-            ->add('firstName', 'text', array(
+            ->add('title', 'text', array(
                 'constraints' => array(
                     new NotBlank(),
                     new Length(array('min'=>4)),
                 ),
-                'attr' => array('placeholder'=>'first name'),
+                'attr' => array('placeholder'=>'article title'),
             ))
-            ->add('lastName', 'text', array(
+            ->add('body', 'textarea', array(
                 'constraints' => array(
                     new NotBlank(),
-                    new Length(array('min'=>4)),
                 ),
             ))
-            ->add('gender', 'choice', array(
-                'choices' => array('m' => 'Male', 'f' => 'Female'),
-            ))
-            ->add('newsletter', 'checkbox', array(
+            ->add('public', 'checkbox', array(
                 'required' => false,
+
             ))
-            ->add('sign in', 'submit')
+            ->add('save', 'submit')
+            ->setData($article->attributesToArray())
             ->getForm();
 
         if (isset($_POST[$form->getName()])) {
             $form->bind($_POST[$form->getName()]);
 
+            
             if ($form->isValid()) {
-                var_dump('VALID', $form->getData());
-                die;
+
+                $article->setRawAttributes($form->getData());
+                $article->save();
             }
         }
 

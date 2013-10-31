@@ -15,7 +15,7 @@ class User extends \Rapyd\Model
 
     public function articles()
     {
-        return $this->hasMany('Articles', 'author_id');
+        return $this->hasMany('Article', 'author_id');
     }
 
 }

@@ -15,7 +15,17 @@ class Article extends \Rapyd\Model
 
     public function author()
     {
-        return $this->belongsTo('Author', 'author_id');
+        return $this->belongsTo('User', 'author_id');
     }
 
+    public function setPublicAttribute($value)
+    {
+        $this->attributes['first_name'] = $public ? 1 : 0;
+    }
+
+    public function getPublicAttribute($value)
+    {
+        return (bool)$value;
+    }
+    
 }
