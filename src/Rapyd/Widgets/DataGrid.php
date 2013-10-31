@@ -15,11 +15,11 @@ class DataGrid extends DataSet
 
     
     
-    public function setColumn($name, $label = null, $orderby = null)
+    public function setColumn($name, $label = null, $orderby = false)
     {
         $config['pattern'] = $name;
         $config['label'] =  ($label != "") ? $label : $name;
-        if ($orderby) $config['orderby'] = $orderby;
+        $config['orderby'] = $orderby;
 
         $column = new Column($config);
         $this->columns[] = $column;
@@ -61,6 +61,7 @@ class DataGrid extends DataSet
         //$this->sniff_action();
         foreach ($this->columns as & $column) {
             if (isset($column->orderby)) {
+
                 $column->orderby_asc_url = $this->orderby_link($column->orderby, 'asc');
                 $column->orderby_desc_url = $this->orderby_link($column->orderby, 'desc');
             }

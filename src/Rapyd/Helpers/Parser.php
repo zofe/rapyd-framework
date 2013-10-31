@@ -23,4 +23,16 @@ class Parser
         return $this->env->render($pattern,$array);
     }
 
+    public function variables($pattern)
+    {
+        if (preg_match_all("/\{\{ (\w+)(\|\w+)? \}\}/U", $pattern, $m))
+        {
+
+            //$m = array_map('array_filter', $m); // Remove empty values
+            array_shift($m); // Remove first index [0]
+            return $m[0];  
+        }
+
+        return false;
+    }
 }
