@@ -11,7 +11,7 @@ class Forms extends \Rapyd\Controller
 
     public function indexAction()
     {
-        
+        //fill form data using a model
         $article = Article::find(1);
 
         
@@ -36,12 +36,13 @@ class Forms extends \Rapyd\Controller
             ->setData($article->attributesToArray())
             ->getForm();
 
+        //there is a post?
         if (isset($_POST[$form->getName()])) {
+            
             $form->bind($_POST[$form->getName()]);
 
-            
             if ($form->isValid()) {
-
+                //bind model with new values and save
                 $article->setRawAttributes($form->getData());
                 $article->save();
             }
