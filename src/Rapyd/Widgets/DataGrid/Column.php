@@ -55,7 +55,6 @@ class Column extends Widget
                 $this->field_name = $this->pattern;
                 if ($this->orderby === true) {
                     $this->orderby_field = (isset($this->orderby_field)) ? $this->orderby_field : $this->field_name;
-                    die($this->orderby_field);
                 }
             }
         }
