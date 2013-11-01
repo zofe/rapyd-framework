@@ -8,7 +8,7 @@ class Dataset extends \Rapyd\Controller
     public function indexAction()
     {
         //dataset widget 
-        $ds = new \Rapyd\Widgets\DataSet();
+        $ds = $this->set->createBuilder();
         $ds->setSource("demo_articles");
         $ds->setPagination(10);
         $ds->getSet();   

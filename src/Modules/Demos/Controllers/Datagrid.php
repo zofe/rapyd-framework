@@ -9,7 +9,7 @@ class Datagrid extends \Rapyd\Controller
     {
 
         //dataset widget 
-        $dg = new \Rapyd\Widgets\DataGrid();
+        $dg = $this->grid->createBuilder();
         $dg->setSource("demo_articles");
         $dg->setPagination(10);
         $dg->add('article_id',"ID", true);

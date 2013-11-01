@@ -62,7 +62,9 @@ abstract class Controller
 		
 		$this->db  = $app->db;
 		$this->form  = $app->form;
-		
+		$this->grid  = $app->grid;
+        $this->set   = $app->set;
+        
         if ($renderTemplateSuffix = $app->config('controller.template_suffix')) {
             $this->renderTemplateSuffix = $renderTemplateSuffix;
         }

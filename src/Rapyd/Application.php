@@ -57,6 +57,12 @@ class Application extends \Slim\Slim
 
     /**
      *
+     * @var \Rapyd\Widgets\WidgetBuilder
+     */
+    public $grid;
+
+    /**
+     *
      * @var \Slim\View;
      */
     protected $view;
@@ -83,6 +89,7 @@ class Application extends \Slim\Slim
             $this->setupDatabase();
             $this->setupView();
             $this->setupForms();
+            $this->setupWidgets();
             //custom call, nothing to setup
         } else {
 
@@ -209,6 +216,13 @@ class Application extends \Slim\Slim
                 ->getFormFactory();
     }
 
+    protected function setupWidgets()
+    {
+        $this->grid = new \Rapyd\Widgets\WidgetBuilder("\\Rapyd\\Widgets\\DataGrid"); //new \Rapyd\Helpers\Url;//new WidgetBuilder('DataGrid');
+        $this->set = new \Rapyd\Widgets\WidgetBuilder("\\Rapyd\\Widgets\\DataSet");
+        
+    }
+    
     public function addRoutes(array $routings, $condition = null)
     {
         foreach ($routings as $path => $args) {
