@@ -3,12 +3,18 @@ rapyd-framework
 
 Project URL: [https://github.com/zofe/rapyd-framework/](https://github.com/zofe/rapyd-framework/)
 
-Rapyd is a PHP5 framework made to build applications/cms/backends using the CRUD pattern. 
-It has been created in 2001 and rebuilt 2012 to support H-MVC and other nice stuff.
+Rapyd is a PHP microframework for PHP 5.3 built on top of Slim Framework, Twig, Symfony Forms, Illuminate/Database, Twitter Bootstrap.
 
-Now it's time to learn a bit more (composer, symfony, etc..). 
-I'll try to rebuild it once again, using a better approach:
-namespaces, composer, some robust symfony2 component, a popular orm, twig etc.
+In detail:
+
+- Rapyd extend Slim application to give you an MVC with modular separation framework.
+- It use Twig as view template engine,
+- Illuminate/Database (Fluent query and schema builder, and Eloquent ORM)  as db engine 
+- Symfony Forms as base of Form widgets
+- Twitter bootstrap 3 as standard for html/css output.
+
+- Then a pool of presentation widgets (DataGrids, etc..) to let you develop CRUDL application really fast.
+
 
 Felice Ostuni
 
@@ -20,16 +26,17 @@ Felice Ostuni
 
 
 
-## install ##
+## install via git ##
 
-$ git clone https://github.com/zofe/rapyd-framework.git /your/www/path
+$ git clone https://github.com/zofe/rapyd-framework.git /your/path
 
-$ cd /your/www/path
+$ cd /your/path
 
 $ composer install 
 
+then remember to setup your vhost document-root to the downloaded /your/path/www
 
-and you'll get:
+You'll get:
 a simple mvc, a powerful query builder & orm, a great template engine, powerful forms:
 
 - Slim  http://www.slimframework.com/
@@ -56,9 +63,6 @@ just if you need to split application in modules
 
 ## TO-DO ##
 
-- better twig usage in demos
-  * use exends & blocks
-  * move most variable assignation from controller to twig views 
 
 - reimplement rapyd CRUD widgets:
   * dataform
@@ -66,10 +70,11 @@ just if you need to split application in modules
   * dataedit
 
 
-## old but "working" version demos, documentation & source ##
+## really old version demo, documentation & source ##
+
+Note: I'll try do reimplement this stuffs in curret version 
 
 - http://test.rapyd.com/demo
-- http://www.rapyd.com/page/documentation
 - https://code.google.com/p/rapyd-framework/
 
 
