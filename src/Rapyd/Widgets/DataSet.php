@@ -75,8 +75,12 @@ class DataSet extends Widget
         return $this->query;
     }
 
-    // --------------------------------------------------------------------
-
+    public function setPagination($per_page, $num_links=3)
+    {
+        $this->per_page = $per_page;
+        $this->num_links= $num_links;
+        return $this;
+    }
 
 
     public function orderby_link($field, $dir="asc")
@@ -187,7 +191,13 @@ class DataSet extends Widget
         return $this;
     }
     
-    public function get()
+    public function getSet()
+    {
+        $this->build();
+        return $this;
+    }
+    
+    public function getData()
     {
         return $this->data;
     }

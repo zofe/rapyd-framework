@@ -10,14 +10,13 @@ class Datagrid extends \Rapyd\Controller
 
         //dataset widget 
         $dg = new \Rapyd\Widgets\DataGrid();
-        $dg->source("demo_articles");
-        $dg->per_page = 10;
-        
-        $dg->setColumn('article_id',"ID");
-        $dg->setColumn('<em>{{ title|lower }}</em>',"title", true);
-        $dg->build();   
+        $dg->setSource("demo_articles");
+        $dg->setPagination(10);
+        $dg->add('article_id',"ID", true);
+        $dg->add('<em>{{ title|lower }}</em>',"title", true);
+        $dg->getGrid();   
 
-        $this->render('Grid', array('dg' => $dg->output));
+        $this->render('Grid', array('dg' => $dg));
     }
 
 }

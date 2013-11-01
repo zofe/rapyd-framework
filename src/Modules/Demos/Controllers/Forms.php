@@ -15,26 +15,16 @@ class Forms extends \Rapyd\Controller
         $article = Article::find(1);
 
         
-        $form = $this->form->createBuilder()
-            ->add('title', 'text', array(
-                'constraints' => array(
-                    new NotBlank(),
-                    new Length(array('min'=>4)),
-                ),
-                'attr' => array('placeholder'=>'article title'),
-            ))
-            ->add('body', 'textarea', array(
-                'constraints' => array(
-                    new NotBlank(),
-                ),
-            ))
-            ->add('public', 'checkbox', array(
-                'required' => false,
-
-            ))
-            ->add('save', 'submit')
-            ->setData($article->attributesToArray())
-            ->getForm();
+        $form = $this->form->createBuilder();
+        $form->add('title', 'text', 
+                array('constraints' => array( new NotBlank(), new Length(array('min'=>4))),
+                      'attr' => array('placeholder'=>'article title'))
+         );
+         $form->add('body', 'textarea', array('constraints' => array(new NotBlank())));
+         $form->add('public', 'checkbox', array('required' => false));
+         $form->add('save', 'submit');
+         $form->setData($article->attributesToArray());
+         $form = $form->getForm();
 
         //there is a post?
         if (isset($_POST[$form->getName()])) {

@@ -12,20 +12,21 @@ class DataGrid extends DataSet
     public $rows = array();
     public $output = "";
 
-
-    
-    
     public function setColumn($name, $label = null, $orderby = false)
     {
         $config['pattern'] = $name;
-        $config['label'] =  ($label != "") ? $label : $name;
+        $config['label'] = ($label != "") ? $label : $name;
         $config['orderby'] = $orderby;
 
         $column = new Column($config);
         $this->columns[] = $column;
-        return $column;
+        return $this;
     }
-
+    
+    public function add($name, $label = null, $orderby = false)
+    {
+        return $this->setColumn($name, $label, $orderby);
+    }
     protected function buildGrid()
     {
         $data = get_object_vars($this);
@@ -35,25 +36,25 @@ class DataGrid extends DataSet
         foreach ($this->data as $tablerow) {
             unset($row);
             foreach ($this->columns as $column) {
-                
+
                 unset($cell);
                 $column->resetPattern();
                 $column->setRow($tablerow);
-                
-				$cell = get_object_vars($column);
-				$cell["value"] = $column->getValue();
-				$cell["type"] = $column->column_type;
-				$row[] = $cell;
+
+                $cell = get_object_vars($column);
+                $cell["value"] = $column->getValue();
+                $cell["type"] = $column->column_type;
+                $row[] = $cell;
             }
             $this->rows[] = $row;
         }
-        
+
         $view = 'DataGrid.twig';
-        $this->app->view()->appendData(array('dg'=>$this));
+        $this->app->view()->appendData(array('dg' => $this));
         return $this->app->view()->render($view);
     }
 
-    // --------------------------------------------------------------------
+
     public function build($type = 'Grid')
     {
         parent::build();
@@ -68,6 +69,12 @@ class DataGrid extends DataSet
         }
         $method = 'build' . $type;
         $this->output = $this->$method();
+    }
+
+    public function getGrid($type = 'Grid')
+    {
+        $this->build($type);
+        return $this->output;
     }
 
 }
