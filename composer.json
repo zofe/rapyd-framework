@@ -6,11 +6,11 @@
             "name": "felice",
             "email": "felice.ostuni@gmail.com"
         }
-    ],   
+    ],
     "require": {
-		"slim/slim": "2.*",
-		"slim/views": "0.1.*",
-		"twig/twig": "1.*",
+        "slim/slim": "2.*",
+        "slim/views": "0.1.*",
+        "twig/twig": "1.*",
         "illuminate/database": "4.0.*",
         "symfony/form": "2.3.*",
         "symfony/validator": "2.3.*",
@@ -19,6 +19,6 @@
         "symfony/twig-bridge": "2.3.*"
     },
     "autoload": {
-        "psr-0": { "Rapyd": "src/", "Modules": "src/" ,"App": "src/"}
+        "psr-0": {"Rapyd": "src/", "Modules": "src/", "App": "src/"}
     }
 }
