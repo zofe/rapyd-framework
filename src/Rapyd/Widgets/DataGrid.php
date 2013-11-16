@@ -11,9 +11,28 @@ class DataGrid extends DataSet
     public $columns = array();
     public $rows = array();
     public $output = "";
+    public $row_as = null;
 
+    public function setSource($source, $as=null)
+    {
+
+        $this->source = $source;
+        if (is_null($as) && is_a($source, "\Illuminate\Database\Eloquent\Builder")){
+            
+            $reflection = new \ReflectionClass(get_class($source->getModel()));
+            $this->row_as = strtolower($reflection->getShortName());
+
+        } elseif (is_null($as) && is_a($source, "\Illuminate\Database\Eloquent\Model")){
+            $reflection = new \ReflectionClass(get_class($source));
+            $this->row_as = strtolower($reflection->getShortName());
+        }
+        return $this;
+    }
+    
+    
     public function setColumn($name, $label = null, $orderby = false)
     {
+        $config['row_as'] = $this->row_as;
         $config['pattern'] = $name;
         $config['label'] = ($label != "") ? $label : $name;
         $config['orderby'] = $orderby;

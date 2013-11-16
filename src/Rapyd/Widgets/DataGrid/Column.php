@@ -24,6 +24,7 @@ class Column extends Widget
     public $orderby_desc_url;
     protected $pattern = "";
     protected $pattern_type = null;
+    protected $row_as = null;
     protected $field = null;
     protected $field_name = null;
     protected $field_list = array();
@@ -96,6 +97,11 @@ class Column extends Widget
         return $this;
     }
 
+    protected function setRow_as($row_as)
+    {
+        $this->row_as = $row_as;
+    }
+    
     // --------------------------------------------------------------------
     public function setAttributes($attributes)
     {
@@ -120,12 +126,17 @@ class Column extends Widget
     // --------------------------------------------------------------------
     public function setRow($data_row)
     {
-        $data_row = get_object_vars($data_row);
         if (isset($data_row[$this->pattern])) {
             $this->rpattern = $data_row[$this->pattern];
         } else {
+            if (isset($this->row_as)) {
+                $data_row =  array($this->row_as => $data_row);
+            } else {
+                $data_row = get_object_vars($data_row);
+            }
             $this->rpattern = $this->parser->render($this->pattern, $data_row);
         }
+        
         if (isset($this->callback_object)) {
             $this->rpattern = call_user_func(array($this->callback_object, $this->callback), $data_row);
         } elseif (isset($this->callback)) {

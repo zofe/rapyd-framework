@@ -2,6 +2,8 @@
 
 namespace Modules\Demos\Controllers;
 
+use Modules\Demos\Models\Article;
+
 class Datagrid extends \Rapyd\Controller
 {
 
@@ -10,10 +12,11 @@ class Datagrid extends \Rapyd\Controller
 
         //dataset widget 
         $dg = $this->grid->createBuilder();
-        $dg->setSource("demo_articles");
+        $dg->setSource(Article::with("author"));
         $dg->setPagination(10);
         $dg->add('article_id',"ID", true);
-        $dg->add('<em>{{ title|lower }}</em>',"title", true);
+        $dg->add('title',"title");
+        $dg->add('<em>{{ article.author.firstname|lower }}</em>',"author");
         $dg->getGrid();   
 
         $this->render('Grid', array('dg' => $dg));
