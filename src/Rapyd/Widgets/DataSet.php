@@ -115,6 +115,11 @@ class DataSet extends Widget
             $this->query = $this->table($this->source);
             $this->total_rows = $this->query->count();
         }
+        elseif (is_a($this->source, "\Illuminate\Database\Eloquent\Model") || is_a($this->source,"\Illuminate\Database\Eloquent\Builder")) {
+           $this->type = "model";
+           $this->query = $this->source;
+           $this->total_rows = $this->query->count();
+        }
         //array
         elseif (is_array($this->source)) {
             $this->type = "array";
@@ -176,15 +181,17 @@ class DataSet extends Widget
                 break;
 
             case "query":
+            case "model":
                 //orderby
 
                 if (isset($this->orderby)) {
-                    $this->query->orderBy($this->orderby[0], $this->orderby[1]);
+                    $this->query = $this->query->orderBy($this->orderby[0], $this->orderby[1]);
                 }
                 //limit-offset
                 if (isset($this->limit)) {
-                    $this->query->skip($this->pagination->offset())->take($this->per_page);
+                    $this->query = $this->query->skip($this->pagination->offset())->take($this->per_page);
                 }
+                
                 $this->data = $this->query->get();
                 break;
         }

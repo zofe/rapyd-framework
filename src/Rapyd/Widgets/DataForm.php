@@ -47,18 +47,7 @@ class DataForm extends Widget
 		}
 	}
 
-	/**
-	 * internal, it build fields, called only if $config is passed to the constructor
-	 * 
-	 * @param type $fields 
-	 */
-	protected function set_fields($fields)
-	{
-		foreach ($fields as $field)
-		{
-			$this->set_field($field);
-		}
-	}
+
 
 	/**
 	 * called automagically by field($field) or field($type, $name, $label)

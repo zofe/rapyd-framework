@@ -8,7 +8,7 @@
             margin: 0;
             padding: 20px;
             font-family: "Lucida Grande", Verdana, Geneva, Sans-serif;
-            font-size: 14px;
+            font-size: 12px;
             color: #4F5155;
             background-color: #fff;
         }
@@ -30,12 +30,12 @@
         }
         small {background-color: #ececec; padding: 5px;}
         
-        .code { clear:left; margin: 0 0 20px 0; font: 11px "courier new",Tahoma,Arial,sans-serif;	background: #eFeFeF;	padding: 10px;	border: 1px solid #dddddd; }
+       .code {  margin: 0 0 20px 0; font: 11px "courier new",Tahoma,Arial,sans-serif;	background-color: #eFeFeF;	padding: 10px;	border: 1px solid #dddddd; }
     </style>
 </head>
 <body>
     <h1>A PHP Error was encountered</h1>
-    <p>
+    <p >
         Message:  {{ e.message }}<br />
         {% if e.file %}Filename: {{ e.file }}<br />{% endif %}
         Line Number: {{ e.line }}
@@ -44,22 +44,15 @@
 
     {% if  true %}
 
-        <code class="code">
-        Backtrace: 
+<pre class="code">
+Backtrace:
 
-        {% for error in trace  %}
-
-            {% if  error.file %}
-
-
-                Line: {{ error.line }} - File: {{ error.file }}<br />
-                Function: {{ error.function }}<br />
-
-
-            {% endif %}
-
-        {% endfor %}
-        </code>
+{% for error in trace  %}
+    {% if  error.file %}
+Line: {{ error.line }} - {{ error.function }} - File: {{ error.file }}
+    {% endif %}
+{% endfor %}
+</pre>
     {% endif %}
     
     <p>

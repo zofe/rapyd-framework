@@ -7,6 +7,7 @@ class Schema extends \Rapyd\Controller
 
     public function indexAction()
     {
+        $this->drop();
         $this->fillDB();
         $this->render('Schema');
     }
@@ -53,7 +54,9 @@ class Schema extends \Rapyd\Controller
         
         $articles = $this->app->db->table('demo_articles');
         for ($i=1; $i<=20; $i++){
-            $articles->insert(array('title' => 'Article '.$i,
+            $articles->insert(array(
+                                    'author_id' => rand(1,2),
+                                    'title' => 'Article '.$i,
                                     'body' => 'Body of article '.$i,
                                     'public' => true,)
             );
@@ -69,6 +72,10 @@ class Schema extends \Rapyd\Controller
     
     protected function drop()
     {
+        //illuminate/dtabase schema builder
+        $schema = $this->app->db->getSchemaBuilder();
+        
+        //drop all tables
         $schema->dropIfExists("demo_users");
         $schema->dropIfExists("demo_articles");
         $schema->dropIfExists("demo_comments");

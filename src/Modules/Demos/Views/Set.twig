@@ -9,30 +9,39 @@
 
 {% block content %}
 
-    <table class="table table-striped">
-        <tr>
-             <th>
-                 <a href="{{ ds.orderby_link('article_id','asc')|raw }}">
-                     <i class="fa fa-angle-up"></i>
-                 </a>
-                 <a href="{{ ds.orderby_link('article_id','desc')|raw }}">
-                     <i class="fa fa-angle-down"></i>
-                 </a>
-             </th> 
-             <th>title</th> 
-             <th>body</th> 
-        </tr>
-        {% for article in ds.data  %}
-            <tr>
-                <td>{{ article.article_id }}</td> 
-                <td>{{ article.title }}</td> 
-                <td>{{ article.body }}</td>
-            </tr>
-        {% endfor %}
-    </table>
+
+    <a href="{{ ds.orderby_link('article_id','asc')|raw }}">
+        <i class="fa fa-angle-up"></i>
+    </a>
+    <a href="{{ ds.orderby_link('article_id','desc')|raw }}">
+        <i class="fa fa-angle-down"></i>
+    </a> 
+
+
+    {% for article in ds.data  %}
+        
+        <div>
+            <h5>{{ article.title }}</h5>
+            <p>
+                {{ article.body }}<br />
+                <small><em>by {{ article.author.firstname }}</em></small>
+            </p>
+
+            {% for comment in article.comments %}
+                     &nbsp;<small>{{ comment.comment|slice(0, 50) }}... </small><br />
+            {% endfor %}
+      
+        </div>
+    {% endfor %}
+    
 
     {{ ds.links()|raw }}
 
+        
+        
+  
+        
+        
 {% endblock %}
 
 

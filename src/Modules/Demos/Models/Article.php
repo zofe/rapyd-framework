@@ -8,16 +8,16 @@ class Article extends \Rapyd\Model
     protected $table = 'demo_articles';
     public $primaryKey = 'article_id';
 
-    public function coments()
+    public function comments()
     {
-        return $this->hasMany('Comment', 'article_id');
+        return $this->hasMany('Modules\Demos\Models\Comment', 'article_id');
     }
 
     public function author()
     {
-        return $this->belongsTo('User', 'author_id');
+        return $this->belongsTo('Modules\Demos\Models\User', 'author_id');
     }
-
+    
     public function getPublicAttribute($value)
     {
         return (bool)$value;

@@ -10,7 +10,11 @@ class Comment extends \Rapyd\Model
 
     public function article()
     {
-        return $this->belongsTo('Article', 'article_id');
+        return $this->belongsTo('Modules\Demos\Models\Article', 'article_id');
     }
 
+    public function user()
+    {
+        return $this->belongsTo('Modules\Demos\Models\User', 'user_id');
+    }
 }

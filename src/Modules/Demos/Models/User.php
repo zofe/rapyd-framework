@@ -10,12 +10,12 @@ class User extends \Rapyd\Model
 
     public function coments()
     {
-        return $this->hasMany('Comment', 'user_id');
+        return $this->hasMany('Modules\Demos\Models\Comment', 'user_id');
     }
 
     public function articles()
     {
-        return $this->hasMany('Article', 'author_id');
+        return $this->hasMany('Modules\Demos\Models\Article', 'author_id');
     }
 
 }
