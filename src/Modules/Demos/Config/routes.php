@@ -7,8 +7,8 @@ $app->addRoutes(array(
     '/demo' => $demos . 'Demo:index',
     '/demo/hello' => $demos .  'Hello:index',
     '/demo/schema' => $demos . 'Schema:index',
-    '/demo/datagrid'=> $demos .'Datagrid:index',
-    '/demo/dataset'=> $demos . 'Dataset:index',
+    '/demo/datagrid:widget'=> $demos .'Datagrid:index',
+    '/demo/dataset:widget'=> $demos . 'Dataset:index',
 
     '/demo/forms'   => $demos . 'Forms:index',
     

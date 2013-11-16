@@ -96,12 +96,21 @@ class Application extends \Slim\Slim
             parent::__construct($config);
         }
 
-        $this->url = new \Rapyd\Helpers\Url;
+        $this->url = new \Rapyd\Helpers\Url($this);
+        $this->url->from = $config['url_method'];
     }
 
     public function setupRoute($routes = array())
     {
-        //add default routes
+        //widgets route conditions
+        include __DIR__ . '/Config/routes.php';
+        
+        require  __DIR__.'/../src/App/Config/hooks.php';
+        require  __DIR__.'/../src/Rapyd/Config/routes.php';
+        require  __DIR__.'/../src/App/Config/routes.php';
+        require  __DIR__.'/../src/Modules/Demos/Config/routes.php';
+
+               //add default routes
         if (empty($routes)) {
             $routes = include __DIR__ . '/../App/Config/routes.php';
 

@@ -6,6 +6,7 @@ $conf = array(
     'controller.class_prefix' => '\\App\\Controllers',
     'controller.method_suffix' => 'Action',
     'controller.template_suffix' => 'twig',
+    'url_method' => 'uri',
     'timezone' => 'Europe/Rome',
     'languages' => array(
         array('name' => 'english', 'locale' => 'en_US', 'dateformat' => 'm/d/Y', 'segment' => ''),
