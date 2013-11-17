@@ -23,16 +23,25 @@
     <h3>About Rapyd Framework</h3>
 
     <p>
-        Rapyd is a PHP microframework for PHP 5.3 built on top of Slim Framework, Twig, Symfony Forms, Illuminate/Database, Twitter Bootstrap.
+        Rapyd is a PHP microframework for PHP 5.3 built on top of Slim Framework, Twig, Symfony Forms, Illuminate/Database, Bootstrap 3.
         It implement <strong>MVC</strong> and <strong>CRUDL</strong> patterns. <br />
         <br />
         There is no much documentation about Rapyd, so this demo mudule is the way to find how to make things.<br /> 
-        Please do not hit me, Rapyd is built on top of well-documented projects.<br />
-        
-        
+        Please do not hit me, Rapyd is built on top of well-documented projects.<br /> 
     </p>
 
     
+    <h3>How it works</h3>
+    <ul>
+        <li>Rapyd extend Slim application to give you an MVC with modular separation, you can define routes as in slim</li>
+        <li>You can write your entities/models using Eloquent orm, define relationships bw entities in few line of code</li>
+        <li>Render method in your controllers search for Twig view to display data</li>
+        <li>Widgets: the boring part of our job is to build CRUD (grids, paged results, forms, etc..), Rapyd has ready to use classes to do that and a simple integration with symfony forms</li>
+        <li>HTML: this demo module, and all widgets are made to work with Boostrap 3, so they are responsive, themeable.. and clean</li>
+    </ul>
+
+    
+    <h3>Reference</h3>
     <p>
         <a href="http://www.slimframework.com/">Slim Framework</a><br />
         slim is basically a magnificent router, It's used as base of Rapyd/Application<br />
@@ -52,12 +61,12 @@
     
     <p>
         <a href="http://four.laravel.com/docs/database">Illuminate/Database</a><br />
-        from laravel 4, It include DB Schema Builder, Fluent Query Builder, and the smart Eloquent ORM (the base of Rapyd <strong>Models</strong>)
+        from laravel 4, It include DB Schema Builder, Fluent Query Builder, and the smart Eloquent ORM (our <strong>Models</strong>)
     </p>
     
 
     <p>
-        <a href="http://getbootstrap.com/">Twitter Bootstrap</a><br />
+        <a href="http://getbootstrap.com/">Bootstrap</a><br />
         one of the best HTML/CSS frameworks
     </p>
     
