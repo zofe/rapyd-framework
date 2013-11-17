@@ -1,5 +1,6 @@
 {
     "name": "zofe/rapyd-framework",
+    "type": "project",
     "description": "microframework for PHP 5.3 CRUD pattern",
     "homepage": "http://www.rapyd.com",
     "keywords": ["Rapyd", "Slim", "Eloquent", "Twig", "CRUD"],
@@ -24,12 +25,7 @@
         "symfony/translation": "2.3.*",
         "symfony/twig-bridge": "2.3.*"
     },
-    "minimum-stability": "dev",      
-    "scripts": {
-        "post-install-cmd": [
-            "Rapyd\\Composer\\ScriptHandler::deployApp"
-        ]
-    },
+    "minimum-stability": "dev",
     "autoload": {
         "psr-0": { 
             "App": "src/",
