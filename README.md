@@ -8,11 +8,11 @@ Rapyd is a PHP microframework for PHP 5.3 built on top of Slim Framework, Twig, 
 In detail:
 
 - Rapyd extend Slim application to give you an MVC with modular separation framework
-- It use Twig as view template engine,
+- It use Twig as view template engine
 - Illuminate/Database (Fluent query and schema builder, and Eloquent ORM)  as db engine 
 - Symfony Forms as base of Form widgets
-- Twitter bootstrap 3 as standard for html/css output
-- then a pool of presentation widgets (DataGrids, etc..) to let you develop CRUDL application really fast.
+- Bootstrap 3 as standard for html/css output
+- A Pool of presentation widgets (DataGrids, etc..) to let you develop CRUDL applications really fast.
 
 
 Felice Ostuni
