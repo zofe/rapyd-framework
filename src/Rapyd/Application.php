@@ -26,8 +26,7 @@ use Symfony\Bridge\Twig\Form\TwigRenderer;
 
 // Overwrite this with your own secret
 define('CSRF_SECRET', 'c2ioeEU1n48QF2WsHGWd2HmiuUUT6dxr');
-define('DEFAULT_FORM_THEME', 'form_div_layout.html.twig');
-
+define('DEFAULT_FORM_THEME', 'Form.layout.twig');
 define('VENDOR_DIR', realpath(__DIR__ . '/../../vendor'));
 define('VENDOR_FORM_DIR', VENDOR_DIR . '/symfony/form/Symfony/Component/Form');
 define('VENDOR_VALIDATOR_DIR', VENDOR_DIR . '/symfony/validator/Symfony/Component/Validator');
