@@ -2,8 +2,6 @@
 
 namespace Modules\Demos\Controllers;
 
-use Symfony\Component\Validator\Constraints\Length;
-use Symfony\Component\Validator\Constraints\NotBlank;
 use \Modules\Demos\Models\Article;
 
 class Eloquent extends \Rapyd\Controller
