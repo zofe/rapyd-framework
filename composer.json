@@ -24,12 +24,12 @@
         "symfony/translation": "2.3.*",
         "symfony/twig-bridge": "2.3.*"
     },
+    "minimum-stability": "dev",      
     "scripts": {
         "post-install-cmd": [
             "Rapyd\\Composer\\ScriptHandler::deployApp"
         ]
     },
-    "prefer-stable": true,
     "autoload": {
         "psr-0": { 
             "App": "src/",
