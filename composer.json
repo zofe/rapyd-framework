@@ -26,12 +26,8 @@
     },
     "scripts": {
         "post-install-cmd": [
-            "Rapyd\\Composer\\ScriptHandler::deploy"
+            "Rapyd\\Composer\\ScriptHandler::deployApp"
         ]
-    },
-    "minimum-stability": "beta",
-    "config": {
-        "preferred-install": "dist"
     },
     "prefer-stable": true,
     "autoload": {

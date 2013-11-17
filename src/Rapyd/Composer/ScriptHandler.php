@@ -11,7 +11,7 @@ use Symfony\Component\Filesystem\Filesystem;
 
 class ScriptHandler
 {
-    public static function deploy($event)
+    public static function deployApp($event)
     {
         $options = self::getOptions($event);
         $webDir = $options['rapyd-web-dir'];
