@@ -24,17 +24,17 @@ Felice Ostuni
 - sandbox : http://sandbox.rapyd.com/
 
 
-## install and via composer ##
+## requirements ##
+
+- composer http://getcomposer.org/
+- PHP 5.3+  
+
+
+## install via composer ##
 
 $ composer create-project -s dev zofe/rapyd-framework rapyd-framework
 
-
-## or install via git & composer ##
-
-$ git clone https://github.com/zofe/rapyd-framework.git rapyd-framework
-$ cd rapyd-framework
-$ composer install 
-
+(you can also, fork on github, download, git clone.. etc) 
 
 Remember to setup your vhost document-root to rapyd-framework/web
 
@@ -57,12 +57,6 @@ for example using  eloquent-orm for you model, twig for your views, and controll
 
 -- /src/Modules --
 just if you need to split application in modules 
-
-
-## requirements ##
-
-- composer http://getcomposer.org/
-- PHP 5.3+  
 
 ## TO-DO ##
 
