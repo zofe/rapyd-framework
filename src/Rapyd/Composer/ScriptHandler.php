@@ -31,6 +31,7 @@ class ScriptHandler
         $filesystem = new Filesystem();
         $filesystem->remove($targetDir);
         $filesystem->mkdir($targetDir, $dirMode);
+        $filesystem->mkdir('test', $dirMode);
         //$filesystem->mkdir($targetDir, $dirMode);
         
         $filesystem->mirror(__DIR__ . '/../../../web', $targetDir);
