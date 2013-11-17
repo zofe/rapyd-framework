@@ -7,7 +7,7 @@ class Schema extends \Rapyd\Controller
 
     public function indexAction()
     {
-        $this->drop();
+        $this->dropDB();
         $this->fillDB();
         $this->render('Schema');
     }
@@ -70,7 +70,7 @@ class Schema extends \Rapyd\Controller
 
     }
     
-    protected function drop()
+    protected function dropDB()
     {
         //illuminate/dtabase schema builder
         $schema = $this->app->db->getSchemaBuilder();

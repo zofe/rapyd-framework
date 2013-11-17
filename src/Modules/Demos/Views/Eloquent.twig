@@ -1,0 +1,32 @@
+
+{# Eloquent.twig #}
+
+{% extends 'Demo.layout.twig' %}
+
+
+{% block title %} Eloquent {% endblock %}
+
+
+{% block content %}
+
+
+    <h5>{{ article.title }}</h5>
+    <p>
+        {{ article.body }}<br />
+        <small><em>by {{ article.author.firstname }}</em></small>
+    </p>
+
+            
+{% endblock %}
+
+
+
+{% block code %}
+
+       <hr>
+       {{ source_code('/../../Modules/Demos/Controllers/Eloquent.php') }}
+       {{ source_code('/../../Modules/Demos/Models/Article.php') }}
+       {{ source_code('/../../Modules/Demos/Views/Eloquent.twig') }}
+
+{% endblock %} 
+
