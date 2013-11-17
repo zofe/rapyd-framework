@@ -27,9 +27,9 @@ class Forms extends \Rapyd\Controller
          $form = $form->getForm();
 
         //there is a post?
-        if (isset($_POST[$form->getName()])) {
+        if ($this->app->request()->post($form->getName())) {
             
-            $form->bind($_POST[$form->getName()]);
+            $form->bind($this->app->request()->post($form->getName()));
 
             if ($form->isValid()) {
                 //bind model with new values and save
