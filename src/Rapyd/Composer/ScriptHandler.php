@@ -33,7 +33,7 @@ class ScriptHandler
         $filesystem->mkdir($targetDir, $dirMode);
         //$filesystem->mkdir($targetDir, $dirMode);
         
-        $filesystem->mirror(__DIR__ . '/../../web', $targetDir);
+        $filesystem->mirror(__DIR__ . '/../../../web', $targetDir);
 
         //$filesystem->mirror(__DIR__ . '/../../../classes/upload', $targetDir . '/classes/upload');
         //$filesystem->copy(__DIR__ . '/../../../app.php', $targetDir . '/app.php');
