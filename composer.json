@@ -1,7 +1,7 @@
 {
     "name": "zofe/rapyd-framework",
     "description": "microframework for PHP 5.3 CRUD pattern",
-    "homepage": "http://bolt.cm",
+    "homepage": "http://www.rapyd.com",
     "keywords": ["Rapyd", "Slim", "Eloquent", "Twig", "CRUD"],
     "license": "MIT",
     "authors": [
@@ -23,6 +23,11 @@
         "symfony/config": "2.3.*",
         "symfony/translation": "2.3.*",
         "symfony/twig-bridge": "2.3.*"
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "Rapyd\\Composer\\ScriptHandler::installAssets",
+        ]
     },
     "minimum-stability": "beta",
     "config": {
