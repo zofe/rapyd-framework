@@ -18,26 +18,23 @@ In detail:
 Felice Ostuni
 
 
-
 ## take a look ##
 
 - sandbox : http://sandbox.rapyd.com/
-
 
 ## requirements ##
 
 - composer http://getcomposer.org/
 - PHP 5.3+  
 
-
 ## install via composer ##
 
+```
 $ composer create-project -s dev zofe/rapyd-framework rapyd-framework
+```
 
 (you can also, fork on github, download, git clone.. etc) 
-
 Remember to setup your vhost document-root to rapyd-framework/web
-
 
 You'll get:
 a simple mvc, a powerful query builder & orm, a great template engine, powerful forms:
