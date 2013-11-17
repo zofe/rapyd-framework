@@ -24,16 +24,20 @@ Felice Ostuni
 - sandbox : http://sandbox.rapyd.com/
 
 
+## install and via composer ##
 
-## install via git ##
+$ composer create-project -s dev zofe/rapyd-framework rapyd-framework
 
-$ git clone https://github.com/zofe/rapyd-framework.git /your/path
 
-$ cd /your/path
+## or install via git & composer ##
 
+$ git clone https://github.com/zofe/rapyd-framework.git rapyd-framework
+$ cd rapyd-framework
 $ composer install 
 
-then remember to setup your vhost document-root to the downloaded /your/path/www
+
+Remember to setup your vhost document-root to rapyd-framework/web
+
 
 You'll get:
 a simple mvc, a powerful query builder & orm, a great template engine, powerful forms:
