@@ -259,6 +259,11 @@ class Application extends \Slim\Slim
             } else {
                 $route->via(strtoupper($httpMethod));
             }
+            if ($condition)
+            {
+                $route->conditions($condition);
+            }
+            
         }
         return $this;
     }
@@ -297,9 +302,9 @@ class Application extends \Slim\Slim
                     $instance = new $className($app);
                     return call_user_func_array(array($instance, $methodName), $args);
                 };
-        if (!is_null($condition)) {
+        /*if (!is_null($condition)) {
             array_push($args, $condition);
-        }
+        }*/
         array_push($args, $callable);
 
         // re-add path
