@@ -18,6 +18,17 @@ In detail:
 Felice Ostuni
 
 
+
+## IMPORTANT NOTICE ##
+development  of __rapyd-framerowk__ is stopped.
+Reason:  I'm a laravel fan now, so I'm migrating my code to laravel framework.
+
+development of __rapyd-laravel__ is now ative. 
+Rapyd is now reborn as standard laravel package:
+https://github.com/zofe/rapyd-laravel
+
+
+
 ## take a look ##
 
 - sandbox : http://sandbox.rapyd.com/
@@ -35,6 +46,9 @@ $ composer create-project -s dev zofe/rapyd-framework rapyd-framework
 
 (you can also, fork on github, download, git clone.. etc) 
 Remember to setup your vhost document-root to rapyd-framework/web
+
+
+
 
 You'll get:
 a simple mvc, a powerful query builder & orm, a great template engine, powerful forms:
