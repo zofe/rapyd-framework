@@ -20,7 +20,7 @@ Felice Ostuni
 
 
 ## IMPORTANT NOTICE ##
-development  of __rapyd-framerowk__ is now stopped. FORK IT  if you like, I can't give support. 
+development  of __rapyd-framerowk__ is now stopped. (FORK IT  if you like, I can't give support).   
 Reason:  I'm a laravel fan now, so I'm migrating my projects to laravel framework.  
 
 development of __rapyd-laravel__ is now ative (FORK IT and help in development with PULL REQUEST).    
