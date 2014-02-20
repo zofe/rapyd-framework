@@ -20,11 +20,11 @@ Felice Ostuni
 
 
 ## IMPORTANT NOTICE ##
-development  of __rapyd-framerowk__ is stopped.
-Reason:  I'm a laravel fan now, so I'm migrating my code to laravel framework.
+development  of __rapyd-framerowk__ is now stopped.   
+Reason:  I'm a laravel fan now, so I'm migrating my projects to laravel framework.  
 
-development of __rapyd-laravel__ is now ative. 
-Rapyd is now reborn as standard laravel package:
+development of __rapyd-laravel__ is now ative.    
+Rapyd is now reborn as standard laravel package:   
 https://github.com/zofe/rapyd-laravel
 
 
