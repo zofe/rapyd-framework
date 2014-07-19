@@ -22,6 +22,8 @@ Felice Ostuni
 ## IMPORTANT NOTICE ##
 development  of __rapyd-framerowk__ is now stopped. (FORK IT  if you like, I can't give support).   
 Reason:  I'm a laravel fan now, so I'm migrating my projects to laravel framework.  
+There is a better projet that join Slim/Twig/Eloquent:
+http://www.xsanisty.com/project/slim-starter
 
 development of __rapyd-laravel__ is now ative (FORK IT and help in development with PULL REQUEST).    
 Rapyd is now reborn as standard laravel package:   
