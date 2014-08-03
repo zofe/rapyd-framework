@@ -5,7 +5,7 @@
 
 
 <table class="table table-striped">
- 
+
     <tr>
      {% for column in dg.columns  %}
             <th>
@@ -17,16 +17,16 @@
                  <a href="{{ dg.orderby_link(column.orderby_field,'desc')|raw }}">
                      <i class="fa fa-angle-down"></i>
                  </a>
-                    
+
                 {{ column.label }}
             {% else %}
                 {{ column.label }}
             {% endif %}
             {% endspaceless %}
-            </th> 
+            </th>
      {% endfor %}
     </tr>
-     
+
     {% for row in dg.rows  %}
         <tr>
             {% for cell in row  %}
@@ -40,4 +40,3 @@
 <div class="pagination">
 {{ dg.links()|raw }}
 </div>
-

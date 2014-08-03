@@ -2,7 +2,6 @@
 
 $demos = '\\Modules\\Demos\\Controllers\\';
 
-
 $app->addRoutes(array(
     '/demo' => $demos . 'Demo:index',
     '/demo/hello' => $demos .  'Hello:index',
@@ -12,6 +11,6 @@ $app->addRoutes(array(
     '/demo/dataset:widget'=> $demos . 'Dataset:index',
 
     '/demo/forms'   => $demos . 'Forms:index',
-    
+
     '/test/twig'   => $demos . 'Tests:twig',
 ));

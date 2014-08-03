@@ -14,10 +14,10 @@ class Parser
         //aggiungere una estensione o filtri custom per abilitare callback da controller/querybuilder/model/viste??
         //studiare http://twig.sensiolabs.org/doc/advanced.html
         //es: $dg->column(' {{ name }} ',"NAME")
-        //$this->env->addExtension($extension);        
+        //$this->env->addExtension($extension);
     }
 
-    ////es: $dg->column('{{ name }}, {{ lastname }}',"NAME")   
+    ////es: $dg->column('{{ name }}, {{ lastname }}',"NAME")
     public function render($pattern, $array)
     {
         return $this->env->render($pattern,$array);
@@ -25,12 +25,12 @@ class Parser
 
     public function variables($pattern)
     {
-        if (preg_match_all("/\{\{ (\w+)(\|\w+)? \}\}/U", $pattern, $m))
-        {
+        if (preg_match_all("/\{\{ (\w+)(\|\w+)? \}\}/U", $pattern, $m)) {
 
             //$m = array_map('array_filter', $m); // Remove empty values
             array_shift($m); // Remove first index [0]
-            return $m[0];  
+
+            return $m[0];
         }
 
         return false;

@@ -5,14 +5,13 @@ ini_set('display_errors', 1);
 // composer autoload
 require_once __DIR__.'/../vendor/autoload.php';
 
-
-// init app 
+// init app
 $app = new \Rapyd\Application();
-require  __DIR__.'/../src/App/Config/hooks.php';
-require  __DIR__.'/../src/Rapyd/Config/routes.php';
-require  __DIR__.'/../src/App/Config/routes.php';
-require  __DIR__.'/../src/Modules/Demos/Config/routes.php';
-//... route for other modules ... 
+require __DIR__.'/../src/App/Config/hooks.php';
+require __DIR__.'/../src/Rapyd/Config/routes.php';
+require __DIR__.'/../src/App/Config/routes.php';
+require __DIR__.'/../src/Modules/Demos/Config/routes.php';
+//... route for other modules ...
 
 $app->notFound(function () use ($app) {
     $app->render('404.twig');

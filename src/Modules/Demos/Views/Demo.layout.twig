@@ -5,21 +5,21 @@
     <title>{% block title %} rapyd demo {% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">   
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.min.css" rel="stylesheet">
     <style type="text/css">
       body {
         padding-top: 20px;
         padding-bottom: 40px;
       }
- 
+
       /* Custom container */
       .container-narrow {
         margin: 0 auto;
         max-width: 800px;
         padding: 0 15px;
-      } 
-      
+      }
+
       .container-narrow > hr {
         margin: 30px 0;
       }
@@ -45,14 +45,14 @@
       .marketing p + h4 {
         margin-top: 28px;
       }
-      
+
       pre {
         line-height:15px;
       }
     </style>
 </head>
 <body>
-        
+
   <div class="container-narrow">
 
       <div class="masthead clearfix">
@@ -64,7 +64,7 @@
         <h3 class="muted">{{ block('title') }}</h3>
       </div>
 
-      
+
         <ul class="nav nav-tabs">
          <li{{ active_class('^/demo$') }}><a href="/demo">Index</a></li>
          <li{{ active_class('^/demo/schema') }}><a href="/demo/schema">Schema Builder</a></li>
@@ -73,16 +73,16 @@
          <li{{ active_class('^/demo/dataset') }}><a href="/demo/dataset">DataSet Widget</a></li>
          <li{{ active_class('^/demo/datagrid') }}><a href="/demo/datagrid">DataGrid Widget</a></li>
          <li{{ active_class('^/demo/forms') }}><a href="/demo/forms">Forms</a></li>
-        </ul>  
+        </ul>
 
       <div>
-          
+
         <br />
-                 
+
         {% block content %}{% endblock %}
 
 
-          
+
       </div>
 
 
@@ -93,7 +93,7 @@
         </pre>
         <div class="line"></div>#}
       {% endblock code %}
-        
+
 
       <hr>
 
@@ -102,9 +102,8 @@
       </div>
 
     </div>
-    
+
     <script src="http://code.jquery.com/jquery.js"></script>
-    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/3.0.0/js/bootstrap.min.js"></script>    
+    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/3.0.0/js/bootstrap.min.js"></script>
 </body>
 </html>
-

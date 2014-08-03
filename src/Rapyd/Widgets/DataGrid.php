@@ -17,19 +17,19 @@ class DataGrid extends DataSet
     {
 
         $this->source = $source;
-        if (is_null($as) && is_a($source, "\Illuminate\Database\Eloquent\Builder")){
-            
+        if (is_null($as) && is_a($source, "\Illuminate\Database\Eloquent\Builder")) {
+
             $reflection = new \ReflectionClass(get_class($source->getModel()));
             $this->row_as = strtolower($reflection->getShortName());
 
-        } elseif (is_null($as) && is_a($source, "\Illuminate\Database\Eloquent\Model")){
+        } elseif (is_null($as) && is_a($source, "\Illuminate\Database\Eloquent\Model")) {
             $reflection = new \ReflectionClass(get_class($source));
             $this->row_as = strtolower($reflection->getShortName());
         }
+
         return $this;
     }
-    
-    
+
     public function setColumn($name, $label = null, $orderby = false)
     {
         $config['row_as'] = $this->row_as;
@@ -39,9 +39,10 @@ class DataGrid extends DataSet
 
         $column = new Column($config);
         $this->columns[] = $column;
+
         return $this;
     }
-    
+
     public function add($name, $label = null, $orderby = false)
     {
         return $this->setColumn($name, $label, $orderby);
@@ -50,7 +51,6 @@ class DataGrid extends DataSet
     {
         $data = get_object_vars($this);
         $data['container'] = $this->button_containers();
-
 
         foreach ($this->data as $tablerow) {
             unset($row);
@@ -70,9 +70,9 @@ class DataGrid extends DataSet
 
         $view = 'DataGrid.twig';
         $this->app->view()->appendData(array('dg' => $this));
+
         return $this->app->view()->render($view);
     }
-
 
     public function build($type = 'Grid')
     {
@@ -93,6 +93,7 @@ class DataGrid extends DataSet
     public function getGrid($type = 'Grid')
     {
         $this->build($type);
+
         return $this->output;
     }
 

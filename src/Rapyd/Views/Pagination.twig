@@ -3,13 +3,13 @@
 
   <ul class="pagination">
 {% if first_page %}
-          
+
   <li><a href="{{ url|replace({'-pag-':1}) }}">&lsaquo;&nbsp;first{# rpd::lang('pag.first') #}</a></li>
 {% endif %}
 {% if previous_page %}
   <li><a href="{{ url|replace({'-pag-': previous_page }) }}">&lt;</a></li>
 {% endif %}
-         
+
 {% for i in nav_start..nav_end %}
 
     {% if  i == current_page %} {#nav_start..nav_end#}

@@ -15,11 +15,11 @@
     </a>
     <a href="{{ ds.orderby_link('article_id','desc')|raw }}">
         <i class="fa fa-angle-down"></i>
-    </a> 
+    </a>
 
 
     {% for article in ds.data  %}
-        
+
         <div>
             <h5>{{ article.title }}</h5>
             <p>
@@ -30,18 +30,18 @@
             {% for comment in article.comments %}
                      &nbsp;<small>{{ comment.comment|slice(0, 50) }}... </small><br />
             {% endfor %}
-      
+
         </div>
     {% endfor %}
-    
+
 
     {{ ds.links()|raw }}
 
-        
-        
-  
-        
-        
+
+
+
+
+
 {% endblock %}
 
 
@@ -53,5 +53,4 @@
        {{ source_code('/../../Modules/Demos/Models/Article.php') }}
        {{ source_code('/../../Modules/Demos/Views/Set.twig') }}
 
-{% endblock %} 
-
+{% endblock %}

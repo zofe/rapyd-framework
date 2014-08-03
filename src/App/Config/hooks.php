@@ -4,7 +4,6 @@
 $app->hook('slim.before', function () use ($app) {
     $env = $app->environment();
 
-    
     //var_dump($app->config('languages'));
     //die;
     // setup default lang based on first in the list
@@ -17,7 +16,7 @@ $app->hook('slim.before', function () use ($app) {
             // try and auto-detect, find the language with the lowest offset as they are in order of priority
             $priority_offset = strlen($env['ACCEPT_LANGUAGE']);
 
-            foreach($availableLangs as $availableLang) {
+            foreach ($availableLangs as $availableLang) {
                 $i = strpos($env['ACCEPT_LANGUAGE'], $availableLang);
                 if ($i !== false && $i < $priority_offset) {
                     $priority_offset = $i;
@@ -30,7 +29,7 @@ $app->hook('slim.before', function () use ($app) {
         $pathInfo = $env['PATH_INFO'] . (substr($env['PATH_INFO'], -1) !== '/' ? '/' : '');
 
         // extract lang from PATH_INFO
-        foreach($availableLangs as $availableLang) {
+        foreach ($availableLangs as $availableLang) {
             $match = '/'.$availableLang;
             if (strpos($pathInfo, $match.'/') === 0) {
                 $lang = $availableLang;
@@ -47,5 +46,5 @@ $app->hook('slim.before', function () use ($app) {
     $app->view()->setAvailableLangs($availableLangs);
     $app->view()->setPathInfo($env['PATH_INFO']);
 });
- 
+
  */
