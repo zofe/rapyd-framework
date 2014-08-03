@@ -94,6 +94,7 @@ class Column extends Widget
         $this->url = $url;
         $this->img = $img;
         $this->onclick = $onclick;
+
         return $this;
     }
 
@@ -101,11 +102,12 @@ class Column extends Widget
     {
         $this->row_as = $row_as;
     }
-    
+
     // --------------------------------------------------------------------
     public function setAttributes($attributes)
     {
         $this->attributes = $attributes;
+
         return $this;
     }
 
@@ -120,6 +122,7 @@ class Column extends Widget
     public function setTRAttributes($attributes)
     {
         $this->tr_attributes = $attributes;
+
         return $this;
     }
 
@@ -136,7 +139,7 @@ class Column extends Widget
             }
             $this->rpattern = $this->parser->render($this->pattern, $data_row);
         }
-        
+
         if (isset($this->callback_object)) {
             $this->rpattern = call_user_func(array($this->callback_object, $this->callback), $data_row);
         } elseif (isset($this->callback)) {
@@ -154,9 +157,9 @@ class Column extends Widget
     /**
      * a column value by default is a string: the field-name you want to show in the column
      * but it support also a "pattern" with html and placeholders like : {field1} <br /> {field2}
-     * @return type 
+     * @return type
      */
-    function getValue()
+    public function getValue()
     {
 
         if ($this->rpattern == "") {
@@ -167,12 +170,13 @@ class Column extends Widget
     }
 
     /**
-     * replace {field} with value 
+     * replace {field} with value
      * @return string
      */
-    function orderby_link()
+    public function orderby_link()
     {
         die('e mo?');
+
         return str_replace('{field}', $column->orderby_field, $this->orderby_asc_url);
     }
 

@@ -2,7 +2,7 @@
 
 namespace Rapyd;
 
-class ErrorMiddleware extends \Slim\Middleware
+class Error extends \Slim\Middleware
 {
     public function call()
     {

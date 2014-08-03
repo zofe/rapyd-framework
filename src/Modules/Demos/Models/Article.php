@@ -17,10 +17,10 @@ class Article extends \Rapyd\Model
     {
         return $this->belongsTo('Modules\Demos\Models\User', 'author_id');
     }
-    
+
     public function getPublicAttribute($value)
     {
-        return (bool)$value;
+        return (bool) $value;
     }
-    
+
 }

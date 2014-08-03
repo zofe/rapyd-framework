@@ -11,7 +11,7 @@ class Event
 
     protected function __construct()
     {
-        
+
     }
 
     public static function register($name, Closure $closure)

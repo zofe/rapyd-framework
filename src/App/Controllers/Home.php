@@ -36,7 +36,6 @@ class Home extends \Rapyd\Controller
     {
         $schema = $this->app->db->getSchemaBuilder();
 
-
         $schema->dropIfExists("capocchie");
         $schema->table("capocchie", function ($table) {
             $table->create();
@@ -48,13 +47,11 @@ class Home extends \Rapyd\Controller
             $table->timestamps();
         });
     }
-    
-    
-    public function formAction(){
-        
+
+    public function formAction()
+    {
         $form = new \Illuminate\Html\FormBuilder();
         $form->open($options);
     }
-    
 
 }

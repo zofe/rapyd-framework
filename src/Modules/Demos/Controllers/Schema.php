@@ -11,8 +11,7 @@ class Schema extends \Rapyd\Controller
         $this->fillDB();
         $this->render('Schema');
     }
-    
-    
+
     protected function fillDB()
     {
         //illuminate/dtabase schema builder
@@ -20,7 +19,7 @@ class Schema extends \Rapyd\Controller
 
         //tables are already there
         if ($schema->hasTable("demo_users")) return;
- 
+
         //create all tables
         $schema->table("demo_users", function ($table) {
                     $table->create();
@@ -51,9 +50,9 @@ class Schema extends \Rapyd\Controller
         $users = $this->app->db->table('demo_users');
         $users->insert(array('firstname' => 'Jhon', 'lastname' => 'Doe'));
         $users->insert(array('firstname' => 'Jane', 'lastname' => 'Doe'));
-        
+
         $articles = $this->app->db->table('demo_articles');
-        for ($i=1; $i<=20; $i++){
+        for ($i=1; $i<=20; $i++) {
             $articles->insert(array(
                                     'author_id' => rand(1,2),
                                     'title' => 'Article '.$i,
@@ -69,12 +68,12 @@ class Schema extends \Rapyd\Controller
         );
 
     }
-    
+
     protected function dropDB()
     {
         //illuminate/dtabase schema builder
         $schema = $this->app->db->getSchemaBuilder();
-        
+
         //drop all tables
         $schema->dropIfExists("demo_users");
         $schema->dropIfExists("demo_articles");

@@ -1,7 +1,7 @@
 <?php
 
 $conf = array(
-    
+
     'driver'    => 'mysql',
     'host'      => '127.0.0.1',
     'database'  => 'rapyd_framework',

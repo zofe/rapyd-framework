@@ -5,9 +5,6 @@ namespace Rapyd;
 //eloquent
 use \Illuminate\Database\Capsule\Manager as Capsule;
 //twig
-use \Twig_Loader_Filesystem;
-use \Twig_Environment;
-use \Twig_SimpleFilter;
 use \Twig_SimpleFunction;
 use \Twig_Extension_Debug;
 //symfony form & translations
@@ -22,7 +19,6 @@ use Symfony\Component\Translation\Loader\XliffFileLoader;
 use Symfony\Bridge\Twig\Extension\TranslationExtension;
 use Symfony\Bridge\Twig\Extension\FormExtension;
 use Symfony\Bridge\Twig\Form\TwigRenderer;
-
 
 // Overwrite this with your own secret
 define('CSRF_SECRET', 'c2ioeEU1n48QF2WsHGWd2HmiuUUT6dxr');
@@ -44,7 +40,7 @@ class Application extends \Slim\Slim
 
     /**
      *
-     * @var \Rapyd\Helpers\Url; 
+     * @var \Rapyd\Helpers\Url;
      */
     public $url;
 
@@ -68,7 +64,7 @@ class Application extends \Slim\Slim
 
     /**
      *
-     * @var array 
+     * @var array
      */
     public $semantic = array(
         'search', 'reset', 'checkbox',
@@ -78,7 +74,6 @@ class Application extends \Slim\Slim
 
     public function __construct($config = array())
     {
-
 
         //init slim, by default with /app/Config/* arrays
         if (empty($config)) {
@@ -103,11 +98,11 @@ class Application extends \Slim\Slim
     {
         //widgets route conditions
         include __DIR__ . '/Config/routes.php';
-        
-        require  __DIR__.'/../src/App/Config/hooks.php';
-        require  __DIR__.'/../src/Rapyd/Config/routes.php';
-        require  __DIR__.'/../src/App/Config/routes.php';
-        require  __DIR__.'/../src/Modules/Demos/Config/routes.php';
+
+        require __DIR__.'/../src/App/Config/hooks.php';
+        require __DIR__.'/../src/Rapyd/Config/routes.php';
+        require __DIR__.'/../src/App/Config/routes.php';
+        require __DIR__.'/../src/Modules/Demos/Config/routes.php';
 
                //add default routes
         if (empty($routes)) {
@@ -142,7 +137,7 @@ class Application extends \Slim\Slim
         $this->db = $capsule->getConnection('default');
     }
 
-    public function setupView(Array $twig = array())
+    public function setupView(array $twig = array())
     {
         //add default routes
         if (empty($twig))
@@ -166,7 +161,6 @@ class Application extends \Slim\Slim
         $views_arr[] = __DIR__ . '/Views';
         $this->view->twigTemplateDirs = $views_arr;
 
-
         $this->view->parserExtensions = array(
             new Twig_Extension_Debug()
         );
@@ -180,7 +174,7 @@ class Application extends \Slim\Slim
         $function = new Twig_SimpleFunction('source_code', function ($filepath) {
                     $code = file_get_contents(VIEWS_DIR . $filepath);
                     $code = preg_replace("#{% block code %}.*{% endblock %}#Us", '', $code);
-                    $code = highlight_string($code, TRUE);
+                    $code = highlight_string($code, true);
 
                     return "<pre>\n" . $code . "\n</pre>";
                 }, array('is_safe' => array('html')));
@@ -208,9 +202,7 @@ class Application extends \Slim\Slim
                 ->setTranslationDomain('validators')
                 ->getValidator();
 
-
         $formEngine = new TwigRendererEngine(array(DEFAULT_FORM_THEME));
-
 
         $twig = $this->view->getInstance();
         $formEngine->setEnvironment($twig);
@@ -228,9 +220,9 @@ class Application extends \Slim\Slim
     {
         $this->grid = new \Rapyd\Widgets\WidgetBuilder("\\Rapyd\\Widgets\\DataGrid"); //new \Rapyd\Helpers\Url;//new WidgetBuilder('DataGrid');
         $this->set = new \Rapyd\Widgets\WidgetBuilder("\\Rapyd\\Widgets\\DataSet");
-        
+
     }
-    
+
     public function addRoutes(array $routings, $condition = null)
     {
         foreach ($routings as $path => $args) {
@@ -263,6 +255,7 @@ class Application extends \Slim\Slim
                 $route->conditions($condition);
             }
         }
+
         return $this;
     }
 
@@ -295,9 +288,10 @@ class Application extends \Slim\Slim
 
         // build & append callable
         $app = &$this;
-        $callable = function() use($app, $className, $methodName, $path) {
+        $callable = function () use ($app, $className, $methodName, $path) {
                     $args = func_get_args();
                     $instance = new $className($app);
+
                     return call_user_func_array(array($instance, $methodName), $args);
                 };
         /*if (!is_null($condition)) {
@@ -307,6 +301,7 @@ class Application extends \Slim\Slim
 
         // re-add path
         array_unshift($args, $path);
+
         return;
     }
 

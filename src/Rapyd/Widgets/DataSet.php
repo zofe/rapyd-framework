@@ -2,12 +2,10 @@
 
 namespace Rapyd\Widgets;
 
-
-class DataSet extends Widget 
+class DataSet extends Widget
 {
 
     public $cid;
-
 
     public $source;
 
@@ -44,7 +42,7 @@ class DataSet extends Widget
         parent::__construct($config);
 
         //inherit cid from datafilter
-        if (isset($this->source) AND is_object($this->source)) {
+        if (isset($this->source) and is_object($this->source)) {
             $this->cid = $this->source->cid;
         }
         //or generate new one
@@ -60,18 +58,18 @@ class DataSet extends Widget
     {
             return count($this->data);
     }
-    
-    
-    
+
     public function setSource($source)
     {
         $this->source = $source;
+
         return $this;
     }
 
     public function table($table)
     {
         $this->query = $this->app->db->table($table);
+
         return $this->query;
     }
 
@@ -79,13 +77,14 @@ class DataSet extends Widget
     {
         $this->per_page = $per_page;
         $this->num_links= $num_links;
+
         return $this;
     }
-
 
     public function orderby_link($field, $dir="asc")
     {
         $url = ($dir == "asc") ? $this->orderby_uri_asc : $this->orderby_uri_desc ;
+
         return str_replace('-field-', $field, $url);
 
     }
@@ -108,14 +107,12 @@ class DataSet extends Widget
 
     public function build()
     {
-        if (is_string($this->source) && strpos(" ", $this->source) === false)
-        {
+        if (is_string($this->source) && strpos(" ", $this->source) === false) {
             //tablename
             $this->type = "query";
             $this->query = $this->table($this->source);
             $this->total_rows = $this->query->count();
-        }
-        elseif (is_a($this->source, "\Illuminate\Database\Eloquent\Model") || is_a($this->source,"\Illuminate\Database\Eloquent\Builder")) {
+        } elseif (is_a($this->source, "\Illuminate\Database\Eloquent\Model") || is_a($this->source,"\Illuminate\Database\Eloquent\Builder")) {
            $this->type = "model";
            $this->query = $this->source;
            $this->total_rows = $this->query->count();
@@ -124,9 +121,8 @@ class DataSet extends Widget
         elseif (is_array($this->source)) {
             $this->type = "array";
             $this->total_rows = count($this->source);
-        } 
+        }
         //exception
-
 
         //offset and pagination setup/detect
         $config = array(
@@ -146,8 +142,7 @@ class DataSet extends Widget
         //build orderby urls
         $this->orderby_uri_asc = $this->app->url->remove('pag' . $this->cid)->remove('reset' . $this->cid)->append('orderby' . $this->cid, array("-field-", "asc"))->get() . $this->hash;
         $this->orderby_uri_desc = $this->app->url->remove('pag' . $this->cid)->remove('reset' . $this->cid)->append('orderby' . $this->cid, array("-field-", "desc"))->get() . $this->hash;
-        
-        
+
         //detect orderby
         $orderby = $this->app->url->value("orderby" . $this->cid);
         if ($orderby) {
@@ -191,19 +186,21 @@ class DataSet extends Widget
                 if (isset($this->limit)) {
                     $this->query = $this->query->skip($this->pagination->offset())->take($this->per_page);
                 }
-                
+
                 $this->data = $this->query->get();
                 break;
         }
+
         return $this;
     }
-    
+
     public function getSet()
     {
         $this->build();
+
         return $this;
     }
-    
+
     public function getData()
     {
         return $this->data;
@@ -212,8 +209,7 @@ class DataSet extends Widget
     {
         return $this->pagination->links();
     }
-    
-    
+
 }
 
 // End Dataset Class

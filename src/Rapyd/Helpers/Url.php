@@ -3,8 +3,8 @@
 namespace Rapyd\Helpers;
 
 /**
- * Url Class 
- * 
+ * Url Class
+ *
  * @package    Rapyd
  * @author     Felice Ostuni
  * @copyright  (c) 2013 Rapyd Team
@@ -32,6 +32,7 @@ class Url
     public function __construct($app)
     {
         $this->app = $app;
+
         return $this;
     }
 
@@ -39,10 +40,11 @@ class Url
     {
         return '?' . preg_replace('/%5B[0-9]+%5D/simU', '[]', http_build_query($array));
     }
-    
+
     public function set($url)
     {
         $this->url = $url;
+
         return $this;
     }
 
@@ -53,6 +55,7 @@ class Url
         } else {
             $url = $this->url;
             $this->url = '';
+
             return $url;
         }
     }
@@ -61,10 +64,11 @@ class Url
     {
         //var_dump($this->app->router()->getCurrentRoute()->getPattern());
         //die;
-        
+
         if (isset($_SERVER['HTTP_X_ORIGINAL_URL']))
             $_SERVER['REQUEST_URI'] = $_SERVER['HTTP_X_ORIGINAL_URL'];
         $url = (isset($_SERVER['REQUEST_URI'])) ? $_SERVER['REQUEST_URI'] : @getenv('REQUEST_URI');
+
         return $url;
     }
 
@@ -88,7 +92,7 @@ class Url
         return ($this->from == 'uri') ? $this->replaceUri($key, $newkey) : $this->replaceQS($key, $newkey);
     }
 
-    public function value($key, $default = FALSE)
+    public function value($key, $default = false)
     {
         return ($this->from == 'uri') ? $this->valueUri($key, $default) : $this->valueQS($key, $default);
     }
@@ -105,6 +109,7 @@ class Url
         $qs_array[$key] = $value;
         $query_string = self::unparse_str($qs_array);
         $this->url = $url . $query_string;
+
         return $this;
     }
 
@@ -114,6 +119,7 @@ class Url
         $url = $this->get();
         if (strpos($url, '?') === false) {
             $this->url = $url;
+
             return $this;
         }
         $qs = substr($url, strpos($url, '?') + 1);
@@ -123,6 +129,7 @@ class Url
         if (!is_array($keys)) {
             if ($keys == 'ALL') {
                 $this->url = $url;
+
                 return $this;
             }
             $keys = array($keys);
@@ -133,6 +140,7 @@ class Url
         $query_string = self::unparse_str($qs_array);
 
         $this->url = $url . $query_string;
+
         return $this;
     }
 
@@ -146,6 +154,7 @@ class Url
             }
             $semantic = $keys;
         }
+
         return $this->remove($semantic);
     }
 
@@ -164,10 +173,11 @@ class Url
         }
         $query_string = self::unparse_str($qs_array);
         $this->url = $url . $query_string;
+
         return $this;
     }
 
-    public function valueQS($key, $default = FALSE)
+    public function valueQS($key, $default = false)
     {
         if (strpos($key, '|')) {
             $keys = explode('|', $key);
@@ -176,12 +186,14 @@ class Url
                 if ($v != $default)
                     return $v;
             }
+
             return $default;
         }
 
         parse_str(parse_url($this->current(), PHP_URL_QUERY), $params);
         if (strpos($key, '.')) {
             list($namespace, $subkey) = explode('.', $key);
+
             return (isset($params[$namespace][$key])) ? $params[$namespace][$key] : $default;
         } else {
             return (isset($params[$key])) ? $params[$key] : $default;
@@ -205,10 +217,10 @@ class Url
         }
 
         $this->url = "/".implode('/', $seg_array);
-        return $this;
-        
-    }
 
+        return $this;
+
+    }
 
     public function removeUri($keys, $params = 1)
     {
@@ -231,12 +243,12 @@ class Url
                 }
             }
         }
-        
+
         $this->url = "/".implode('/', $seg_array);
+
         return $this;
     }
 
-  
     public function removeAllUri($cid = null)
     {
         $url = $this->get();
@@ -246,7 +258,7 @@ class Url
                 $keys[] = $key . $cid;
             }
             $this->url = $this->removeUri($keys)->get();
-            
+
         } else {
 
             $uri = $this->get();
@@ -258,10 +270,10 @@ class Url
                     }
             }
         }
+
         return $this;
     }
 
- 
     public function replaceUri($key, $newkey, $url = null)
     {
         $url = $this->get();
@@ -272,12 +284,12 @@ class Url
             array_splice($seg_array, $key_position, 1, array($newkey));
         }
         $this->url = "/".implode('/', $seg_array);
+
         return $this;
-        
+
     }
 
- 
-    public function valueUri($key, $default = FALSE, $params = 1)
+    public function valueUri($key, $default = false, $params = 1)
     {
 
         $url = $this->get();
@@ -290,6 +302,7 @@ class Url
                 if ($v != $default)
                     return $v;
             }
+
             return $default;
         }
 
@@ -325,7 +338,5 @@ class Url
 
         return $default;
     }
-    
-   
 
 }

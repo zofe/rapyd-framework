@@ -14,9 +14,8 @@ class Forms extends \Rapyd\Controller
         //fill form data using a model
         $article = Article::find(1);
 
-        
         $form = $this->form->createBuilder();
-        $form->add('title', 'text', 
+        $form->add('title', 'text',
                 array('constraints' => array( new NotBlank(), new Length(array('min'=>4))),
                       'attr' => array('placeholder'=>'article title'))
          );
@@ -28,7 +27,7 @@ class Forms extends \Rapyd\Controller
 
         //there is a post?
         if ($this->app->request()->post($form->getName())) {
-            
+
             $form->bind($this->app->request()->post($form->getName()));
 
             if ($form->isValid()) {

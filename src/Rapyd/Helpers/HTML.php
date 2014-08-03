@@ -8,10 +8,10 @@ class HTML
     /**
      * array to string for attributes
      *
-     * @param   array   $attributes  Array of tags
-     * @return  string
+     * @param  array  $attributes Array of tags
+     * @return string
      */
-    public static function attributes(Array $attributes)
+    public static function attributes(array $attributes)
     {
         $attr = '';
 
@@ -23,16 +23,17 @@ class HTML
                 $attr .= ' ' . $attribute . '="' . $value . '"';
             }
         }
+
         return $attr;
     }
 
     /**
      * Creates a HTML tag.
      *
-     * @param   string  $name        Tag name
-     * @param   array   $attributes  (optional) Tag attributes
-     * @param   string  $content     (optional) Tag content
-     * @return  string
+     * @param  string $name       Tag name
+     * @param  array  $attributes (optional) Tag attributes
+     * @param  string $content    (optional) Tag content
+     * @return string
      */
     public static function tag($name, array $attributes = array(), $content = null)
     {
@@ -41,10 +42,10 @@ class HTML
 
     /**
      * Open a HTML tag
-     * 
-     * @param   string    $name
-     * @param   array     $attributes
-     * @return  string
+     *
+     * @param  string $name
+     * @param  array  $attributes
+     * @return string
      */
     public static function open($name, array $attributes = array())
     {
@@ -53,10 +54,10 @@ class HTML
 
     /**
      * Close a HTML tag
-     * 
-     * @param   string    $name
-     * @param   array     $attributes
-     * @return  string
+     *
+     * @param  string $name
+     * @param  array  $attributes
+     * @return string
      */
     public static function close($name)
     {
@@ -66,9 +67,9 @@ class HTML
     /**
      * Helper method for building media tags.
      *
-     * @param   string     $type        Tag type
-     * @param   mixed      $files       File or array of files
-     * @param   array      $attributes  (optional) Tag attributes
+     * @param string $type       Tag type
+     * @param mixed  $files      File or array of files
+     * @param array  $attributes (optional) Tag attributes
      */
     protected static function buildMedia($type, $files, $attributes)
     {
@@ -84,8 +85,8 @@ class HTML
     /**
      * Creates audio tag with support for multiple sources.
      *
-     * @param   mixed   $files       File or array of files
-     * @param   array   $attributes  (optional) Tag attributes
+     * @param mixed $files      File or array of files
+     * @param array $attributes (optional) Tag attributes
      */
     public static function audio($files, array $attributes = array())
     {
@@ -95,8 +96,8 @@ class HTML
     /**
      * Creates video tag with support for multiple sources.
      *
-     * @param   mixed   $files       File or array of files
-     * @param   array   $attributes  (optional) Tag attributes
+     * @param mixed $files      File or array of files
+     * @param array $attributes (optional) Tag attributes
      */
     public static function video($files, array $attributes = array())
     {
@@ -106,9 +107,9 @@ class HTML
     /**
      * Helper method for building list tags.
      *
-     * @param   string     $type        Tag type
-     * @param   mixed      $items       File or array of files
-     * @param   array      $attributes  (optional) Tag attributes
+     * @param string $type       Tag type
+     * @param mixed  $items      File or array of files
+     * @param array  $attributes (optional) Tag attributes
      */
     protected static function buildList($type, $items, $attributes)
     {
@@ -128,9 +129,9 @@ class HTML
     /**
      * Builds an un-ordered list.
      *
-     * @param   array   $items       List items
-     * @param   array   $attributes  List attributes
-     * @return  string
+     * @param  array  $items      List items
+     * @param  array  $attributes List attributes
+     * @return string
      */
     public static function ul(array $items, array $attributes = array())
     {
@@ -140,9 +141,9 @@ class HTML
     /**
      * Builds am ordered list.
      *
-     * @param   array   $items       List items
-     * @param   array   $attributes  List attributes
-     * @return  string
+     * @param  array  $items      List items
+     * @param  array  $attributes List attributes
+     * @return string
      */
     public static function ol(array $items, array $attributes = array())
     {
