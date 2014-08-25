@@ -31,10 +31,6 @@ https://github.com/zofe/rapyd-laravel
 
 
 
-## take a look ##
-
-- sandbox : http://sandbox.rapyd.com/
-
 ## requirements ##
 
 - composer http://getcomposer.org/
@@ -84,7 +80,6 @@ just if you need to split application in modules
 
 Note: I'll try do reimplement this stuffs in curret version 
 
-- http://test.rapyd.com/demo
 - https://code.google.com/p/rapyd-framework/
 
 
