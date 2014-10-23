@@ -22,11 +22,13 @@ Felice Ostuni
 ## IMPORTANT NOTICE ##
 development  of __rapyd-framerowk__ is now stopped. (FORK IT  if you like, I can't give support).   
 Reason:  I focused  development on the "laravel" version.  
-As alternative if you need Slim/Twig/Eloquent take a look at:
+Alternatives:  
+if you need Slim/Twig/Eloquent take a look at:  
 http://www.xsanisty.com/project/slim-starter
 
-In you need  Slim_(or any other router)_/Blade/Eloquent take a look at: 
+In you need  Slim _(or any other router)_ /Blade/Eloquent take a look at:  
 http://github.com/zofe/deficient
+
 
 Development of __rapyd-laravel__ is now ative (FORK IT and help in development with PULL REQUEST).    
 Rapyd is now reborn as standard laravel package:   
